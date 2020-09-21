@@ -9,10 +9,13 @@ class Api::SessionsController < ApplicationController
       params[:user][:email], 
       params[:user][:password]
     )
+    # debugger
     if @user
+      # debugger
       login!(@user)
       render :create
     else
+      # debugger
       render json: ['Username or Password is Incorrect'], status: 422
     end
   end
