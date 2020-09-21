@@ -30,17 +30,21 @@ export default class LoginForm extends React.Component {
         </aside>
         <h3>Welcome to Blackbird</h3>
         <form onSubmit={this.handleSubmit}>
-          <input 
-            type="text"
-            value={this.state.email}
-            onChange={this.handleChange('email')}
-          />
+          <label htmlFor="email">Email
+            <input 
+              type="text"
+              value={this.state.email}
+              onChange={this.handleChange('email')}
+            />
+          </label>
           <br/>
-          <input
-            type="password"
-            value={this.state.password}
-            onChange={this.handleChange('password')}
-          />
+          <label htmlFor="password">Password
+            <input
+              type="password"
+              value={this.state.password}
+              onChange={this.handleChange('password')}
+            />
+          </label>
           <button>Sign In</button>
         </form>
       </div>
