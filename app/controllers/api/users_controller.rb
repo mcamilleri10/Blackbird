@@ -7,8 +7,10 @@ class Api::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      
+      login!(@user)
+      render :create
     else
+      render json: ["Error signing up"], status: 422 # REPLACE WITH APPROPRIATE MESSAGE
     end
   end
 

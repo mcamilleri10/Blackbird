@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_logged_in
-    # REMEMBER TO FILL IN
+    render 'session/create'  # MAKE SURE THIS WORKS
   end
 
   def login!(user)
