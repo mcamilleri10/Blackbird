@@ -125,7 +125,7 @@ export default class Splash extends React.Component {
               <p>Blackbird, a pioneer of comission-free investing, 
                 gives you more way to make your money work harder.
               </p>
-              <Link to='/signup' className='main-signup-link'>Sign Up</Link>
+              <Link to='/signup' className='main-demo-link'>Demo</Link>
             </div>
           </section>
           <section className='splash-main-graphic col splash-main-info-col-2-2'>
@@ -194,3 +194,6 @@ export default class Splash extends React.Component {
     );
   }
 }
+
+// Image credits:
+{/* https://pnghut.com/png/8JpjGSzQNJ/cube-three-dimensional-space-geometry-geometric-shape-3d-yellow-transparent-png */}
