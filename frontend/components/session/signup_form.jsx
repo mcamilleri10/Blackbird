@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFeatherAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default class SignupForm extends React.Component {
 
@@ -26,9 +28,10 @@ export default class SignupForm extends React.Component {
   }
 
   render() {
+    const logo = <FontAwesomeIcon icon={faFeatherAlt} />;
     return (
       <div>
-        <h2>Blackbird (insert logo)</h2>
+        <h2>Blackbird {logo}</h2>
         <br/>
         <h2>Make Your Money Move</h2>
         <h3>Blackbird lets you invest in companies you love, commission-free.</h3>
