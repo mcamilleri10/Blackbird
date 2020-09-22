@@ -5,6 +5,7 @@
   justify-content: space-between;
   background-color: white;
   line-height: 70px;
+  z-index: 2;
 }
 
 .splash-nav-left {
@@ -15,13 +16,122 @@
 
 .splash-nav-bar h1 {
   font-size: 25px;
-  /* font-weight: 600; */
   padding-left: 25px;
 }
 
-.splash-nav-bar h3 {
+.products-dd {
+  width: 100px;
+  height: 70px;
   font-weight: 400;
-  padding-left: 80px;
+  font-size: 21px;
+  margin-left: 80px;
+  margin-right: 50px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+
+.products-dd h3 {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.products-arrow {
+  display: flex;
+}
+
+.products-arrow:hover {
+  color: limegreen;
+}
+
+.dd-arrow {
+  padding-top: 7px;
+  padding-left: 10px;
+}
+
+.products-menu {
+  position: absolute;
+  width: 100vw;
+  height: 70px;
+  top: 70px;
+  left: -235px;
+  background-color: white;
+  z-index: 3;
+  box-shadow: 0 5px 6px -6px grey;
+}
+
+.products-list {
+  display: flex;
+  padding-left: 250px;
+}
+
+.products-list li {
+  display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 19px;
+}
+
+.products-list li:hover {
+  color: limegreen;
+} 
+
+.learn-dd {
+  width: 70px;
+  height: 70px;
+  font-weight: 400;
+  font-size: 21px;
+  margin-left: 0px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+
+.learn-dd h3 {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.learn-arrow {
+  display: flex;
+}
+
+.learn-arrow:hover {
+  color: limegreen;
+}
+
+.dd-arrow {
+  padding-top: 7px;
+  padding-left: 10px;
+}
+
+.learn-menu {
+  position: absolute;
+  width: 100vw;
+  height: 70px;
+  top: 70px;
+  left: -385px;
+  background-color: white;
+  z-index: 3;
+  box-shadow: 0 5px 6px -6px grey;
+}
+
+.learn-list {
+  display: flex;
+  padding-left: 400px;
+}
+
+.learn-list li {
+  display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 19px;
+}
+
+.learn-list li:hover {
+  color: limegreen;
 }
 
 .session-links {
@@ -51,6 +161,7 @@
   border-radius: 25px;
 }
 
+/* background color courtesy of Robinhood */
 .nav-signup-link:hover {
   background-color: rgb(43, 177, 43);
 }
@@ -59,9 +170,11 @@
   width: 100%;
   box-shadow: inset 0 5px 6px -6px grey;
   height: 650px;
-  background-color: #B8F839;
+  background-color: rgb(195,245,60);
   border-bottom: 1px solid black;
   position: relative;
+  z-index: 1;
+  display: flex;
 }
 
 .splash-main-info-col-1-2 {
@@ -108,4 +221,42 @@
 
 .splash-main-info-col-1-2 {
   width: 50%;
+}
+
+.splash-main-graphic {
+  height: 600px;
+  width: 700px;
+  position: absolute;
+  right: 60px;
+  top: 20px;
+}
+
+.splash-main-2 {
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid black;
+  justify-content: center;
+}
+
+.splash-main-2 h2, .splash-main-2 p {
+  width: 610px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.splash-main-2 h2 {
+  font-size: 35px;
+  font-weight: 500;
+}
+
+.splash-main-2 p {
+  font-size: 20px;
+  padding: 20px;
+}
+
+.splash-main-3 {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
 }
