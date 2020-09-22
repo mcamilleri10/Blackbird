@@ -267,7 +267,7 @@
   text-align: center;
 }
 
-h2 {
+.splash h2 {
   font-size: 35px;
   font-weight: 500;
 }
@@ -275,6 +275,34 @@ h2 {
 .splash-main-2 p {
   font-size: 20px;
   padding: 20px;
+}
+
+.commissions-modal-link {
+  color: gray;
+  margin: 0 auto;
+}
+
+.commissions-modal-link:hover {
+  color: limegreen;
+}
+
+.commissions-modal-link:hover .commissions-info {
+  border: 2px solid limegreen;
+}
+
+.commissions-info {
+  display: inline-block;
+  height: 22px;
+  width: 22px;
+  border: 2px solid gray;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.commissions-modal-link button {
+  font-size: 18px;
+  padding-left: 10px;
+  font-weight: 600;
 }
 
 .splash-main-3 {
@@ -287,13 +315,14 @@ h2 {
 }
 
 .main-3-content {
-  width: 100%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-left: 30px;
 }
 
-h4 {
+.splash h4 {
   color: gray;
   font-weight: 500;
   font-size: 20px;
@@ -308,6 +337,7 @@ h4 {
 .main-3-blurbs div {
   margin-right: 50px;
   font-size: 17px;
+  width: 250px;
 }
 
 .splash-main-3 h3 {
@@ -316,10 +346,42 @@ h4 {
 
 .fractional {
   height: 100%;
-  width: 100%;
+  width: 30%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.fractional img {
+  height: 300px;
+  width: 300px;
+}
+
+.fractional-modal-link {
+  color: gray;
+}
+
+.fractional-modal-link:hover {
+  color: limegreen;
+}
+
+.fractional-modal-link:hover .fractional-info {
+  border: 2px solid limegreen;
+}
+
+.fractional-info {
+  display: inline-block;
+  height: 22px;
+  width: 22px;
+  border: 2px solid gray;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.fractional-modal-link button {
+  font-size: 18px;
+  padding-left: 10px;
+  font-weight: 600;
 }
 
 .splash-footer {

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFeatherAlt } from '@fortawesome/free-solid-svg-icons';
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-
+import { faInfo } from '@fortawesome/free-solid-svg-icons';
 
 export default class Splash extends React.Component {
 
@@ -52,11 +52,12 @@ export default class Splash extends React.Component {
     const logo = <FontAwesomeIcon icon={faFeatherAlt} />;
     const downArrow = <FontAwesomeIcon icon={faAngleDown} />;
     const upArrow = <FontAwesomeIcon icon={faAngleUp} />;
+    const info = <FontAwesomeIcon icon={faInfo} />;
 
     {/* images courtesy of Robinhood */ }
 
     return(
-      <div>
+      <div className='splash'>
         <header className='splash-nav-bar'>
           <div className='splash-nav-left'>
             <h1 className='main-logo'>Blackbird {logo}</h1>
@@ -141,6 +142,12 @@ export default class Splash extends React.Component {
             with Blackbird Financial, as well as buy and sell cryptocurrencies 
             with Blackbird Crypto. See our fee schedule to learn more about cost.
           </p>
+          <div className='commissions-modal-link'>
+            <div className='commissions-info'>{info}</div>
+            <button >
+              Commissions Disclosure
+            </button>
+          </div>
         </section>
 
         <section className='splash-main-3'>
@@ -169,9 +176,12 @@ export default class Splash extends React.Component {
                 </p>
               </div>
             </div>
-            <button className='fractional-modal'>
-              Fractional Shares Disclosure
-            </button>
+            <div className='fractional-modal-link'>
+              <div className='fractional-info'>{info}</div>
+              <button >
+                Fractional Shares Disclosure
+              </button>
+            </div>
           </div>
           <div className='fractional'>
             <img src={window.fractionalURL} />
