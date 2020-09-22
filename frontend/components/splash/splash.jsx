@@ -116,6 +116,7 @@ export default class Splash extends React.Component {
             <Link to='/signup' className='nav-signup-link'>Sign Up</Link>
           </div>
         </header>
+
         <section className='splash-main'>
           <section className='splash-main-info col splash-main-info-col-1-2'>
             <div className='splash-main-text'>
@@ -128,7 +129,9 @@ export default class Splash extends React.Component {
           </section>
           <section className='splash-main-graphic col splash-main-info-col-2-2'>
             <img src={window.phoneURL} /> 
-            
+            <video src={window.phoneAnimationURL} autoPlay loop muted 
+              className='animation'> 
+            </video>
           </section>
         </section>
         <section className='splash-main-2'>
@@ -139,32 +142,44 @@ export default class Splash extends React.Component {
             with Blackbird Crypto. See our fee schedule to learn more about cost.
           </p>
         </section>
+
         <section className='splash-main-3'>
-          <div>
-            <h2>Introducing Fractional Shares</h2>
-            <p>Invest in thousands of stocks with as little as $1</p>
+          <div className='main-3-content'>
+            <div>
+              <h2>Introducing Fractional Shares</h2>
+              <h4>Invest in thousands of stocks with as little as $1</h4>
+            </div>
+            <div className='main-3-blurbs'>
+              <div>
+                <h3>Invest Any Amount</h3>
+                <p>Choose how much you want to invest, and we’ll convert from 
+                  dollars to parts of a whole share.
+                </p>
+              </div>
+              <div>
+                <h3>Build a Balanced Portfolio</h3>
+                <p>Customize your portfolio with pieces of different companies 
+                  and funds to help reduce risk.
+                </p>
+              </div>
+              <div>
+                <h3>Trade in Real Time</h3>
+                <p>Trades placed during market hours are executed at that time, 
+                  so you’ll always know the share price.
+                </p>
+              </div>
+            </div>
+            <button className='fractional-modal'>
+              Fractional Shares Disclosure
+            </button>
           </div>
-          <div className='main-3-blurbs'>
-            <div>
-              <h3>Invest Any Amount</h3>
-              <p>Choose how much you want to invest, and we’ll convert from 
-                dollars to parts of a whole share.
-              </p>
-            </div>
-            <div>
-              <h3>Build a Balanced Portfolio</h3>
-              <p>Customize your portfolio with pieces of different companies 
-                and funds to help reduce risk.
-              </p>
-            </div>
-            <div>
-              <h3>Trade in Real Time</h3>
-              <p>Trades placed during market hours are executed at that time, 
-                so you’ll always know the share price.
-              </p>
-            </div>
+          <div className='fractional'>
+            <img src={window.fractionalURL} />
           </div>
         </section>
+        <footer className='splash-footer'>
+
+        </footer>
       </div>
     );
   }
