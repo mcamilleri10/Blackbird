@@ -1,7 +1,8 @@
 class Api::CompaniesController < ApplicationController
 
   def show
-    @company = Company.find_by(id: params[:id])
+    companySymbol = params[:id].upcase
+    @company = Company.find_by(symbol: companySymbol)
     # debugger
     render :show
   end
@@ -9,7 +10,7 @@ class Api::CompaniesController < ApplicationController
   def create
     # debugger
     @company = Company.new(company_params)
-    debugger
+    # debugger
     if Company.find_by(name: @company.name)
       return nil;
     end

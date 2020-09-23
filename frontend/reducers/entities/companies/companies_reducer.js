@@ -9,9 +9,10 @@ const companiesReducer = (state = {}, action) => {
   const newState = Object.assign({}, state);
   switch (action.type) {
     case RECEIVE_QUOTE:
+      const quote = action.quote;
+      const merged = Object.assign({}, newState[quote.symbol], quote);
       debugger
-      const quote = { [action.quote.symbol]: action.quote };
-      const info = Object.assign({})
+      return Object.assign({}, { [quote.symbol]: merged });
     case RECEIVE_COMPANY:
       // debugger
       const company = { [action.company.symbol]: action.company };

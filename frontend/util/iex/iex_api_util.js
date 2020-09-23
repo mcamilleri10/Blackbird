@@ -12,10 +12,9 @@ export const fetchCompanyInfo = symbol => {
   });
 };
 
-export const fetchCompany = (companyId) => {
+export const fetchCompany = (symbol) => {
   return $.ajax({
-    url: `/api/companies/${companyId}`
-    // success: company => fetchCompanyInfo(company.symbol)
+    url: `/api/companies/${symbol}`
   });
 };
 
