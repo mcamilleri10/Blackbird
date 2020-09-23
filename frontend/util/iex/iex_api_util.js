@@ -9,5 +9,17 @@ export const fetchQuote = (symbol) => {
 export const fetchCompany = (symbol) => {
   return $.ajax({
     url: `https://sandbox.iexapis.com/stable/stock/${symbol}/company?token=${iex_key}`
+    // success: company => saveCompany(company)
   });
 };
+
+export const saveCompany = company => {
+  return $.ajax({
+    url: '/api/companies',
+    method: 'post',
+    data: { company: {symbol: company.symbol, name: company.companyName} },
+    success: company => fetchCompany(company.symbol)
+  });
+};
+
+

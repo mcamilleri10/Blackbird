@@ -5,6 +5,7 @@
 #                 api_users POST   /api/users(.:format)                                                                     api/users#create {:format=>:json}
 #              new_api_user GET    /api/users/new(.:format)                                                                 api/users#new {:format=>:json}
 #                  api_user GET    /api/users/:id(.:format)                                                                 api/users#show {:format=>:json}
+#             api_companies POST   /api/companies(.:format)                                                                 api/companies#create {:format=>:json}
 #           new_api_session GET    /api/session/new(.:format)                                                               api/sessions#new {:format=>:json}
 #               api_session DELETE /api/session(.:format)                                                                   api/sessions#destroy {:format=>:json}
 #                           POST   /api/session(.:format)                                                                   api/sessions#create {:format=>:json}
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     resources :users, only: [:new, :create, :show]
+    resources :companies, only: [:create]
     resource :session, only: [:new, :create, :destroy]
   end
 

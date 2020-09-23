@@ -4,9 +4,9 @@ import Root from './components/root';
 import configureStore from './store/store';
 
 // testing imports
-import { login, logout, signup } from './actions/session_actions';
-import { fetchQuote } from './util/iex/iex_api_util';
-import { fetchCompany } from './util/iex/iex_api_util';
+import { login, logout, signup } from './actions/session/session_actions';
+import { fetchQuote } from './actions/companies/company_actions';
+import { fetchCompany } from './actions/companies/company_actions';
 
 
 document.addEventListener('DOMContentLoaded', () => {
