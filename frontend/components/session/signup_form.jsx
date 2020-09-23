@@ -84,6 +84,16 @@ export default class SignupForm extends React.Component {
               </div>
             </div>
           </form>
+          <div className='signup-errors'>
+            { this.props.errors ? (
+              this.props.errors.map((error, i) => {
+                return <li key={i}>{error}</li>;
+              })
+              ) : (
+                null
+              )
+            }
+          </div>
           <p>
             All investments involve risk and the past performance of a security, 
             or financial product does not guarantee future results or returns. 

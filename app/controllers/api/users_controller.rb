@@ -10,7 +10,7 @@ class Api::UsersController < ApplicationController
       login!(@user)
       render :create
     else
-      render json: ["Error signing up"], status: 422 # REPLACE WITH APPROPRIATE MESSAGE
+      render json: @user.errors.full_messages, status: 422 # REPLACE WITH APPROPRIATE MESSAGE
     end
   end
 
