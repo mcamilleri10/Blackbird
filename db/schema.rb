@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_21_215959) do
+ActiveRecord::Schema.define(version: 2020_09_23_151154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "symbol", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_companies_on_name", unique: true
+    t.index ["symbol"], name: "index_companies_on_symbol", unique: true
+  end
+
+  create_table "shares", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "company_id", null: false
+    t.integer "num_shares_owned", null: false
+    t.integer "total_cost", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_shares_on_company_id"
+    t.index ["user_id", "company_id"], name: "index_shares_on_user_id_and_company_id", unique: true
+    t.index ["user_id"], name: "index_shares_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
@@ -28,6 +49,24 @@ ActiveRecord::Schema.define(version: 2020_09_21_215959) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "watchlist_companies", force: :cascade do |t|
+    t.integer "watchlist_id", null: false
+    t.integer "company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_watchlist_companies_on_company_id"
+    t.index ["watchlist_id", "company_id"], name: "index_watchlist_companies_on_watchlist_id_and_company_id", unique: true
+    t.index ["watchlist_id"], name: "index_watchlist_companies_on_watchlist_id"
+  end
+
+  create_table "watchlists", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_watchlists_on_user_id"
   end
 
 end

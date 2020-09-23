@@ -9,13 +9,10 @@ class Api::SessionsController < ApplicationController
       params[:user][:email], 
       params[:user][:password]
     )
-    # debugger
     if @user
-      # debugger
       login!(@user)
       render :create
     else
-      # debugger
       render json: ['Unable to login with provided credentials.'], status: 422
     end
   end
