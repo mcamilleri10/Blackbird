@@ -5,6 +5,9 @@ import { faFeatherAlt } from '@fortawesome/free-solid-svg-icons';
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { faInfo } from '@fortawesome/free-solid-svg-icons';
+import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import FractionalModal from './fractional_modal';
 
 export default class Splash extends React.Component {
 
@@ -14,10 +17,13 @@ export default class Splash extends React.Component {
       showProductsDropdown: false,
       showProductsDownArrow: true,
       showLearnDropdown: false,
-      showLearnDownArrow: true
+      showLearnDownArrow: true,
+      showFractionalModal: false
     };
     this.toggleProductsClass = this.toggleProductsClass.bind(this);
     this.toggleLearnClass = this.toggleLearnClass.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
+    this.showFractionalModal = this.showFractionalModal.bind(this);
   }
 
   toggleProductsClass(e) {
@@ -48,16 +54,37 @@ export default class Splash extends React.Component {
     });
   }
 
+  demoLogin() {
+    this.props.login({
+      email: 'demo@blackbird.com',
+      password: 'hunter12' 
+    });
+  }
+
+  showFractionalModal() {
+    // debugger
+    this.setState({ showFractionalModal: true});
+  }
+
+
   render() {
     const logo = <FontAwesomeIcon icon={faFeatherAlt} />;
     const downArrow = <FontAwesomeIcon icon={faAngleDown} />;
     const upArrow = <FontAwesomeIcon icon={faAngleUp} />;
     const info = <FontAwesomeIcon icon={faInfo} />;
+    const github = <FontAwesomeIcon icon={faGithubSquare} />;
+    const linkedin = <FontAwesomeIcon icon={faLinkedin} />;
 
     {/* images courtesy of Robinhood */ }
 
     return(
-      <div className='splash'>
+      <div className='splash modal-outer'>
+        {this.state.showFractionalModal ? (
+          <div className="frac-modal"><FractionalModal /></div>
+          ) : (
+          null
+          )
+        }
         <header className='splash-nav-bar'>
           <div className='splash-nav-left'>
             <h1 className='main-logo'>Blackbird {logo}</h1>
@@ -125,7 +152,7 @@ export default class Splash extends React.Component {
               <p>Blackbird, a pioneer of comission-free investing, 
                 gives you more way to make your money work harder.
               </p>
-              <Link to='/signup' className='main-demo-link'>Demo</Link>
+              <button onClick={this.demoLogin} className='main-demo-link'>Demo</button>
             </div>
           </section>
           <section className='splash-main-graphic col splash-main-info-col-2-2'>
@@ -178,7 +205,7 @@ export default class Splash extends React.Component {
             </div>
             <div className='fractional-modal-link'>
               <div className='fractional-info'>{info}</div>
-              <button >
+              <button onClick={this.showFractionalModal}>
                 Fractional Shares Disclosure
               </button>
             </div>
@@ -188,7 +215,20 @@ export default class Splash extends React.Component {
           </div>
         </section>
         <footer className='splash-footer'>
-
+          <div className='personal-1'>
+            <p>Mark Camilleri</p>
+            <p>Brooklyn, NY</p>
+            <p>markcamilleri10@gmail.com</p>
+          </div>
+          <div className='personal-2'>
+            <a href="https://www.linkedin.com/in/mark-camilleri-0414b4152/">
+              {linkedin}<span>LinkedIn</span> 
+            </a>
+            <a href="https://github.com/troubadour10">
+              {github}<span>Github</span> 
+            </a>
+            <p>2020</p>
+          </div>
         </footer>
       </div>
     );
