@@ -16,7 +16,7 @@ class Api::SessionsController < ApplicationController
       render :create
     else
       # debugger
-      render json: ['Username or Password is Incorrect'], status: 422
+      render json: ['Unable to login with provided credentials.'], status: 422
     end
   end
 

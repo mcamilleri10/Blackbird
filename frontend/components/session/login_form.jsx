@@ -29,7 +29,7 @@ export default class LoginForm extends React.Component {
           <img src={window.loginURL}/>
         </div>
         <div className='login-right'>
-          <div>
+          <section>
             <h3>Welcome to Blackbird</h3>
             <form onSubmit={this.handleSubmit}>
               <label htmlFor="email">Email
@@ -47,9 +47,19 @@ export default class LoginForm extends React.Component {
                   onChange={this.handleChange('password')}
                 />
               </label>
+              <div className='login-errors'>
+                {this.props.errors ? (
+                  this.props.errors.map((error, i) => {
+                    return <li key={i}>{error}</li>;
+                  })
+                  ) : (
+                    null
+                  )
+                }
+              </div>
               <button>Sign In</button>
             </form>
-          </div>
+          </section>
           <p>Image couresty of Freepik</p>
         </div>
       </div>

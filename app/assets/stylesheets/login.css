@@ -3,7 +3,7 @@
 }
 
 .login h3 {
-  font-weight: 5  00;
+  font-weight: 500;
   font-size: 27px;
 }
 
@@ -25,9 +25,13 @@
   padding-left: 40px;
 }
 
-.login-right div {
+.login-right section {
   width: 400px;
   margin-top: 300px;
+}
+
+.login-right form {
+  height: 200px;
 }
 
 .login-right label {
@@ -53,5 +57,11 @@
   line-height: 50px;
   text-align: center;
   border-radius: 6px;
-  margin-top: 30px;
+  /* margin-top: 30px; */
+}
+
+.login-errors {
+  height: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

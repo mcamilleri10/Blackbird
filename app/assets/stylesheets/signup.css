@@ -66,7 +66,7 @@
   flex-wrap: wrap;
   width: 400px;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
 .signup-submit-div div {
@@ -79,6 +79,7 @@
   color: lightgray;
   width: 90%;
   margin: 0 auto;
+  margin-top: 40px;
   font-size: 13px;
 }
 
@@ -116,3 +117,8 @@
   margin-bottom: 10px;
 }
 
+.signup-errors {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: red;
+}
