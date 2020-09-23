@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   has_many :shares,
     foreign_key: :user_id,
-    class_name: :Shares  # SINGULAR
+    class_name: :Share
 
   has_many :watchlists,
     foreign_key: :user_id,
