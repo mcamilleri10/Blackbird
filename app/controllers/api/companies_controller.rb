@@ -1,5 +1,11 @@
 class Api::CompaniesController < ApplicationController
 
+  def show
+    @company = Company.find_by(id: params[:id])
+    # debugger
+    render :show
+  end
+
   def create
     # debugger
     @company = Company.new(company_params)

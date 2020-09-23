@@ -12,7 +12,6 @@ const receiveQuote = quote => {
 };
 
 const receiveCompany = company => {
-  // debugger
   return {
     type: RECEIVE_COMPANY,
     company
@@ -23,17 +22,17 @@ const receiveCompany = company => {
 export const fetchQuote = symbol => {
   return dispatch => {
     return IexApiUtil.fetchQuote(symbol)
-      .then(quote => dispatch(receiveQuote(quote.responseJSON)));
+      .then(quote => dispatch(receiveQuote(quote)));
   };
 };
 
 
-export const fetchCompany = symbol => {
+export const fetchCompany = companyId => {
   return dispatch => {
-    return IexApiUtil.saveCompany(symbol).then(company => {
-      return (
-        dispatch(receiveCompany(company))
-      );
+    return IexApiUtil.fetchCompany(companyId).then(company => { // id, name, symbol
+      return IexApiUtil.fetchCompanyInfo(company.symbol).then(company => { // no id
+        return dispatch(receiveCompany(company));
+      });
     });
   };
 };
