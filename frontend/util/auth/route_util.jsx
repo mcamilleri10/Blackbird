@@ -14,7 +14,7 @@ const Auth = props => {
     <Route
       path={path}
       render={props =>
-        // CHANGE REDIRECT TO PORTFOLIO PAGE
+        // CHANGE REDIRECT TO DASHBOARD PAGE
         loggedIn ? <Redirect to='/'/> : <Component {...props}/>
       }
     />

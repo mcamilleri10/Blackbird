@@ -5,6 +5,8 @@ import configureStore from './store/store';
 
 // testing imports
 import { login, logout, signup } from './actions/session_actions';
+import { fetchQuote } from './util/iex/iex_api_util';
+import { fetchCompany } from './util/iex/iex_api_util';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -34,6 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.signup = signup;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
+
+  window.fetchQuote = fetchQuote;
+  window.fetchCompany = fetchCompany;
 
   ReactDOM.render(<Root store={store}/>, root);
 });
