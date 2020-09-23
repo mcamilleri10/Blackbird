@@ -1,0 +1,39 @@
+.modal-box {
+  position: absolute;
+  margin: 0 auto;
+  z-index: 6;
+  top: 25%;
+  left: 50%;
+  background-color: white;
+  height: 250px;
+  width: 750px;
+  transform: translateX(-50%) translateY(-50%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 100px;
+  text-align: justify;
+  box-sizing: border-box;
+  box-shadow: 0 0 27px 8px rgba(0, 0, 0, .3);
+}
+
+.modal-box h1 {
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.modal-outer {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.675);
+}
+
+.modal-outer.active {
+  display: block;
+}

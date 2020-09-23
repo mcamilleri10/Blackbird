@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const FractionalModal = () => {
   return (
-    <div>
-      <Link to='/'>X</Link>
+    <div className='modal-content'>
       <h1>Fractional Shares Disclosure</h1>
       <p>
         Fractional shares are illiquid outside of Robinhood and not 

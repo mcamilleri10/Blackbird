@@ -8,6 +8,7 @@ import { faInfo } from '@fortawesome/free-solid-svg-icons';
 import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import FractionalModal from './fractional_modal';
+import CommissionsModal from './commissions_modal';
 
 export default class Splash extends React.Component {
 
@@ -18,12 +19,14 @@ export default class Splash extends React.Component {
       showProductsDownArrow: true,
       showLearnDropdown: false,
       showLearnDownArrow: true,
-      showFractionalModal: false
+      showFractionalModal: false,
+      showCommissionsModal: false
     };
     this.toggleProductsClass = this.toggleProductsClass.bind(this);
     this.toggleLearnClass = this.toggleLearnClass.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
-    this.showFractionalModal = this.showFractionalModal.bind(this);
+    this.toggleFractionalModal = this.toggleFractionalModal.bind(this);
+    this.toggleCommissionsModal = this.toggleCommissionsModal.bind(this);
   }
 
   toggleProductsClass(e) {
@@ -61,9 +64,12 @@ export default class Splash extends React.Component {
     });
   }
 
-  showFractionalModal() {
-    // debugger
-    this.setState({ showFractionalModal: true});
+  toggleFractionalModal() {
+    this.setState({ showFractionalModal: !this.state.showFractionalModal});
+  }
+
+  toggleCommissionsModal() {
+    this.setState({ showCommissionsModal: !this.state.showCommissionsModal});
   }
 
 
@@ -76,15 +82,9 @@ export default class Splash extends React.Component {
     const linkedin = <FontAwesomeIcon icon={faLinkedin} />;
 
     {/* images courtesy of Robinhood */ }
-
+    // debugger
     return(
-      <div className='splash modal-outer'>
-        {this.state.showFractionalModal ? (
-          <div className="frac-modal"><FractionalModal /></div>
-          ) : (
-          null
-          )
-        }
+      <div className='splash'>
         <header className='splash-nav-bar'>
           <div className='splash-nav-left'>
             <h1 className='main-logo'>Blackbird {logo}</h1>
@@ -171,7 +171,7 @@ export default class Splash extends React.Component {
           </p>
           <div className='commissions-modal-link'>
             <div className='commissions-info'>{info}</div>
-            <button >
+            <button onClick={this.toggleCommissionsModal}>
               Commissions Disclosure
             </button>
           </div>
@@ -205,7 +205,7 @@ export default class Splash extends React.Component {
             </div>
             <div className='fractional-modal-link'>
               <div className='fractional-info'>{info}</div>
-              <button onClick={this.showFractionalModal}>
+              <button onClick={this.toggleFractionalModal}>
                 Fractional Shares Disclosure
               </button>
             </div>
@@ -221,15 +221,40 @@ export default class Splash extends React.Component {
             <p>markcamilleri10@gmail.com</p>
           </div>
           <div className='personal-2'>
-            <a href="https://www.linkedin.com/in/mark-camilleri-0414b4152/">
-              {linkedin}<span>LinkedIn</span> 
-            </a>
             <a href="https://github.com/troubadour10">
               {github}<span>Github</span> 
             </a>
-            <p>2020</p>
+            <a href="https://www.linkedin.com/in/mark-camilleri-0414b4152/">
+              {linkedin}<span>LinkedIn</span> 
+            </a>
+            <p>Skill Demonstration Only - 2020</p>
           </div>
         </footer>
+
+        {/* modals */}
+        <div onClick={this.toggleFractionalModal} className={
+          this.state.showFractionalModal ?
+            'modal-outer active' :
+            'modal-outer'}>
+          {this.state.showFractionalModal ? (
+            <div className="modal-box"><FractionalModal /></div>
+            ) : (
+              null
+            )
+          }
+        </div>
+
+        <div onClick={this.toggleCommissionsModal} className={
+          this.state.showCommissionsModal ?
+            'modal-outer active' :
+            'modal-outer'}>
+          {this.state.showCommissionsModal ? (
+            <div className="modal-box"><CommissionsModal /></div>
+            ) : (
+              null
+            )
+          }
+        </div>
       </div>
     );
   }
