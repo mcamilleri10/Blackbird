@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { login } from '../../actions/session_actions';
+import { login, logout } from '../../actions/session_actions';
 import Splash from './splash';
 
 const mSTP = state => {
@@ -10,7 +10,8 @@ const mSTP = state => {
 
 const mDTP = dispatch => {
   return {
-    login: (user) => dispatch(login(user))
+    login: (user) => dispatch(login(user)),
+    logout: () => dispatch(logout()) // REMOVE AFTER AUTH REVIEW
   };
 };
 

@@ -153,6 +153,10 @@ export default class Splash extends React.Component {
                 gives you more way to make your money work harder.
               </p>
               <button onClick={this.demoLogin} className='main-demo-link'>Demo</button>
+              
+              {/* REMOVE AFTER AUTH REVIEW */}
+              <button onClick={this.props.logout}>Click to Logout (Temporary)</button>
+
             </div>
           </section>
           <section className='splash-main-graphic col splash-main-info-col-2-2'>
