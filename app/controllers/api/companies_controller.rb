@@ -29,6 +29,7 @@ class Api::CompaniesController < ApplicationController
   def company_params
     params
       .require(:company)
+      .params.transform_keys(&:underscore)
       .permit(:name, :symbol)
   end
 

@@ -5,8 +5,11 @@ import configureStore from './store/store';
 
 // testing imports
 import { login, logout, signup } from './actions/session/session_actions';
-import { fetchQuote, fetchCompany } from './actions/companies/company_actions';
-import { fetchCompanyInfo } from './util/iex/iex_api_util';
+import { requestQuote, fetchCompany, requestIntradayPrices } from './actions/companies/company_actions';
+import { requestCompanyInfo } from './util/iex/iex_api_util';
+import { fetchShare } from './actions/shares/share_actions';
+import { fetchWatchlist } from './actions/watchlists/watchlist_actions';
+import { fetchUser } from './actions/users/user_actions';
 
 
 
@@ -38,10 +41,14 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch;
 
-  window.fetchQuote = fetchQuote;
+  window.requestQuote = requestQuote;
   window.fetchCompany = fetchCompany;
   // window.symbolSearch = symbolSearch;
-  window.fetchCompanyInfo = fetchCompanyInfo;
+  window.requestCompanyInfo = requestCompanyInfo;
+  window.requestIntradayPrices = requestIntradayPrices;
+  window.fetchWatchlist = fetchWatchlist;
+  window.fetchUser = fetchUser;
+  window.fetchShare = fetchShare;
 
   ReactDOM.render(<Root store={store}/>, root);
 });

@@ -2,11 +2,21 @@
 #
 #                    Prefix Verb   URI Pattern                                                                              Controller#Action
 #                      root GET    /                                                                                        static_pages#root
+#       api_user_watchlists POST   /api/users/:user_id/watchlists(.:format)                                                 api/watchlists#create {:format=>:json}
 #                 api_users POST   /api/users(.:format)                                                                     api/users#create {:format=>:json}
 #              new_api_user GET    /api/users/new(.:format)                                                                 api/users#new {:format=>:json}
 #                  api_user GET    /api/users/:id(.:format)                                                                 api/users#show {:format=>:json}
+#        api_company_shares POST   /api/companies/:company_id/shares(.:format)                                              api/shares#create {:format=>:json}
 #             api_companies POST   /api/companies(.:format)                                                                 api/companies#create {:format=>:json}
 #               api_company GET    /api/companies/:id(.:format)                                                             api/companies#show {:format=>:json}
+#                 api_share GET    /api/shares/:id(.:format)                                                                api/shares#show {:format=>:json}
+#                           PATCH  /api/shares/:id(.:format)                                                                api/shares#update {:format=>:json}
+#                           PUT    /api/shares/:id(.:format)                                                                api/shares#update {:format=>:json}
+#                           DELETE /api/shares/:id(.:format)                                                                api/shares#destroy {:format=>:json}
+#             api_watchlist GET    /api/watchlists/:id(.:format)                                                            api/watchlists#show {:format=>:json}
+#                           PATCH  /api/watchlists/:id(.:format)                                                            api/watchlists#update {:format=>:json}
+#                           PUT    /api/watchlists/:id(.:format)                                                            api/watchlists#update {:format=>:json}
+#                           DELETE /api/watchlists/:id(.:format)                                                            api/watchlists#destroy {:format=>:json}
 #           new_api_session GET    /api/session/new(.:format)                                                               api/sessions#new {:format=>:json}
 #               api_session DELETE /api/session(.:format)                                                                   api/sessions#destroy {:format=>:json}
 #                           POST   /api/session(.:format)                                                                   api/sessions#create {:format=>:json}
@@ -22,8 +32,19 @@ Rails.application.routes.draw do
   root to: 'static_pages#root'
 
   namespace :api, defaults: {format: :json} do
-    resources :users, only: [:new, :create, :show]
-    resources :companies, only: [:create, :show]
+
+    resources :users, only: [:new, :create, :show] do
+      resources :watchlists, only: [:create]
+    end
+
+    resources :companies, only: [:create, :show] do
+      resources :shares, only: [:create]
+    end
+    
+    resources :shares, only: [:show, :update, :destroy]
+    
+    resources :watchlists, only: [:show, :update, :destroy]
+
     resource :session, only: [:new, :create, :destroy]
   end
 
