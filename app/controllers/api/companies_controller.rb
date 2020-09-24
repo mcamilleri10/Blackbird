@@ -11,9 +11,7 @@ class Api::CompaniesController < ApplicationController
   end
 
   def create
-    # debugger
     @company = Company.new(company_params)
-    # debugger
     if Company.find_by(name: @company.name)
       return nil;
     end

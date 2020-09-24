@@ -82,7 +82,7 @@ export default class Splash extends React.Component {
     const linkedin = <FontAwesomeIcon icon={faLinkedin} />;
 
     {/* images courtesy of Robinhood */ }
-    // debugger
+
     return(
       <div className='splash'>
         <header className='splash-nav-bar'>

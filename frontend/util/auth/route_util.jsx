@@ -11,7 +11,6 @@ const mSTP = state => {
 
 const Auth = props => {
   const { userId, path, loggedIn, component: Component } = props;
-  // debugger
   return (
     <Route
       path={path}

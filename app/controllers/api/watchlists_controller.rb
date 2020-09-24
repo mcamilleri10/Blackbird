@@ -1,7 +1,6 @@
 class Api::WatchlistsController < ApplicationController
 
   def show
-    # debugger
     @watchlist = Watchlist.includes(:companies).find_by(id: params[:id])
     if @watchlist
       render :show
