@@ -16,7 +16,7 @@ const companiesReducer = (state = {}, action) => {
       const company = { [action.company.symbol]: action.company };
       return Object.assign({}, newState, company);
     case RECEIVE_INTRADAY_PRICES:
-      debugger
+      // debugger
       newState[action.symbol].intradayPrices = action.prices;
       // debugger
       return newState; 

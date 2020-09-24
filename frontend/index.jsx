@@ -7,6 +7,7 @@ import configureStore from './store/store';
 import { login, logout, signup } from './actions/session/session_actions';
 import { requestQuote, fetchCompany, requestIntradayPrices } from './actions/companies/company_actions';
 import { requestCompanyInfo } from './util/iex/iex_api_util';
+import { fetchShare } from './actions/shares/share_actions';
 
 
 
@@ -43,6 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // window.symbolSearch = symbolSearch;
   window.requestCompanyInfo = requestCompanyInfo;
   window.requestIntradayPrices = requestIntradayPrices;
+
+  window.fetchShare = fetchShare;
 
   ReactDOM.render(<Root store={store}/>, root);
 });
