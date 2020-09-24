@@ -1,13 +1,19 @@
 const iex_key = 'Tpk_c2b1b5e41fc9492eadc4c2968a80494f';
 
 
-export const fetchCompanyInfo = symbol => {
+export const requestCompanyInfo = symbol => {
   return $.ajax({
     url: `https://sandbox.iexapis.com/stable/stock/${symbol}/company/quote?token=${iex_key}`
   });
 };
 
-export const fetchQuote = (symbol) => {
+export const requestIntradayPrices = symbol => {
+  return $.ajax({
+    url: `https://sandbox.iexapis.com/stable/stock/${symbol}/intraday-prices?token=${iex_key}`
+  });
+};
+
+export const requestQuote = (symbol) => {
   return $.ajax({
     url: `https://sandbox.iexapis.com/stable/stock/${symbol}/quote?token=${iex_key}`
   });

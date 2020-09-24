@@ -5,8 +5,8 @@ import configureStore from './store/store';
 
 // testing imports
 import { login, logout, signup } from './actions/session/session_actions';
-import { fetchQuote, fetchCompany } from './actions/companies/company_actions';
-import { fetchCompanyInfo } from './util/iex/iex_api_util';
+import { requestQuote, fetchCompany, requestIntradayPrices } from './actions/companies/company_actions';
+import { requestCompanyInfo } from './util/iex/iex_api_util';
 
 
 
@@ -38,10 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch;
 
-  window.fetchQuote = fetchQuote;
+  window.requestQuote = requestQuote;
   window.fetchCompany = fetchCompany;
   // window.symbolSearch = symbolSearch;
-  window.fetchCompanyInfo = fetchCompanyInfo;
+  window.requestCompanyInfo = requestCompanyInfo;
+  window.requestIntradayPrices = requestIntradayPrices;
 
   ReactDOM.render(<Root store={store}/>, root);
 });

@@ -10,6 +10,7 @@ User.destroy_all
 Company.destroy_all
 Share.destroy_all
 Watchlist.destroy_all
+WatchlistCompany.destroy_all
 
 # users
 demo = User.create(username: "demo_user", email: "demo@blackbird.com", 
