@@ -41,10 +41,14 @@
   border-radius: 5px;
 }
 
-.signup input:focus, .login input:focus {
+.signup input:focus {
   border: 1px solid limegreen;
   background-color: white;
 }
+
+/* .password-error {
+  border: 1px solid red;
+} */
 
 .signup input:hover, .login input:hover {
   background-color: white;

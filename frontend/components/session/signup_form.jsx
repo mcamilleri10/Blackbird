@@ -15,6 +15,8 @@ export default class SignupForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.checkPasswordLength = this.checkPasswordLength.bind(this);
+    // this.passwordClass = this.passwordClass.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +33,18 @@ export default class SignupForm extends React.Component {
     e.preventDefault();
     this.props.signup(this.state);
   }
+
+  // checkPasswordLength(e) {
+  //   const val = e.currentTarget.value;
+  //   if (val.length < 6) {
+  //     debugger
+  //   }
+  // }
+
+  // passwordClass(e) {
+  //   debugger
+  //   return 'password-error';
+  // }
 
   render() {
     const logo = <FontAwesomeIcon icon={faFeatherAlt} />;
@@ -74,10 +88,12 @@ export default class SignupForm extends React.Component {
             />
             <br/>
             <input
+              // className={this.passwordClass()}
               type="password"
               value={this.state.password}
               placeholder='Password (min. 6 characters)'
               onChange={this.handleChange('password')}
+              onBlur={this.checkPasswordLength}
             />
             <br/>
             <div className='signup-submit-div'>
@@ -99,25 +115,34 @@ export default class SignupForm extends React.Component {
             }
           </div>
           <p>
-            All investments involve risk and the past performance of a security, 
+            {/* All investments involve risk and the past performance of a security, 
             or financial product does not guarantee future results or returns. 
             Keep in mind that while diversification may help spread risk it does 
             not assure a profit, or protect against loss, in a down market. 
             There is always the potential of losing money when you invest in 
             securities, or other financial products. Investors should consider 
-            their investment objectives and risks carefully before investing.
+            their investment objectives and risks carefully before investing. */}
+            All investments involve risk and the past performance of a security, 
+            or financial product does not guarantee future results or returns.
+            Luckily, this site does not involve trading with any monetary assets,
+            so feel free jump in and to take those risks. There is no potential of 
+            losing money here, but sadly there is no potential of making money either.
           </p>
         </div>
         <aside className='signup-right'>
           <div>
             <h4>Commission-free stock trading</h4>
-            <p>We’ve cut the fat that makes other brokerages costly, 
+            <p>
+              {/* We’ve cut the fat that makes other brokerages costly, 
               like manual account management and hundreds of storefront 
-              locations, so we can offer zero commission trading.
+              locations, so we can offer zero commission trading. */}
+              We've cut the fat that makes other brokerages costly,
+              such as trading real money on the stock market. We are therefore
+              proudly able to offer commission-free trades.
             </p>
             <h4>Keep tabs on your money</h4>
             <p>
-              Set up customized news and notifications to stay on top of 
+              Set up customized news and watchlists to stay on top of 
               your assets as casually or as relentlessly as you like. 
               Controlling the flow of info is up to you.
             </p>

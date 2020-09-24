@@ -88,7 +88,18 @@ export default class Splash extends React.Component {
         <header className='splash-nav-bar'>
           <div className='splash-nav-left'>
             <h1 className='main-logo'>Blackbird {logo}</h1>
-            <div className='products-dd' onClick={this.toggleProductsClass}>
+            <div className='nav-linkedin'>
+              <a href="https://www.linkedin.com/in/mark-camilleri-0414b4152/">
+                {linkedin} <span> LinkedIn</span>
+              </a>
+            </div>
+            <div className='nav-github'>
+              <a href="https://github.com/troubadour10">
+                {github} <span> Github</span>
+              </a>
+            </div>
+            <div></div>
+            {/* <div className='products-dd' onClick={this.toggleProductsClass}>
               <div className='products-arrow'>
                 <button><h3>Products</h3></button>
                 {
@@ -113,8 +124,8 @@ export default class Splash extends React.Component {
                   null
                 ) 
               }
-            </div>
-            <div className='learn-dd' onClick={this.toggleLearnClass}>
+            </div> */}
+            {/* <div className='learn-dd' onClick={this.toggleLearnClass}>
               <div className='learn-arrow'>
                 <button><h3>Learn</h3></button>
                 {
@@ -137,7 +148,7 @@ export default class Splash extends React.Component {
                   null
                 ) 
               }
-            </div>
+            </div> */}
           </div>
           <div className='session-links'>
             <Link to='/login' className='login-link'>Log In</Link>
@@ -149,8 +160,11 @@ export default class Splash extends React.Component {
           <section className='splash-main-info col splash-main-info-col-1-2'>
             <div className='splash-main-text'>
               <h1>Investing for Everyone</h1>
-              <p>Blackbird, a pioneer of comission-free investing, 
-                gives you more way to make your money work harder.
+              <p>
+                {/* Blackbird, a pioneer of comission-free investing, 
+                gives you more ways to make your money work harder. */}
+                Blackbird, a pioneer of commission-free paper-trading,
+                gives you more ways to pretend to make your money work harder.
               </p>
               <button onClick={this.demoLogin} className='main-demo-link'>Demo</button>
               
@@ -169,9 +183,12 @@ export default class Splash extends React.Component {
         <section className='splash-main-2'>
           <h2>Break Free from Commission Fees</h2>
           <p>
-            Make unlimited commission-free trades in stocks, ETFs, and options 
+            {/* Make unlimited commission-free trades in stocks, ETFs, and options 
             with Blackbird Financial, as well as buy and sell cryptocurrencies 
-            with Blackbird Crypto. See our fee schedule to learn more about cost.
+            with Blackbird Crypto. See our fee schedule to learn more about cost. */}
+            Make unlimited commission-free trades with Blackbird, because the 
+            trades arn't real and we can't charge a commission on something that
+            doesn't exist.
           </p>
           <div className='commissions-modal-link'>
             <div className='commissions-info'>{info}</div>
@@ -185,19 +202,19 @@ export default class Splash extends React.Component {
           <div className='main-3-content'>
             <div>
               <h2>Introducing Fractional Shares</h2>
-              <h4>Invest in thousands of stocks with as little as $1</h4>
+              <h4>Invest in thousands of stocks with as little as $0</h4>
             </div>
             <div className='main-3-blurbs'>
               <div>
                 <h3>Invest Any Amount</h3>
                 <p>Choose how much you want to invest, and we’ll convert from 
-                  dollars to parts of a whole share.
+                  imaginary money to parts of a whole share.
                 </p>
               </div>
               <div>
                 <h3>Build a Balanced Portfolio</h3>
                 <p>Customize your portfolio with pieces of different companies 
-                  and funds to help reduce risk.
+                  and funds to help maintain no risk.
                 </p>
               </div>
               <div>
@@ -207,6 +224,7 @@ export default class Splash extends React.Component {
                 </p>
               </div>
             </div>
+            <br/>
             <div className='fractional-modal-link'>
               <div className='fractional-info'>{info}</div>
               <button onClick={this.toggleFractionalModal}>

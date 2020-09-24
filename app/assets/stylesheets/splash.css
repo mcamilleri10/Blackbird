@@ -31,6 +31,23 @@
   position: relative;
 }
 
+.nav-linkedin {
+  font-size: 19px;
+  padding-left: 50px;
+}
+
+.nav-linkedin a:hover {
+  color: limegreen
+}
+
+.nav-github {
+  font-size: 19px;
+  padding-left: 30px;
+}
+
+.nav-github a:hover {
+  color: limegreen
+}
 
 .products-dd h3 {
   font-weight: 400;

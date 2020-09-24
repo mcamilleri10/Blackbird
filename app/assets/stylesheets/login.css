@@ -64,6 +64,11 @@
   background-color: rgb(43, 177, 43);
 }
 
+.login input:focus {
+  border: 1px solid limegreen;
+  background-color: white;
+}
+
 .login-errors {
   height: 30px;
   margin-top: 20px;
