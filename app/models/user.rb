@@ -9,7 +9,7 @@
 #  email           :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
-#  available_funds :integer          not null
+#  available_funds :integer          default(100), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -24,11 +24,12 @@ class User < ApplicationRecord
 
   has_many :shares,
     foreign_key: :user_id,
-    class_name: :Shares  # SINGULAR
+    class_name: :Share
 
   has_many :watchlists,
     foreign_key: :user_id,
     class_name: :Watchlist
+
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
@@ -57,5 +58,9 @@ class User < ApplicationRecord
     self.save
     self.session_token
   end
+
+
+
+  
 
 end

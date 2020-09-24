@@ -155,7 +155,7 @@ export default class Splash extends React.Component {
               <button onClick={this.demoLogin} className='main-demo-link'>Demo</button>
               
               {/* REMOVE AFTER AUTH REVIEW */}
-              <button onClick={this.props.logout}>Click to Logout (Temporary)</button>
+              {/* <button onClick={this.props.logout}>Click to Logout (Temporary)</button> */}
 
             </div>
           </section>
