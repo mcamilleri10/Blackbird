@@ -3,3 +3,4 @@ bundle.js
 bundle.js.map
 tmp/
 log/
+tmp/cache/bootsnap-load-path-cache
