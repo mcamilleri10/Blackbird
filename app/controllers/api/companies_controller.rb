@@ -3,8 +3,11 @@ class Api::CompaniesController < ApplicationController
   def show
     companySymbol = params[:id].upcase
     @company = Company.find_by(symbol: companySymbol)
-    # debugger
-    render :show
+    if @company
+      render :show
+    else
+      render json: ['Company not found'], status: 404
+    end
   end
 
   def create

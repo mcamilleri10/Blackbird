@@ -18,6 +18,15 @@ const receiveCompany = company => {
   };
 };
 
+export const fetchCompany = companyId => {
+  return dispatch => {
+    return IexApiUtil.fetchCompany(companyId).then(company => {
+      return IexApiUtil.fetchCompanyInfo(company.symbol).then(company => {
+        return dispatch(receiveCompany(company));
+      });
+    });
+  };
+};
 
 export const fetchQuote = symbol => {
   return dispatch => {
@@ -27,12 +36,10 @@ export const fetchQuote = symbol => {
 };
 
 
-export const fetchCompany = companyId => {
-  return dispatch => {
-    return IexApiUtil.fetchCompany(companyId).then(company => { // id, name, symbol
-      return IexApiUtil.fetchCompanyInfo(company.symbol).then(company => { // no id
-        return dispatch(receiveCompany(company));
-      });
-    });
-  };
-};
+
+// export const symbolSearch = fragment => {
+//   return dispatch => {
+//     return IexApiUtil.symbolSearch(fragment)
+//       .then(company => dispatch(receiveCompany(company)));
+//   };
+// };

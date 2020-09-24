@@ -16,4 +16,12 @@ class Watchlist < ApplicationRecord
     foreign_key: :user_id,
     class_name: :User
 
+  has_many :watchlist_companies,
+    foreign_key: :watchlist_id,
+    class_name: :WatchlistCompany
+
+  has_many :companies,
+    through: :watchlist_companies,
+    source: :company
+
 end

@@ -16,9 +16,8 @@ class Company < ApplicationRecord
     foreign_key: :company_id,
     class_name: :Share
   
-  has_many :watchlists,
+  has_many :watchlist_companies,
     foreign_key: :company_id,
-    class_name: :Watchlist
-
+    class_name: :WatchlistCompany
 
 end
