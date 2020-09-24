@@ -46,6 +46,7 @@ export default class SignupForm extends React.Component {
   //   return 'password-error';
   // }
 
+
   render() {
     const logo = <FontAwesomeIcon icon={faFeatherAlt} />;
     return (
@@ -57,7 +58,7 @@ export default class SignupForm extends React.Component {
           <h4>Blackbird lets you invest in companies you love, commission-free.</h4>
           <form onSubmit={this.handleSubmit}>
             <input
-              type="text"
+              type="email"
               value={this.state.email}
               placeholder='Email'
               onChange={this.handleChange('email')}
@@ -93,7 +94,7 @@ export default class SignupForm extends React.Component {
               value={this.state.password}
               placeholder='Password (min. 6 characters)'
               onChange={this.handleChange('password')}
-              onBlur={this.checkPasswordLength}
+              // onBlur={this.checkPasswordLength}
             />
             <br/>
             <div className='signup-submit-div'>
