@@ -19,6 +19,9 @@ export default class Dashboard extends React.Component {
         Dashboard Placeholder
         <br/>
         <button onClick={this.props.logout}>CLICK TO LOGOUT</button>
+        <div>
+          Dashboard Sidebar Placeholder
+        </div>
       </div>
     );
   }
