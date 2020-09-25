@@ -1,4 +1,5 @@
 import React from 'react';
+import DashboardChart from './dashboard_chart';
 
 export default class Dashboard extends React.Component {
 
@@ -66,7 +67,7 @@ export default class Dashboard extends React.Component {
 
 
   render() {
-    const { user } = this.props;
+    const { user, quotes, shares } = this.props;
     return (
       <div className='dashboard'>
         {/* <button onClick={this.fetchBatchIntradayPrices}>intraday prices</button> */}
@@ -89,6 +90,7 @@ export default class Dashboard extends React.Component {
           </div>
           <div className='dashboard-graph'>
             GRAPH PLACEHOLDER
+            <DashboardChart quotes={quotes} user={user} shares={shares}/>
           </div>
           <div className='buying-power-dd'>
             <button>
