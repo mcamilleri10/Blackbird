@@ -7,14 +7,13 @@ export default class Dashboard extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.shares.forEach(shareId => {
-    //   this.props.fetchShare(shareId);
-    // });
-    // this.props.fetchUser(this.props.match.params.userId);
+    this.props.fetchUser(this.props.match.params.userId);
+    this.props.watchlists.forEach(watchlistId => {
+      this.props.fetchWatchlist(watchlistId);
+    });
   }
 
   render() {
-    // debugger
     return (
       <div>
         Dashboard Placeholder

@@ -31,15 +31,22 @@ json.shares do
   end
 end
 
-json.watchlists do
-  user.watchlists.each do |watchlist|
-    json.set! watchlist.id do
-      json.extract! watchlist, :id, :name, :user_id
-      json.companyIds do
-        json.array! watchlist.companies do |company|
-          company.symbol
-        end
-      end
-    end
-  end
-end
+# json.watchlists do
+#   user.watchlists.each do |watchlist|
+#     json.set! watchlist.id do
+#       json.extract! watchlist, :id, :name, :user_id
+#       json.companyIds do
+#         json.array! watchlist.companies do |company|
+#           company.symbol
+#         end
+#       end
+#     end
+#   end
+# end
+
+
+#  1: {
+#         id: 1,
+#         name: 'Really Cool Watchlist',
+#         userId: 1,
+#         companyIds: ['TTD', 'SNE', 'MSFT', 'AMZN']
