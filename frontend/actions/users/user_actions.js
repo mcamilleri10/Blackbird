@@ -8,7 +8,8 @@ const receiveUser = user => {
     type: RECEIVE_USER,
     user,
     shares: user.shares,
-    watchlists: user.watchlists
+    watchlists: user.watchlists,
+    companies: user.companies
   };
 };
 

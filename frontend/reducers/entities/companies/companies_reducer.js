@@ -1,6 +1,7 @@
 import { 
   RECEIVE_QUOTE, RECEIVE_COMPANY, RECEIVE_INTRADAY_PRICES
 } from '../../../actions/companies/company_actions';
+import { RECEIVE_USER } from '../../../actions/users/user_actions';
 
 
 const companiesReducer = (state = {}, action) => {
@@ -17,6 +18,14 @@ const companiesReducer = (state = {}, action) => {
     case RECEIVE_INTRADAY_PRICES:
       newState[action.symbol].intradayPrices = action.prices;
       return newState; 
+    // case RECEIVE_USER:
+    //   const { companies } = action;
+    //   const newCompanies = {};
+    //   Object.values(companies).forEach(company => {
+    //     newCompanies[company.symbol] = company;
+    //   });
+    //   debugger
+    //   return Object.assign({}, newState, newCompanies);
     default:
       return state;
   }

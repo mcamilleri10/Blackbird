@@ -1,4 +1,4 @@
-import * as IexApiUtil from '../../util/iex/iex_api_util';
+import * as CompaniesApiUtil from '../../util/companies/companies_api_util';
 
 export const RECEIVE_QUOTE = 'RECEIVE_QUOTE';
 export const RECEIVE_COMPANY = 'RECEIVE_COMPANY';
@@ -30,8 +30,8 @@ const receiveIntradayPrices = (prices, symbol) => {
 
 export const fetchCompany = companyId => {
   return dispatch => {
-    return IexApiUtil.fetchCompany(companyId).then(company => {
-      return IexApiUtil.requestCompanyInfo(company.symbol).then(company => {
+    return CompaniesApiUtil.fetchCompany(companyId).then(company => {
+      return CompaniesApiUtil.requestCompanyInfo(company.symbol).then(company => {
         return dispatch(receiveCompany(company));
       });
     });
@@ -40,14 +40,14 @@ export const fetchCompany = companyId => {
 
 export const requestQuote = symbol => {
   return dispatch => {
-    return IexApiUtil.requestQuote(symbol)
+    return CompaniesApiUtil.requestQuote(symbol)
       .then(quote => dispatch(receiveQuote(quote)));
   };
 };
 
 export const requestIntradayPrices = symbol => {
   return dispatch => {
-    return IexApiUtil.requestIntradayPrices(symbol)
+    return CompaniesApiUtil.requestIntradayPrices(symbol)
       .then(prices => dispatch(receiveIntradayPrices(prices, symbol.toUpperCase())));
   };
 };

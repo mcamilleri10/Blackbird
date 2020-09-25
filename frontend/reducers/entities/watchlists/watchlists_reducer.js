@@ -11,7 +11,6 @@ const watchlistsReducer = (state = {}, action) => {
     // case RECEIVE_USER:
     //   debugger
 
-    //   const ids = action.watchlists
 
 
 

@@ -18,6 +18,7 @@ const App = () => {
       </Switch>
       <ProtectedRoute path='/auth' component={NavbarContainer}/>
       <ProtectedRoute path='/auth/users/:userId' component={DashboardContainer}/>
+      {/* <ProtectedRoute path='/auth/users/:userId' component={DashboardSidebarContainer}/> */}
     </div>
   );
 };

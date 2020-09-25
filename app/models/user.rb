@@ -30,6 +30,10 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: :Watchlist
 
+  # has_many :companies,
+  #   through: :watchlists,
+  #   class_name: :Watchlist
+
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)

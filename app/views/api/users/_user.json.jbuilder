@@ -11,16 +11,6 @@ json.sharesOwned do
   json.array! user.share_ids
 end
 
-# json.shares do
-#   json.array! user.shares
-# end
-
-# json.shares do
-#   user.shares.each do |share|
-#     json.extract! share, :id, :user_id, :num_shares_owned, :total_cost
-#     json.companyId share.company.symbol
-#   end
-# end
 
 json.shares do
   user.shares.each do |share|
@@ -30,6 +20,16 @@ json.shares do
     end
   end
 end
+
+
+# json.companies do
+#   user.companies.each do |company|
+#     json.set! company.symbol do
+#       json.extract! company, :id, :name, :symbol
+#     end
+#   end
+# end
+
 
 # json.watchlists do
 #   user.watchlists.each do |watchlist|
