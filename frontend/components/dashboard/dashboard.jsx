@@ -8,11 +8,13 @@ export default class Dashboard extends React.Component {
     this.state = {
       totalValue: 0,
       dayPriceChange: 0,
-      dayPercentChange: 0
+      dayPercentChange: 0,
+      data: null
     };
 
     this.fetchRealtimeQuotes = this.fetchRealtimeQuotes.bind(this);
     this.calculateTotalValue = this.calculateTotalValue.bind(this);
+    this.formatData = this.formatData.bind(this);
     // this.fetchBatchIntradayPrices = this.fetchBatchIntradayPrices.bind(this);
   }
 
@@ -20,6 +22,7 @@ export default class Dashboard extends React.Component {
     this.props.fetchUser(this.props.match.params.userId)
       .then(() => this.fetchRealtimeQuotes()
         .then(() => this.calculateTotalValue())
+        .then(() => this.formatData())
       );
   }
 
@@ -38,11 +41,7 @@ export default class Dashboard extends React.Component {
     return requestQuotes(symbols);
   }
 
-  // fetchBatchIntradayPrices() {
-  //   const { requestBatchIntradayPrices } = this.props;
-  //   const symbols = this.createSymbolStr();
-  //   return requestBatchIntradayPrices(symbols);
-  // }
+ 
 
 
   calculateTotalValue() {
@@ -61,6 +60,33 @@ export default class Dashboard extends React.Component {
       dayPriceChange: changePrice.toFixed(2),
       dayPercentChange: changePercent.toFixed(2)
     });
+  }
+
+  formatData() {
+    const { quotes, user } = this.props;
+    const dataObj = {};
+    quotes.forEach(quote => {
+      const num_owned = user.shares[quote.symbol].numSharesOwned;
+      quote.intradayPrices.forEach(price => {
+        let sum = 0;
+        sum += (price.average * num_owned);
+        if (dataObj[price.label]) {
+          dataObj[price.label]['price'] += sum;
+        } else {
+          dataObj[price.label] = {
+            'time': price.label,
+            'price': sum
+          };
+        }
+      });
+    });
+    const data = [];
+    Object.values(dataObj).forEach((datum, i) => {
+      if (i % 5 === 0) {
+        data.push(datum);
+      }
+    });
+    this.setState({ data: data });
   }
 
 
@@ -89,8 +115,12 @@ export default class Dashboard extends React.Component {
             )}
           </div>
           <div className='dashboard-graph'>
-            GRAPH PLACEHOLDER
-            <DashboardChart quotes={quotes} user={user} shares={shares}/>
+            <DashboardChart 
+              quotes={quotes} 
+              user={user} 
+              shares={shares} 
+              data={this.state.data}
+            />
           </div>
           <div className='buying-power-dd'>
             <button>

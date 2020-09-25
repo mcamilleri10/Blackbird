@@ -1,32 +1,42 @@
 import React from 'react';
-import { Linechart, Line } from 'recharts';
+import {
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+} from 'recharts';
 
 export default class DashboardChart extends React.Component {
 
   constructor(props) {
     super(props);
-    this.formatData = this.formatData.bind(this);
+    
   }
 
+  // componentDidMount() {
+  //   this.formatData();
+  // }
+  
 
-  // const num_owned = user.shares[quote.symbol].numSharesOwned;
-
-  formatData() {
-    const { quotes, user, shares } = this.props;
-    debugger
-    const data = [];
-    quotes.forEach(quote => {
-      const num_owned = user.shares[quote.symbol].numSharesOwned;
-      quote.intradayPrices.forEach(price => {
-        let sum = 0;
-        sum += (price.average * num_owned);
-        data.push({"name": price.label, "amt": sum.toFixed(2)});
-
-
-      });
-      debugger
-    });
-  }
+  // formatData() {
+  //   const { quotes, user } = this.props;
+  //   // debugger
+  //   const dataObj = {};
+  //   quotes.forEach(quote => {
+  //     const num_owned = user.shares[quote.symbol].numSharesOwned;
+  //     quote.intradayPrices.forEach(price => {
+  //       let sum = 0;
+  //       sum += (price.average * num_owned);
+  //       if (dataObj[price.label]) {
+  //         dataObj[price.label]['price'] += sum;
+  //       } else {
+  //         dataObj[price.label] = {
+  //           'time': price.label, 
+  //           'price': sum
+  //         };
+  //       }
+  //     });
+  //   });
+  //   debugger
+  //   return Object.values(dataObj);
+  // }
 
 
 
@@ -34,7 +44,16 @@ export default class DashboardChart extends React.Component {
   render() {
     // debugger
     return (
-      <button onClick={this.formatData}>format data</button>
+      <LineChart width={700} height={350} data={this.props.data}
+        margin={{top: 5, right: 5, bottom: 5, left: 5}}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="time" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line type="natural" dataKey="price" stroke="#8884d8" dot={false}/>     
+      </LineChart>
+  
     );
   }
 
