@@ -13,6 +13,13 @@ export const requestIntradayPrices = symbol => {
   });
 };
 
+export const requestBatchIntradayPrices = symbols => {
+  return $.ajax({
+    url: `https://sandbox.iexapis.com/stable/stock/market/batch?symbols=${symbols}&types=intraday-prices&token=${iex_test_key}`
+  });
+};
+
+
 export const requestQuote = (symbol) => {
   return $.ajax({
     url: `https://sandbox.iexapis.com/stable/stock/${symbol}/quote?token=${iex_test_key}`
@@ -21,7 +28,7 @@ export const requestQuote = (symbol) => {
 
 export const requestQuotes = (symbols) => {
   return $.ajax({
-    url: `https://sandbox.iexapis.com/stable/stock/market/batch?symbols=${symbols}&types=quote&token=${iex_test_key}`
+    url: `https://sandbox.iexapis.com/stable/stock/market/batch?symbols=${symbols}&types=quote,intraday-prices&token=${iex_test_key}`
   });
 };
 

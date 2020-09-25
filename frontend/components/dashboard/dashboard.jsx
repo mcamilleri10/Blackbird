@@ -12,25 +12,37 @@ export default class Dashboard extends React.Component {
 
     this.fetchRealtimeQuotes = this.fetchRealtimeQuotes.bind(this);
     this.calculateTotalValue = this.calculateTotalValue.bind(this);
+    // this.fetchBatchIntradayPrices = this.fetchBatchIntradayPrices.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.userId)
       .then(() => this.fetchRealtimeQuotes()
         .then(() => this.calculateTotalValue())
-        // .then(() => this.calculateDayChangePrice())
       );
   }
 
-  fetchRealtimeQuotes() {
-    const { shares, requestQuotes, quotes } = this.props;
+  createSymbolStr() {
+    const { shares } = this.props;
     const symbolArr = [];
     shares.forEach(share => {
       symbolArr.push(share.companyId);
     });
-    const symbolStr = symbolArr.join(',');
-    return requestQuotes(symbolStr);
+    return symbolArr.join(',');
   }
+
+  fetchRealtimeQuotes() {
+    const { requestQuotes } = this.props;
+    const symbols = this.createSymbolStr();
+    return requestQuotes(symbols);
+  }
+
+  // fetchBatchIntradayPrices() {
+  //   const { requestBatchIntradayPrices } = this.props;
+  //   const symbols = this.createSymbolStr();
+  //   return requestBatchIntradayPrices(symbols);
+  // }
+
 
   calculateTotalValue() {
     const { quotes, user } = this.props;
@@ -50,9 +62,6 @@ export default class Dashboard extends React.Component {
     });
   }
 
-  calculateDayChangePercent() {
-
-  }
 
 
 
@@ -60,6 +69,7 @@ export default class Dashboard extends React.Component {
     const { user } = this.props;
     return (
       <div className='dashboard'>
+        {/* <button onClick={this.fetchBatchIntradayPrices}>intraday prices</button> */}
         <div className='dashboard-main'>
           <div className='total-account-value'>
             <h1>${this.state.totalValue}</h1>
