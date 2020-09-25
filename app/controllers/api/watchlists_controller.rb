@@ -2,6 +2,12 @@ class Api::WatchlistsController < ApplicationController
 
   def show
     @watchlist = Watchlist.includes(:companies).find_by(id: params[:id])
+    
+    @symbols = []
+    @watchlist.companies.each do |company|
+      @symbols << company.symbol
+    end
+
     if @watchlist
       render :show
     else

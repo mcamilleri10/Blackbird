@@ -2,7 +2,8 @@ class Api::SharesController < ApplicationController
 
 
   def show
-    @share = Share.find_by(id: params[:id])
+    @share = Share.includes(:company).find_by(id: params[:id])
+    # debugger
     if @share
       render :show
     else

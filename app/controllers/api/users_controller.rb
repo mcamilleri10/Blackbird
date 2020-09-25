@@ -2,6 +2,14 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.includes(:shares, :watchlists).find_by(id: params[:id])
+
+    # @symbols = []
+    # @user.watchlists.each do |watchlist|
+    #   watchlist.companies.each do |company|
+    #     @symbols << company.symbol
+    #   end
+    # end
+    
     if @user
       render :show
     else
@@ -19,7 +27,7 @@ class Api::UsersController < ApplicationController
       login!(@user)
       render :create
     else
-      render json: @user.errors.full_messages, status: 422 # REPLACE WITH APPROPRIATE MESSAGE
+      render json: @user.errors.full_messages, status: 422 
     end
   end
 
