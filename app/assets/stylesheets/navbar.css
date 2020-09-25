@@ -3,7 +3,7 @@
   justify-content: space-between;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.960);
 }
 
 .navbar-left {
@@ -34,13 +34,17 @@
 .navbar-center input {
   width: 400px;
   padding: 7px 15px 7px 40px;
-  background-color: black;
+  /* background-color: rgba(0, 0, 0, 0.960); */
   border: 1px solid rgba(211, 211, 211, 0.315);
   border-radius: 5px;
   z-index: 1;
 }
 
 .navbar-center input:focus {
+  background-color: rgba(211, 211, 211, 0.151);
+}
+
+.navbar-center input:hover {
   background-color: rgba(211, 211, 211, 0.151);
 }
 

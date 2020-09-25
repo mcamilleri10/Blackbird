@@ -1,6 +1,7 @@
 import * as CompaniesApiUtil from '../../util/companies/companies_api_util';
 
 export const RECEIVE_QUOTE = 'RECEIVE_QUOTE';
+export const RECEIVE_QUOTES = 'RECEIVE_QUOTES';
 export const RECEIVE_COMPANY = 'RECEIVE_COMPANY';
 export const RECEIVE_INTRADAY_PRICES = 'RECEIVE_INTRADAY_PRICES';
 
@@ -9,6 +10,13 @@ const receiveQuote = quote => {
   return {
     type: RECEIVE_QUOTE,
     quote
+  };
+};
+
+const receiveQuotes = quotes => {
+  return {
+    type: RECEIVE_QUOTES,
+    quotes
   };
 };
 
@@ -42,6 +50,13 @@ export const requestQuote = symbol => {
   return dispatch => {
     return CompaniesApiUtil.requestQuote(symbol)
       .then(quote => dispatch(receiveQuote(quote)));
+  };
+};
+
+export const requestQuotes = symbols => {
+  return dispatch => {
+    return CompaniesApiUtil.requestQuotes(symbols)
+      .then(quotes => dispatch(receiveQuotes(quotes)));
   };
 };
 

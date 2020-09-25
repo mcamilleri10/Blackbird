@@ -1,4 +1,45 @@
-body {
-  background-color: black;
+.dashboard {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgba(0, 0, 0, 0.960);
   color: white;
+  padding-bottom: 15vh;
+}
+
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  width: 700px;
+  margin-top: 25px;
+  padding-top: 15px;
+}
+
+.total-account-value {
+  margin-bottom: 30px;
+}
+
+.total-account-value h1 {
+  font-size: 35px;
+  font-weight: 600;
+}
+
+.total-account-value p {
+  font-size: 15px;
+  font-weight: 600;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.dashboard-graph {
+  height: 350px;
+  width: 100%;
+  background-color: rgba(211, 211, 211, 0.151);
+  margin: 0;
+}
+
+.buying-power-dd button{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }

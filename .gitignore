@@ -4,3 +4,6 @@ bundle.js.map
 tmp/
 log/
 tmp/cache/bootsnap-load-path-cache
+
+# Ignore application configuration
+/config/application.yml

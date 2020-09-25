@@ -1,21 +1,27 @@
-const iex_key = 'Tpk_c2b1b5e41fc9492eadc4c2968a80494f';
+const iex_test_key = 'Tpk_c2b1b5e41fc9492eadc4c2968a80494f';
 
 
 export const requestCompanyInfo = symbol => {
   return $.ajax({
-    url: `https://sandbox.iexapis.com/stable/stock/${symbol}/company/quote?token=${iex_key}`
+    url: `https://sandbox.iexapis.com/stable/stock/${symbol}/company/quote?token=${iex_test_key}`
   });
 };
 
 export const requestIntradayPrices = symbol => {
   return $.ajax({
-    url: `https://sandbox.iexapis.com/stable/stock/${symbol}/intraday-prices?token=${iex_key}`
+    url: `https://sandbox.iexapis.com/stable/stock/${symbol}/intraday-prices?token=${iex_test_key}`
   });
 };
 
 export const requestQuote = (symbol) => {
   return $.ajax({
-    url: `https://sandbox.iexapis.com/stable/stock/${symbol}/quote?token=${iex_key}`
+    url: `https://sandbox.iexapis.com/stable/stock/${symbol}/quote?token=${iex_test_key}`
+  });
+};
+
+export const requestQuotes = (symbols) => {
+  return $.ajax({
+    url: `https://sandbox.iexapis.com/stable/stock/market/batch?symbols=${symbols}&types=quote&token=${iex_test_key}`
   });
 };
 
