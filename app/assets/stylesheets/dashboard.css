@@ -1,9 +1,19 @@
 .dashboard {
   display: flex;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   background-color: rgba(0, 0, 0, 0.960);
   color: white;
   padding-bottom: 15vh;
+  position: relative;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.dashboard-content {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 1000px;
 }
 
 .dashboard-main {
@@ -13,6 +23,8 @@
   width: 700px;
   margin-top: 25px;
   padding-top: 15px;
+  position: relative;
+  /* left: 50px; */
 }
 
 .total-account-value {

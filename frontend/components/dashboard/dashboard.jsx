@@ -70,6 +70,9 @@ export default class Dashboard extends React.Component {
     return (
       <div className='dashboard'>
         {/* <button onClick={this.fetchBatchIntradayPrices}>intraday prices</button> */}
+        <div className='dashboard-content'>
+
+       
         <div className='dashboard-main'>
           <div className='total-account-value'>
             <h1>${this.state.totalValue}</h1>
@@ -97,6 +100,8 @@ export default class Dashboard extends React.Component {
         <br/>
         <div className='dashboard-sidebar'>
           Dashboard Sidebar Placeholder
+        </div>
+
         </div>
       </div>
     );
