@@ -23,8 +23,8 @@ export default class Dashboard extends React.Component {
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.userId)
       .then(() => this.fetchRealtimeQuotes()
-        .then(() => this.calculateTotalValue())
         .then(() => this.formatIntraData())
+        .then(() => this.calculateTotalValue())
       );
   }
   
@@ -36,12 +36,19 @@ export default class Dashboard extends React.Component {
   }
 
   createSymbolStr() {
-    const { shares } = this.props;
+    const { shares, watchlists } = this.props;
+    // debugger
     const symbolArr = [];
     shares.forEach(share => {
       symbolArr.push(share.companyId);
     });
-    return symbolArr.join(',');
+    watchlists.forEach(watchlist => {
+      watchlist.companyIds.forEach(symbol => {
+        symbolArr.push(symbol);
+      });
+    });
+    const uniqueSymbols = [...new Set(symbolArr)];
+    return uniqueSymbols.join(',');
   }
 
   fetchRealtimeQuotes() {
@@ -50,19 +57,24 @@ export default class Dashboard extends React.Component {
     return requestQuotes(symbols);
   }
 
+  isShareOwned(quote) {
+    return Boolean(this.props.user.shares[quote.symbol]);
+  }
+
   calculateTotalValue() {
     const { quotes, user } = this.props;
     let sum = user.availableFunds;
     let changePrice = 0;
     let changePercent = 0;
-    // debugger
     quotes.forEach(quote => {
-      const num_owned = user.shares[quote.symbol].numSharesOwned;
-      sum += (quote.delayedPrice * num_owned); // switch to iexRealtimePrice?
-      changePrice += (quote.change * num_owned);
-      changePercent += (quote.changePercent * num_owned);
-      // debugger
+      if (this.isShareOwned(quote)) {
+        const num_owned = user.shares[quote.symbol].numSharesOwned;
+        sum += (quote.delayedPrice * num_owned); // switch to iexRealtimePrice?
+        changePrice += (quote.change * num_owned);
+        changePercent += (quote.changePercent * num_owned);
+      }
     });
+    // debugger
     this.setState({ 
       totalValue: sum.toFixed(2),
       dayPriceChange: changePrice.toFixed(2),
@@ -73,28 +85,34 @@ export default class Dashboard extends React.Component {
   formatIntraData() {
     const { quotes, user } = this.props;
     const dataObj = {};
+    // debugger
     quotes.forEach(quote => {
-      let i = 0;
-      const num_owned = user.shares[quote.symbol].numSharesOwned;
-      quote.intradayPrices.forEach(price => {
-        if (i % 5 === 0) {
-          i++;
-          let sum = 0;
-          sum += (price.average * num_owned);
-          if (dataObj[price.label]) {
-            dataObj[price.label]['price'] += sum;
+      // condition to check it company stock is owned
+      if (this.isShareOwned(quote)) {
+
+        let i = 0;
+        const num_owned = user.shares[quote.symbol].numSharesOwned;
+        quote.intradayPrices.forEach(price => {
+          if (i % 5 === 0) {
+            i++;
+            let sum = 0;
+            sum += (price.average * num_owned);
+            if (dataObj[price.label]) {
+              dataObj[price.label]['price'] += sum;
+            } else {
+              dataObj[price.label] = {
+                'date/time': price.label,
+                'price': sum
+              };
+            }
           } else {
-            dataObj[price.label] = {
-              'date/time': price.label,
-              'price': sum
-            };
+            i++;
+            null;
           }
-        } else {
-          i++;
-          null;
-        }
-      });
+        });
+      }
     });
+    // debugger
     this.setState({ data: Object.values(dataObj) });
   }
 
@@ -102,27 +120,29 @@ export default class Dashboard extends React.Component {
     const { quotes, user } = this.props;
     const dataObj = {};
     quotes.forEach(quote => {
-      // debugger
-      const num_owned = user.shares[quote.symbol].numSharesOwned;
-      let timeStr;
-      quote.chart.forEach(price => {
-        // debugger
-        if (price.average) {
-          timeStr = price.date + ', ' + price.label;
-        } else {
-          timeStr = price.date;
-        }
-        let sum = 0;
-        sum += (price.high * num_owned);
-        if (dataObj[timeStr]) {
-          dataObj[timeStr]['price'] += sum;
-        } else {
-          dataObj[timeStr] = {
-            'date/time': timeStr,
-            'price': sum
-          };
-        }
-      });
+      if (this.isShareOwned(quote)) {
+        const num_owned = user.shares[quote.symbol].numSharesOwned;
+        let timeStr;
+        quote.chart.forEach(price => {
+          // debugger
+          if (price.average) {
+            timeStr = price.date + ', ' + price.label;
+          } else {
+            timeStr = price.date;
+          }
+          let sum = 0;
+          sum += (price.high * num_owned);
+          if (dataObj[timeStr]) {
+            dataObj[timeStr]['price'] += sum;
+          } else {
+            dataObj[timeStr] = {
+              'date/time': timeStr,
+              'price': sum
+            };
+          }
+        });
+
+      }
     });
     this.setState({ data: Object.values(dataObj)});
     // debugger
@@ -180,7 +200,7 @@ export default class Dashboard extends React.Component {
           </div>
         </div>
         <br/>
-        <div className='dashboard-sidebar'>
+        <div className='dashboard-sidebar-component'>
           <DashboardSidebar />
         </div>
 

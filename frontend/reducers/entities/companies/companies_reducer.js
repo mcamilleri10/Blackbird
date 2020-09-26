@@ -24,6 +24,7 @@ const companiesReducer = (state = {}, action) => {
         newState[quote.symbol] = quote;
         newState[quote.symbol].intradayPrices = iPrice;
       });
+      // debugger
       return newState;
     case RECEIVE_COMPANY:
       const company = { [action.company.symbol]: action.company };

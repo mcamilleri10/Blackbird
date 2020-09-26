@@ -5,6 +5,7 @@ import SplashContainer from '../components/splash/splash_container';
 import SignupFormContainer from '../components/session/signup_form_container';
 import LoginFormContainer from '../components/session/login_form_container';
 import DashboardContainer from '../components/dashboard/dashboard_container';
+import DashboardSidebarContainer from '../components/dashboard/dashboard_sidebar/dashboard_sidebar_container';
 import NavbarContainer from '../components/navbar/navbar_container';
 
 
@@ -18,6 +19,7 @@ const App = () => {
       </Switch>
       <ProtectedRoute path='/auth' component={NavbarContainer}/>
       <ProtectedRoute path='/auth/users/:userId' component={DashboardContainer}/>
+      <ProtectedRoute path='/auth/users/:userId' component={DashboardSidebarContainer}/>
       {/* <ProtectedRoute path='/auth/users/:userId' component={DashboardSidebarContainer}/> */}
     </div>
   );

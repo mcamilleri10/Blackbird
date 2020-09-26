@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import DashboardSidebar from './dashboard_sidebar';
 
 const mSTP = (state, ownProps) => {
+  // debugger
   const user = state.entities.users[ownProps.match.params.userId];
   return {
     user: user,
@@ -13,6 +14,8 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => {
   return {
-    PROP: () => dispatch(FUNCTION)
+    
   };
 };
+
+export default connect(mSTP)(DashboardSidebar);

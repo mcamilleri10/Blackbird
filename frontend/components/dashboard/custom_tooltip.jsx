@@ -6,7 +6,11 @@ const CustomTooltip = ({ active, payload }) => {
     return (
       <div className="custom-tooltip">
         <p className="tooltip-label">
-          {`${payload[0].payload['date/time']}  -  $${payload[0].value.toFixed(2)}`}
+          {Boolean(payload) ? (
+            `${payload[0].payload['date/time']}  -  $${payload[0].value.toFixed(2)}`
+          ) : (
+            null
+          )};
         </p>
       </div>
     );
