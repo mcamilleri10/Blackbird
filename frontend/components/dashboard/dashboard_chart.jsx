@@ -42,16 +42,23 @@ export default class DashboardChart extends React.Component {
 
 
   render() {
-    // debugger
+    const { dayChange } = this.props;
+    let color;
+    if (dayChange >= 0) {
+      color = '#32cd32';
+    } else {
+      color = '#ff0000';
+    }
+    
     return (
       <LineChart width={700} height={350} data={this.props.data}
         margin={{top: 5, right: 5, bottom: 5, left: 5}}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="time" />
-        <YAxis />
+        <XAxis hide={true}/>
+        <YAxis hide={true} type='number' domain={['auto', 'auto']}/>
         <Tooltip />
-        <Legend />
-        <Line type="natural" dataKey="price" stroke="#8884d8" dot={false}/>     
+        <Line type="linear" dataKey="price" stroke={color} dot={false}
+          strokeWidth={2}
+        />     
       </LineChart>
   
     );

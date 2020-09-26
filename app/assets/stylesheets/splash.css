@@ -47,9 +47,8 @@
 }
 
 .nav-github a:hover {
-  color: limegreen
+  color: #32cd32;
 }
-
 .products-dd h3 {
   font-weight: 400;
   font-size: 20px;

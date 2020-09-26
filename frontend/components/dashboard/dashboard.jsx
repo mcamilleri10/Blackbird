@@ -120,6 +120,7 @@ export default class Dashboard extends React.Component {
               user={user} 
               shares={shares} 
               data={this.state.data}
+              dayChange={this.state.dayPriceChange}
             />
           </div>
           <div className='buying-power-dd'>
