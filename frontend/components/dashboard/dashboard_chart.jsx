@@ -2,6 +2,7 @@ import React from 'react';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
+import CustomTooltip from './custom_tooltip';
 
 export default class DashboardChart extends React.Component {
 
@@ -10,35 +11,8 @@ export default class DashboardChart extends React.Component {
     
   }
 
-  // componentDidMount() {
-  //   this.formatData();
-  // }
+
   
-
-  // formatData() {
-  //   const { quotes, user } = this.props;
-  //   // debugger
-  //   const dataObj = {};
-  //   quotes.forEach(quote => {
-  //     const num_owned = user.shares[quote.symbol].numSharesOwned;
-  //     quote.intradayPrices.forEach(price => {
-  //       let sum = 0;
-  //       sum += (price.average * num_owned);
-  //       if (dataObj[price.label]) {
-  //         dataObj[price.label]['price'] += sum;
-  //       } else {
-  //         dataObj[price.label] = {
-  //           'time': price.label, 
-  //           'price': sum
-  //         };
-  //       }
-  //     });
-  //   });
-  //   debugger
-  //   return Object.values(dataObj);
-  // }
-
-
 
 
   render() {
@@ -49,13 +23,14 @@ export default class DashboardChart extends React.Component {
     } else {
       color = '#ff0000';
     }
-    
+
+    // debugger
     return (
-      <LineChart width={700} height={350} data={this.props.data}
+      <LineChart width={675} height={350} data={this.props.data}
         margin={{top: 5, right: 5, bottom: 5, left: 5}}>
         <XAxis hide={true}/>
         <YAxis hide={true} type='number' domain={['auto', 'auto']}/>
-        <Tooltip />
+        <Tooltip content={<CustomTooltip />} />
         <Line type="linear" dataKey="price" stroke={color} dot={false}
           strokeWidth={2}
         />     

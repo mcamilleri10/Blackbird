@@ -14,16 +14,24 @@ export default class Dashboard extends React.Component {
 
     this.fetchRealtimeQuotes = this.fetchRealtimeQuotes.bind(this);
     this.calculateTotalValue = this.calculateTotalValue.bind(this);
-    this.formatData = this.formatData.bind(this);
-    // this.fetchBatchIntradayPrices = this.fetchBatchIntradayPrices.bind(this);
+    this.formatIntraData = this.formatIntraData.bind(this);
+    this.handleRangeClick = this.handleRangeClick.bind(this);
+    this.formatHistData = this.formatHistData.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.userId)
       .then(() => this.fetchRealtimeQuotes()
         .then(() => this.calculateTotalValue())
-        .then(() => this.formatData())
+        .then(() => this.formatIntraData())
       );
+  }
+  
+  handleRangeClick(range, e) {
+    e.preventDefault();
+    const symbols = this.createSymbolStr();
+    this.props.requestHistoricalPrices(symbols, range)
+      .then(() => this.formatHistData());
   }
 
   createSymbolStr() {
@@ -41,19 +49,18 @@ export default class Dashboard extends React.Component {
     return requestQuotes(symbols);
   }
 
- 
-
-
   calculateTotalValue() {
     const { quotes, user } = this.props;
     let sum = user.availableFunds;
     let changePrice = 0;
     let changePercent = 0;
+    // debugger
     quotes.forEach(quote => {
       const num_owned = user.shares[quote.symbol].numSharesOwned;
-      sum += (quote.iexRealtimePrice * num_owned);
+      sum += (quote.delayedPrice * num_owned); // switch to iexRealtimePrice?
       changePrice += (quote.change * num_owned);
       changePercent += (quote.changePercent * num_owned);
+      // debugger
     });
     this.setState({ 
       totalValue: sum.toFixed(2),
@@ -62,7 +69,7 @@ export default class Dashboard extends React.Component {
     });
   }
 
-  formatData() {
+  formatIntraData() {
     const { quotes, user } = this.props;
     const dataObj = {};
     quotes.forEach(quote => {
@@ -77,7 +84,7 @@ export default class Dashboard extends React.Component {
             dataObj[price.label]['price'] += sum;
           } else {
             dataObj[price.label] = {
-              'time': price.label,
+              'date/time': price.label,
               'price': sum
             };
           }
@@ -90,34 +97,37 @@ export default class Dashboard extends React.Component {
     this.setState({ data: Object.values(dataObj) });
   }
 
+  formatHistData() {
+    const { quotes, user } = this.props;
+    const dataObj = {};
+    quotes.forEach(quote => {
+      // debugger
+      const num_owned = user.shares[quote.symbol].numSharesOwned;
+      let timeStr;
+      quote.chart.forEach(price => {
+        // debugger
+        if (price.average) {
+          timeStr = price.date + ', ' + price.label;
+        } else {
+          timeStr = price.date;
+        }
+        let sum = 0;
+        sum += (price.high * num_owned);
+        if (dataObj[timeStr]) {
+          dataObj[timeStr]['price'] += sum;
+        } else {
+          dataObj[timeStr] = {
+            'date/time': timeStr,
+            'price': sum
+          };
+        }
+      });
+    });
+    this.setState({ data: Object.values(dataObj)});
+    // debugger
+  }
 
 
-  // formatData() {
-  //   const { quotes, user } = this.props;
-  //   const dataObj = {};
-  //   quotes.forEach(quote => {
-  //     const num_owned = user.shares[quote.symbol].numSharesOwned;
-  //     quote.intradayPrices.forEach(price => {
-  //       let sum = 0;
-  //       sum += (price.average * num_owned);
-  //       if (dataObj[price.label]) {
-  //         dataObj[price.label]['price'] += sum;
-  //       } else {
-  //         dataObj[price.label] = {
-  //           'time': price.label,
-  //           'price': sum
-  //         };
-  //       }
-  //     });
-  //   });
-  //   const data = [];
-  //   Object.values(dataObj).forEach((datum, i) => {
-  //     if (i % 5 === 0) {
-  //       data.push(datum);
-  //     }
-  //   });
-  //   this.setState({ data: data });
-  // }
 
 
 
@@ -145,6 +155,7 @@ export default class Dashboard extends React.Component {
             )}
           </div>
           <div className='dashboard-graph'>
+            {/* <button onClick={this.handle1mClick}>request 1m prices</button> */}
             <DashboardChart 
               quotes={quotes} 
               user={user} 
@@ -152,6 +163,13 @@ export default class Dashboard extends React.Component {
               data={this.state.data}
               dayChange={this.state.dayPriceChange}
             />
+          </div>
+          <div className='range-btns'>
+              <button className='range-btn' onClick={this.formatIntraData}>1D</button>
+              <button className='range-btn' onClick={e => this.handleRangeClick('5dm', e)}>1W</button>
+              <button className='range-btn' onClick={e => this.handleRangeClick('1mm', e)}>1M</button>
+              <button className='range-btn' onClick={e => this.handleRangeClick('3m', e)}>3M</button>
+              <button className='range-btn' onClick={e => this.handleRangeClick('1y', e)}>1Y</button>
           </div>
           <div className='buying-power-dd'>
             <button>

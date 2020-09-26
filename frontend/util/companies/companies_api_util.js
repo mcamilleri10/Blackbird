@@ -19,6 +19,11 @@ export const requestBatchIntradayPrices = symbols => {
   });
 };
 
+export const requestHistoricalPrices = (symbols, range) => {
+  return $.ajax({
+    url: `https://sandbox.iexapis.com/stable/stock/market/batch?symbols=${symbols}&types=chart&range=${range}&token=${iex_test_key}`
+  });
+};
 
 export const requestQuote = (symbol) => {
   return $.ajax({

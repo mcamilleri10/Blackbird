@@ -4,7 +4,8 @@ export const RECEIVE_QUOTE = 'RECEIVE_QUOTE';
 export const RECEIVE_QUOTES = 'RECEIVE_QUOTES';
 export const RECEIVE_COMPANY = 'RECEIVE_COMPANY';
 export const RECEIVE_INTRADAY_PRICES = 'RECEIVE_INTRADAY_PRICES';
-export const RECEIVE_BATCH_INTRADAY_PRICES = 'RECEIVE_BATCH_INTRADAY_PRICES';
+// export const RECEIVE_BATCH_INTRADAY_PRICES = 'RECEIVE_BATCH_INTRADAY_PRICES';
+export const RECEIVE_HISTORICAL_PRICES = 'RECEIVE_HISTORICAL_PRICES';
 
 const receiveQuote = quote => {
   return {
@@ -35,9 +36,16 @@ const receiveIntradayPrices = (prices, symbol) => {
   };
 };
 
-const receiveBatchIntradayPrices = prices => {
+// const receiveBatchIntradayPrices = prices => {
+//   return {
+//     type: RECEIVE_BATCH_INTRADAY_PRICES,
+//     prices
+//   };
+// };
+
+const receiveHistoricalPrices = prices => {
   return {
-    type: RECEIVE_BATCH_INTRADAY_PRICES,
+    type: RECEIVE_HISTORICAL_PRICES,
     prices
   };
 };
@@ -74,10 +82,17 @@ export const requestIntradayPrices = symbol => {
   };
 };
 
-export const requestBatchIntradayPrices = symbols => {
+// export const requestBatchIntradayPrices = symbols => {
+//   return dispatch => {
+//     return CompaniesApiUtil.requestBatchIntradayPrices(symbols)
+//       .then(prices => dispatch(receiveBatchIntradayPrices(prices)));
+//   };
+// };
+
+export const requestHistoricalPrices = (symbols, range) => {
   return dispatch => {
-    return CompaniesApiUtil.requestBatchIntradayPrices(symbols)
-      .then(prices => dispatch(receiveBatchIntradayPrices(prices)));
+    return CompaniesApiUtil.requestHistoricalPrices(symbols, range)
+      .then(prices => dispatch(receiveHistoricalPrices(prices)));
   };
 };
 

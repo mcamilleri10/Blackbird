@@ -20,7 +20,7 @@
   display: flex;
   flex-direction: column;
   height: 500px;
-  width: 700px;
+  width: 675px;
   margin-top: 25px;
   padding-top: 15px;
   position: relative;
@@ -49,6 +49,30 @@
   margin: 0;
 }
 
+.range-btns {
+  margin-top: 15px;
+  display: flex;
+  justify-content: flex-start;
+  /* padding-bottom: 18px; */
+  border-bottom: 1px solid rgba(128, 128, 128, 0.514);
+}
+
+.range-btns button {
+  margin-right: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  padding-bottom: 16px;
+}
+
+.range-btns button:hover {
+  color: limegreen;
+}
+
+.range-btns button:focus {
+  border-bottom: 2px solid limegreen;
+  color: limegreen;
+}
+
 .buying-power-dd button{
   width: 100%;
   height: 75px;
@@ -68,4 +92,11 @@
   font-size: 18px;
   font-weight: 600;
   padding: 10px;
+}
+
+.tooltip-label {
+  /* position: absolute;
+  top: 220px;
+  right: 200px; */
+  color: rgba(211, 211, 211, 0.733);
 }

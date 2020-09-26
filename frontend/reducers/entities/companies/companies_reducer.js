@@ -3,7 +3,8 @@ import {
   RECEIVE_QUOTES, 
   RECEIVE_COMPANY, 
   RECEIVE_INTRADAY_PRICES, 
-  RECEIVE_BATCH_INTRADAY_PRICES
+  // RECEIVE_BATCH_INTRADAY_PRICES,
+  RECEIVE_HISTORICAL_PRICES
 } from '../../../actions/companies/company_actions';
 
 
@@ -30,11 +31,18 @@ const companiesReducer = (state = {}, action) => {
     case RECEIVE_INTRADAY_PRICES:
       newState[action.symbol].intradayPrices = action.prices;
       return newState; 
-    case RECEIVE_BATCH_INTRADAY_PRICES:
+    // case RECEIVE_BATCH_INTRADAY_PRICES:
+    //   Object.values(newState).forEach(company => {
+    //     const mergeIntra = Object.assign({}, newState[company.symbol], action.prices[company.symbol]);
+    //     newState[company.symbol] = mergeIntra;       
+    //   });
+    //   return newState;
+    case RECEIVE_HISTORICAL_PRICES:
       Object.values(newState).forEach(company => {
-        const mergeIntra = Object.assign({}, newState[company.symbol], action.prices[company.symbol]);
-        newState[company.symbol] = mergeIntra;       
+        const mergeHist = Object.assign({}, newState[company.symbol], action.prices[company.symbol]);
+        newState[company.symbol] = mergeHist;
       });
+      // debugger
       return newState;
     default:
       return state;
