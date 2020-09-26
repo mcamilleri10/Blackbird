@@ -7,7 +7,6 @@ import { fetchWatchlist } from '../../actions/watchlists/watchlist_actions';
 import { 
   requestQuote, 
   requestQuotes,
-  // requestBatchIntradayPrices,
   requestHistoricalPrices
  } from '../../actions/companies/company_actions';
 
@@ -19,7 +18,6 @@ const mSTP = (state, ownProps) => {
     shares: Object.values(state.entities.shares),
     watchlists: Object.values(state.entities.watchlists),
     quotes: Object.values(state.entities.companies)
-    // companies: Object.values(state.entities.companies)
   };
 };
 
@@ -31,7 +29,6 @@ const mDTP = dispatch => {
     fetchWatchlist: (watchlistId) => dispatch(fetchWatchlist(watchlistId)),
     requestQuote: (symbol) => dispatch(requestQuote(symbol)),
     requestQuotes: (symbols) => dispatch(requestQuotes(symbols)),
-    // requestBatchIntradayPrices: symbols => dispatch(requestBatchIntradayPrices(symbols)),
     requestHistoricalPrices: (symbols, range) => dispatch(requestHistoricalPrices(symbols, range))
   };
 };

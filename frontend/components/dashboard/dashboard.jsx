@@ -1,5 +1,6 @@
 import React from 'react';
 import DashboardChart from './dashboard_chart';
+import DashboardSidebar from './dashboard_sidebar/dashboard_sidebar';
 
 export default class Dashboard extends React.Component {
 
@@ -180,7 +181,7 @@ export default class Dashboard extends React.Component {
         </div>
         <br/>
         <div className='dashboard-sidebar'>
-          Dashboard Sidebar Placeholder
+          <DashboardSidebar />
         </div>
 
         </div>

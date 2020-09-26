@@ -100,3 +100,7 @@
   right: 200px; */
   color: rgba(211, 211, 211, 0.733);
 }
+
+.line-chart {
+  border-bottom: 1px dotted rgba(211, 211, 211, 0.603);
+}
