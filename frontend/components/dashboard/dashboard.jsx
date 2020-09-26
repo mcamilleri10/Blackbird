@@ -66,28 +66,58 @@ export default class Dashboard extends React.Component {
     const { quotes, user } = this.props;
     const dataObj = {};
     quotes.forEach(quote => {
+      let i = 0;
       const num_owned = user.shares[quote.symbol].numSharesOwned;
       quote.intradayPrices.forEach(price => {
-        let sum = 0;
-        sum += (price.average * num_owned);
-        if (dataObj[price.label]) {
-          dataObj[price.label]['price'] += sum;
+        if (i % 5 === 0) {
+          i++;
+          let sum = 0;
+          sum += (price.average * num_owned);
+          if (dataObj[price.label]) {
+            dataObj[price.label]['price'] += sum;
+          } else {
+            dataObj[price.label] = {
+              'time': price.label,
+              'price': sum
+            };
+          }
         } else {
-          dataObj[price.label] = {
-            'time': price.label,
-            'price': sum
-          };
+          i++;
+          null;
         }
       });
     });
-    const data = [];
-    Object.values(dataObj).forEach((datum, i) => {
-      if (i % 5 === 0) {
-        data.push(datum);
-      }
-    });
-    this.setState({ data: data });
+    this.setState({ data: Object.values(dataObj) });
   }
+
+
+
+  // formatData() {
+  //   const { quotes, user } = this.props;
+  //   const dataObj = {};
+  //   quotes.forEach(quote => {
+  //     const num_owned = user.shares[quote.symbol].numSharesOwned;
+  //     quote.intradayPrices.forEach(price => {
+  //       let sum = 0;
+  //       sum += (price.average * num_owned);
+  //       if (dataObj[price.label]) {
+  //         dataObj[price.label]['price'] += sum;
+  //       } else {
+  //         dataObj[price.label] = {
+  //           'time': price.label,
+  //           'price': sum
+  //         };
+  //       }
+  //     });
+  //   });
+  //   const data = [];
+  //   Object.values(dataObj).forEach((datum, i) => {
+  //     if (i % 5 === 0) {
+  //       data.push(datum);
+  //     }
+  //   });
+  //   this.setState({ data: data });
+  // }
 
 
 
