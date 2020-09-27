@@ -12,7 +12,7 @@ export default class DashboardChart extends React.Component {
   }
 
   render() {
-    const { dayChange } = this.props;
+    const { data, dayChange } = this.props;
     let color;
     if (dayChange >= 0) {
       color = '#32cd32';
@@ -21,7 +21,7 @@ export default class DashboardChart extends React.Component {
     }
 
     return (
-      <LineChart width={675} height={350} data={this.props.data}
+      <LineChart width={675} height={350} data={data}
         margin={{top: 5, right: 5, bottom: 5, left: 5}} className='line-chart'>
         <XAxis hide={true} />
         <YAxis hide={true} type='number' domain={['auto', 'auto']}/>

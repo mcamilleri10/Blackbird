@@ -9,19 +9,19 @@ export default class ShareIndex extends React.Component {
     super(props); 
   }
 
+
+
   render() {
     const { shares, quotes, loading } = this.props;
-    const spinner = <FontAwesomeIcon icon={faSpinner} className='spinner' spin/>;
+    const spinner = <FontAwesomeIcon icon={faSpinner} spin/>;
     
     if (loading) {
-      // debugger
-      return <div>{spinner}</div>;
+      return <div className='spinner'>{spinner}</div>;
     }
     if (!shares) {
       return null;
     }
-      
-    // debugger
+
     return (
       <div className='share-index'>
         <div className='share-index-title'>
