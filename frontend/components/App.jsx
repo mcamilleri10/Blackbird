@@ -18,8 +18,13 @@ const App = () => {
         <AuthRoute exact path='/' component={SplashContainer}/>
       </Switch>
       <ProtectedRoute path='/auth' component={NavbarContainer}/>
-      <ProtectedRoute path='/auth/users/:userId' component={DashboardContainer}/>
-      <ProtectedRoute path='/auth/users/:userId' component={DashboardSidebarContainer}/>
+      <div className='dashboard-body'>
+      <div className='dashboard'>
+        <ProtectedRoute path='/auth/users/:userId' component={DashboardContainer}/>
+        <ProtectedRoute path='/auth/users/:userId' component={DashboardSidebarContainer}/>
+      </div>
+
+      </div>
       {/* <ProtectedRoute path='/auth/users/:userId' component={DashboardSidebarContainer}/> */}
     </div>
   );

@@ -6,6 +6,7 @@ export const RECEIVE_COMPANY = 'RECEIVE_COMPANY';
 export const RECEIVE_INTRADAY_PRICES = 'RECEIVE_INTRADAY_PRICES';
 // export const RECEIVE_BATCH_INTRADAY_PRICES = 'RECEIVE_BATCH_INTRADAY_PRICES';
 export const RECEIVE_HISTORICAL_PRICES = 'RECEIVE_HISTORICAL_PRICES';
+export const START_LOADING = 'START_LOADING';
 
 const receiveQuote = quote => {
   return {
@@ -50,6 +51,12 @@ const receiveHistoricalPrices = prices => {
   };
 };
 
+export const startLoading = () => {
+  return {
+    type: START_LOADING
+  };
+};
+
 
 export const fetchCompany = companyId => {
   return dispatch => {
@@ -70,6 +77,7 @@ export const requestQuote = symbol => {
 
 export const requestQuotes = symbols => {
   return dispatch => {
+    // dispatch(startLoading());
     return CompaniesApiUtil.requestQuotes(symbols)
       .then(quotes => dispatch(receiveQuotes(quotes)));
   };

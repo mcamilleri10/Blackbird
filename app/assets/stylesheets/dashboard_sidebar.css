@@ -1,15 +1,22 @@
-.dashboard-sidebar-component {
+.dashboard-sidebar {
   background-color: rgba(211, 211, 211, 0.116);
-  position: fixed;
+  /* position: fixed; */
   height: 86vh;
   width: 280px;
-  right: 50px;
+  /* right: 15%; */
   border: 1px solid rgba(128, 128, 128, 0.514);
   border-radius: 5px;
   margin-top: 25px;
-  /* margin-left: -300px; */
+  margin-left: -340px;
   /* padding: 5px; */
   box-sizing: border-box;
+  display: block;
+  flex-direction: column;
+}
+
+.share-index-component {
+  width: 100%;
+  min-height: 60px;
 }
 
 .share-index-title {
@@ -23,4 +30,9 @@
 .share-index-title h3 {
   font-weight: 600;
   font-size: 17px;
+}
+
+.spinner {
+  /* margin: 0 auto; */
+  color: limegreen;
 }

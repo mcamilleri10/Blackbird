@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import DashboardSidebar from './dashboard_sidebar';
+import { fetchUser } from '../../../actions/users/user_actions';
 
 const mSTP = (state, ownProps) => {
   // debugger
@@ -8,14 +9,15 @@ const mSTP = (state, ownProps) => {
     user: user,
     shares: Object.values(state.entities.shares),
     watchlists: Object.values(state.entities.watchlists),
-    quotes: Object.values(state.entities.companies)
+    quotes: Object.values(state.entities.companies),
+    loading: state.ui.loading
   };
 };
 
 const mDTP = dispatch => {
   return {
-    
+    fetchUser: (userId) => dispatch(fetchUser(userId))
   };
 };
 
-export default connect(mSTP)(DashboardSidebar);
+export default connect(mSTP, mDTP)(DashboardSidebar);

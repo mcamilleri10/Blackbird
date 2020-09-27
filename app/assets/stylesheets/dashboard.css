@@ -1,19 +1,36 @@
+.dashboard-body {
+  background-color: black;
+}
+
 .dashboard {
+  background-color: black;
+  color: white;
   display: flex;
+  justify-content: space-around;
+  width: 1100px;
+  margin: 0 auto;
+  /* padding: 0 300px; */
+}
+
+.dashboard-left {
+  display: block;
   /* justify-content: space-evenly; */
   background-color: rgba(0, 0, 0, 0.960);
   color: white;
   padding-bottom: 15vh;
-  position: relative;
+  /* position: relative; */
   height: 100vh;
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  /* padding-left: 15%; */
+  margin-right: 295px;
+  width: 700px;
 }
 
 .dashboard-content {
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  width: 1000px;
+  /* width: 1000px; */
 }
 
 .dashboard-main {

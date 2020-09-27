@@ -21,6 +21,8 @@ export default class Dashboard extends React.Component {
   }
 
   componentDidMount() {
+    // this.props.startLoading();
+    // debugger
     this.props.fetchUser(this.props.match.params.userId)
       .then(() => this.fetchRealtimeQuotes()
         .then(() => this.formatIntraData())
@@ -156,7 +158,7 @@ export default class Dashboard extends React.Component {
   render() {
     const { user, quotes, shares } = this.props;
     return (
-      <div className='dashboard'>
+      <div className='dashboard-left'>
         {/* <button onClick={this.fetchBatchIntradayPrices}>intraday prices</button> */}
         <div className='dashboard-content'>
 
@@ -175,8 +177,8 @@ export default class Dashboard extends React.Component {
               <p>(-{this.state.dayPercentChange}%)</p>
             )}
           </div>
+          {console.log('inside dashboard render')}
           <div className='dashboard-graph'>
-            {/* <button onClick={this.handle1mClick}>request 1m prices</button> */}
             <DashboardChart 
               quotes={quotes} 
               user={user} 
@@ -200,9 +202,9 @@ export default class Dashboard extends React.Component {
           </div>
         </div>
         <br/>
-        <div className='dashboard-sidebar-component'>
+        {/* <div className='dashboard-sidebar-component'>
           <DashboardSidebar />
-        </div>
+        </div> */}
 
         </div>
       </div>

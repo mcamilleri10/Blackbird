@@ -9,8 +9,8 @@ export default class Navbar extends React.Component {
 
 
   render() {
-    const logo = <FontAwesomeIcon icon={faFeatherAlt} />;
-    const search = <FontAwesomeIcon icon={faSearch} />;
+    const logo = <FontAwesomeIcon icon={faFeatherAlt}/>;
+    const search = <FontAwesomeIcon icon={faSearch}/>;
 
     return (
       <div className='navbar'>

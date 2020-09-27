@@ -7,7 +7,8 @@ import { fetchWatchlist } from '../../actions/watchlists/watchlist_actions';
 import { 
   requestQuote, 
   requestQuotes,
-  requestHistoricalPrices
+  requestHistoricalPrices,
+  startLoading
  } from '../../actions/companies/company_actions';
 
 const mSTP = (state, ownProps) => {
@@ -29,7 +30,8 @@ const mDTP = dispatch => {
     fetchWatchlist: (watchlistId) => dispatch(fetchWatchlist(watchlistId)),
     requestQuote: (symbol) => dispatch(requestQuote(symbol)),
     requestQuotes: (symbols) => dispatch(requestQuotes(symbols)),
-    requestHistoricalPrices: (symbols, range) => dispatch(requestHistoricalPrices(symbols, range))
+    requestHistoricalPrices: (symbols, range) => dispatch(requestHistoricalPrices(symbols, range)),
+    startLoading: () => dispatch(startLoading())
   };
 };
 
