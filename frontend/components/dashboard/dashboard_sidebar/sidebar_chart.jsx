@@ -28,9 +28,8 @@ export default class SidebarChart extends React.Component {
     } else {
       color = '#ff0000';
     }
-    // debugger
     return (
-      <LineChart width={75} height={35} data={data}
+      <LineChart className='sidebar-chart' width={75} height={35} data={data}
         margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>
         <XAxis hide={true} />
         <YAxis 

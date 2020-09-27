@@ -8,6 +8,7 @@ import DashboardContainer from '../components/dashboard/dashboard_container';
 import DashboardSidebarContainer from '../components/dashboard/dashboard_sidebar/dashboard_sidebar_container';
 import NavbarContainer from '../components/navbar/navbar_container';
 import CompanyContainer from './companies/company_container';
+import WatchlistContainer from './watchlists/watchlist_container';
 
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
         </div>
       </div>
       <ProtectedRoute path='/auth/companies/:companyId' component={CompanyContainer}/>
+      <ProtectedRoute path='/auth/watchlists/:watchlistId' component={WatchlistContainer}/>
     </div>
   );
 };

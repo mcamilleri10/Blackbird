@@ -11,7 +11,8 @@ export default class ShareIndexItem extends React.Component {
     this.state = {
       data: [],
       dayPriceChange: 0,
-      dayPercentChange: 0
+      dayPercentChange: 0,
+      delayedPrice: 0
     };
     this.formatIntraData = this.formatIntraData.bind(this);
   }
@@ -27,7 +28,8 @@ export default class ShareIndexItem extends React.Component {
     const { quote, share } = this.props;
     this.setState({ 
       dayPriceChange: quote.change,
-      dayPercentChange: quote.changePercent
+      dayPercentChange: quote.changePercent,
+      delayedPrice: quote.delayedPrice
      });
     const data = [];
     quote.intradayPrices.forEach(time => {
@@ -42,29 +44,34 @@ export default class ShareIndexItem extends React.Component {
 
   render() {
     const { share, quote, loading } = this.props;
-    const { data, dayPriceChange, dayPercentChange } = this.state;
+    const { data, dayPriceChange, dayPercentChange, delayedPrice } = this.state;
     // debugger
     const spinner = <FontAwesomeIcon icon={faSpinner} className='spinner' spin />;
-    if (loading) {
-      // debugger
-      return <div>{spinner}</div>;
-    }
-    // debugger
+    // if (loading) {
+    //   // debugger
+    //   return <div className='spinner'>{spinner}</div>;
+    // }
+    if (!data || !quote) return null;
     return (
-      <Link to={`/auth/companies/${share.companyId}`} className='share-index-item'>
+      <Link to={`/auth/companies/${quote.symbol}`} className='share-index-item'>
         <div className='share-btn-left'>
-          <h4>{share.companyId}</h4>
-          {share.numSharesOwned > 1 ? (
-            <div>{share.numSharesOwned} Shares</div>
-            ) : (
-              <div>{share.numSharesOwned} Share</div>
-              )}
+          <h4>{quote.symbol}</h4>
+          { share ? (
+            share.numSharesOwned > 1 ? (
+              <div>{share.numSharesOwned} Shares</div>
+              ) : (
+                <div>{share.numSharesOwned} Share</div>
+            )
+          ) : (
+            null
+          )}
+
         </div>
         <div className='share-btn-center'>
           <SidebarChart data={data} dayChange={dayPriceChange} loading={loading} className='sb-chart'/>
         </div>
         <div className='share-btn-right'>
-          <p>${dayPriceChange.toFixed(2)}</p>
+          <p>${delayedPrice.toFixed(2)}</p>
           <p className={dayPercentChange >= 0 ? 'green' : 'red'}>
             {dayPercentChange.toFixed(2)}%
             </p>
