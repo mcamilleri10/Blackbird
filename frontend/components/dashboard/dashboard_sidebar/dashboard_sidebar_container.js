@@ -9,7 +9,7 @@ const mSTP = (state, ownProps) => {
     user: user,
     shares: Object.values(state.entities.shares),
     watchlists: Object.values(state.entities.watchlists),
-    quotes: Object.values(state.entities.companies),
+    quotes: state.entities.companies,
     loading: state.ui.loading
   };
 };

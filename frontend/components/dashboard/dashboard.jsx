@@ -76,7 +76,6 @@ export default class Dashboard extends React.Component {
         changePercent += (quote.changePercent * num_owned);
       }
     });
-    // debugger
     this.setState({ 
       totalValue: sum.toFixed(2),
       dayPriceChange: changePrice.toFixed(2),
@@ -87,11 +86,8 @@ export default class Dashboard extends React.Component {
   formatIntraData() {
     const { quotes, user } = this.props;
     const dataObj = {};
-    // debugger
     quotes.forEach(quote => {
-      // condition to check it company stock is owned
       if (this.isShareOwned(quote)) {
-
         let i = 0;
         const num_owned = user.shares[quote.symbol].numSharesOwned;
         quote.intradayPrices.forEach(price => {
@@ -177,12 +173,11 @@ export default class Dashboard extends React.Component {
               <p>(-{this.state.dayPercentChange}%)</p>
             )}
           </div>
-          {console.log('inside dashboard render')}
           <div className='dashboard-graph'>
             <DashboardChart 
-              quotes={quotes} 
-              user={user} 
-              shares={shares} 
+              // quotes={quotes} 
+              // user={user} 
+              // shares={shares} 
               data={this.state.data}
               dayChange={this.state.dayPriceChange}
             />

@@ -77,7 +77,7 @@ export const requestQuote = symbol => {
 
 export const requestQuotes = symbols => {
   return dispatch => {
-    // dispatch(startLoading());
+    dispatch(startLoading());
     return CompaniesApiUtil.requestQuotes(symbols)
       .then(quotes => dispatch(receiveQuotes(quotes)));
   };

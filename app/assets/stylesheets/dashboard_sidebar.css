@@ -1,13 +1,13 @@
 .dashboard-sidebar {
   background-color: rgba(211, 211, 211, 0.116);
-  /* position: fixed; */
+  position: fixed;
   height: 86vh;
   width: 280px;
   /* right: 15%; */
   border: 1px solid rgba(128, 128, 128, 0.514);
   border-radius: 5px;
   margin-top: 25px;
-  margin-left: -340px;
+  margin-left: 775px;
   /* padding: 5px; */
   box-sizing: border-box;
   display: block;

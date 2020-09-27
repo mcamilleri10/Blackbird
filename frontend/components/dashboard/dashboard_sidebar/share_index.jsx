@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import ShareIndexItem from './share_index_item';
 
 export default class ShareIndex extends React.Component {
 
@@ -8,18 +9,14 @@ export default class ShareIndex extends React.Component {
     super(props); 
   }
 
-  
-
-
-
   render() {
     const { shares, quotes, loading } = this.props;
     const spinner = <FontAwesomeIcon icon={faSpinner} className='spinner' spin/>;
     
-    // if (loading) {
-    //   debugger
-    //   return <div>{spinner}</div>;
-    // }
+    if (loading) {
+      // debugger
+      return <div>{spinner}</div>;
+    }
     if (!shares) {
       return null;
     }
@@ -29,16 +26,21 @@ export default class ShareIndex extends React.Component {
       <div className='share-index'>
         <div className='share-index-title'>
           <h3>Stocks</h3>
-      {/* {spinner} */}
           <button className='share-index-dd'>
             ...
           </button>
         </div>
         <div>
-          <ul>
-            {console.log('inside share index render')}
+          <ul className='share-index-list'>
             {shares.map(share => {
-              console.log('shares');
+              return (
+                <ShareIndexItem 
+                  key={share.id} 
+                  share={share} 
+                  quote={quotes[share.companyId]}
+                  loading={loading}
+                />
+              );
             })}
           </ul>
         </div>
