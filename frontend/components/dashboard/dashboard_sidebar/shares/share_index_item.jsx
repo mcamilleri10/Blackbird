@@ -1,5 +1,6 @@
 import React from 'react';
-import SidebarChart from './sidebar_chart';
+import { Link } from 'react-router-dom';
+import SidebarChart from '../sidebar_chart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
@@ -45,12 +46,12 @@ export default class ShareIndexItem extends React.Component {
     // debugger
     const spinner = <FontAwesomeIcon icon={faSpinner} className='spinner' spin />;
     if (loading) {
-      debugger
+      // debugger
       return <div>{spinner}</div>;
     }
     // debugger
     return (
-      <button className='share-index-item'>
+      <Link to={`/auth/companies/${share.companyId}`} className='share-index-item'>
         <div className='share-btn-left'>
           <h4>{share.companyId}</h4>
           {share.numSharesOwned > 1 ? (
@@ -70,7 +71,7 @@ export default class ShareIndexItem extends React.Component {
         </div>
           
         
-      </button>
+      </Link>
     );
   }
 }

@@ -7,6 +7,7 @@ import LoginFormContainer from '../components/session/login_form_container';
 import DashboardContainer from '../components/dashboard/dashboard_container';
 import DashboardSidebarContainer from '../components/dashboard/dashboard_sidebar/dashboard_sidebar_container';
 import NavbarContainer from '../components/navbar/navbar_container';
+import CompanyContainer from './companies/company_container';
 
 
 const App = () => {
@@ -19,13 +20,12 @@ const App = () => {
       </Switch>
       <ProtectedRoute path='/auth' component={NavbarContainer}/>
       <div className='dashboard-body'>
-      <div className='dashboard'>
-        <ProtectedRoute path='/auth/users/:userId' component={DashboardContainer}/>
-        <ProtectedRoute path='/auth/users/:userId' component={DashboardSidebarContainer}/>
+        <div className='dashboard'>
+          <ProtectedRoute path='/auth/users/:userId' component={DashboardContainer}/>
+          <ProtectedRoute path='/auth/users/:userId' component={DashboardSidebarContainer}/>
+        </div>
       </div>
-
-      </div>
-      {/* <ProtectedRoute path='/auth/users/:userId' component={DashboardSidebarContainer}/> */}
+      <ProtectedRoute path='/auth/companies/:companyId' component={CompanyContainer}/>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import ShareIndex from './share_index';
+import ShareIndex from './shares/share_index';
 
 export default class DashboardSidebar extends React.Component {
 

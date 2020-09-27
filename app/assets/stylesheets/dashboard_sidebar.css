@@ -43,12 +43,13 @@
   flex-direction: column;
 }
 
-.share-index-list button {
+.share-index-item {
   width: 100%;
   display: flex;
   padding: 10px 20px;
   border-bottom: 1px solid rgba(128, 128, 128, 0.514);
   justify-content: space-between;
+  font-size: 14px;
   /* z-index: 2; */
 }
 
@@ -56,12 +57,15 @@
   z-index: 1;
 } */
 
-.share-index-list button:hover {
+
+
+.share-index-item:hover {
   background-color: rgba(211, 211, 211, 0.151);
 }
 
 .share-btn-left h4 {
   margin: 0;
+  font-weight: 600;
 }
 
 .green {
