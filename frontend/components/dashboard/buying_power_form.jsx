@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
 
 export default class BuyingPowerForm extends React.Component {
 
@@ -18,21 +20,26 @@ export default class BuyingPowerForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.user.availableFunds += this.state.availableFunds;
-    this.props.updateUser(this.props.user);
     this.setState({ availableFunds: '' });
+    this.props.updateUser(this.props.user);
   }
 
   render() {
     const { user } = this.props;
+    const dollarSign = <FontAwesomeIcon icon={faDollarSign} />;
     return (
       <div className='buying-power-form-container'>
         <div className='buying-power-left'>
           <form onSubmit={this.handleSubmit} className='buying-power-form'>
+            <div className='buying-power-dollar-sign'>
+              {dollarSign}
             <input 
               type="text" 
               onChange={this.handleChange}
+              value={this.state.availableFunds}
               placeholder='Add Funds'
-            />
+              />
+            </div>
             <div>
               <p>Buying Power</p>
               <p>${user.availableFunds.toFixed(2)}</p>

@@ -164,20 +164,17 @@
   font-size: 15px;
 }
 
-.buying-power-left div {
+.buying-power-left svg {
+  margin-right: 10px;
+}
+
+.buying-power-left div:last-of-type {
   display: flex;
   justify-content: space-between;
   text-align: right;
   border-top: 1px solid rgba(128, 128, 128, 0.514);
   padding-top: 25px;
 }
-
-.buying-power-right {
-  display: flex;
-  padding-top: 43px;
-  font-weight: 600;
-}
-
 
 .buying-power-form {
   border-top: 1px solid rgba(128, 128, 128, 0.514);
@@ -233,6 +230,12 @@
 
 .buying-power-form button:hover {
   background-color: rgb(68, 207, 68);
+}
+
+.buying-power-right {
+  display: flex;
+  padding-top: 43px;
+  font-weight: 600;
 }
 
 .tooltip-label {
