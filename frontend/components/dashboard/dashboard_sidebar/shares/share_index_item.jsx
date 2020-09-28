@@ -36,7 +36,7 @@ export default class ShareIndexItem extends React.Component {
       // debugger
       // if (parseInt(time.minute) % 10 === 0) {
         const datum = { 'time': time.minute, 'price': time.average }; 
-        debugger
+        // debugger
         data.push(datum);
       // }
     });

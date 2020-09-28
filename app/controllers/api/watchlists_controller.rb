@@ -44,6 +44,7 @@ class Api::WatchlistsController < ApplicationController
   def watchlist_params
     params
       .require(:watchlist)
+      .transform_keys(&:underscore)
       .permit(:name, :user_id)
     end
     

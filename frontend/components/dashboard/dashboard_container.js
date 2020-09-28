@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Dashboard from './dashboard';
 import { logout } from '../../actions/session/session_actions';
 import { fetchShare } from '../../actions/shares/share_actions';
-import { fetchUser } from '../../actions/users/user_actions';
+import { fetchUser, updateUser } from '../../actions/users/user_actions';
 import { fetchWatchlist } from '../../actions/watchlists/watchlist_actions';
 import { 
   requestQuote, 
@@ -31,7 +31,8 @@ const mDTP = dispatch => {
     requestQuote: (symbol) => dispatch(requestQuote(symbol)),
     requestQuotes: (symbols) => dispatch(requestQuotes(symbols)),
     requestHistoricalPrices: (symbols, range) => dispatch(requestHistoricalPrices(symbols, range)),
-    startLoading: () => dispatch(startLoading())
+    startLoading: () => dispatch(startLoading()),
+    updateUser: user => dispatch(updateUser(user))
   };
 };
 

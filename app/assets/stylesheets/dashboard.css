@@ -90,25 +90,51 @@
   color: limegreen;
 }
 
-.buying-power-dd button{
+.buying-power-dd {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.514);
+  /* display: flex;
+  justify-content: space-evenly; */
+}
+
+/* .buying-power-dd:hover {
+  width: 701px;
+  position: relative;
+  left: -13px;
+  
+} */
+
+.buying-power-btn{
   width: 100%;
   height: 75px;
+  /* margin: 0 10px; */
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.514);
+  border-radius: 5px;
 }
 
 
-.buying-power-dd button:hover {
+.buying-power-btn:hover {
   background-color: rgba(211, 211, 211, 0.151);
+  width: 711px;
+  position: relative;
+  left: -18px;
+}
+
+.buying-power-btn:hover p {
+  padding: 18px
 }
 
 .buying-power-dd p {
   font-size: 18px;
   font-weight: 600;
-  padding: 10px;
+  /* padding: 20px; */
+}
+
+.buying-power-form {
+  height: 250px;
+  background-color: rgba(211, 211, 211, 0.151);
 }
 
 .tooltip-label {

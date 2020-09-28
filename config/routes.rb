@@ -6,6 +6,8 @@
 #                 api_users POST   /api/users(.:format)                                                                     api/users#create {:format=>:json}
 #              new_api_user GET    /api/users/new(.:format)                                                                 api/users#new {:format=>:json}
 #                  api_user GET    /api/users/:id(.:format)                                                                 api/users#show {:format=>:json}
+#                           PATCH  /api/users/:id(.:format)                                                                 api/users#update {:format=>:json}
+#                           PUT    /api/users/:id(.:format)                                                                 api/users#update {:format=>:json}
 #        api_company_shares POST   /api/companies/:company_id/shares(.:format)                                              api/shares#create {:format=>:json}
 #             api_companies POST   /api/companies(.:format)                                                                 api/companies#create {:format=>:json}
 #               api_company GET    /api/companies/:id(.:format)                                                             api/companies#show {:format=>:json}
@@ -33,7 +35,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
 
-    resources :users, only: [:new, :create, :show] do
+    resources :users, only: [:new, :create, :show, :update] do
       resources :watchlists, only: [:create]
     end
 

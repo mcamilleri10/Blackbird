@@ -1,6 +1,6 @@
 import React from 'react';
 import DashboardChart from './dashboard_chart';
-import DashboardSidebar from './dashboard_sidebar/dashboard_sidebar';
+import BuyingPowerForm from './buying_power_form';
 
 export default class Dashboard extends React.Component {
 
@@ -10,7 +10,8 @@ export default class Dashboard extends React.Component {
       totalValue: 0,
       dayPriceChange: 0,
       dayPercentChange: 0,
-      data: null
+      data: null,
+      buyingPowerFormActive: false
     };
 
     this.fetchRealtimeQuotes = this.fetchRealtimeQuotes.bind(this);
@@ -18,6 +19,7 @@ export default class Dashboard extends React.Component {
     this.formatIntraData = this.formatIntraData.bind(this);
     this.handleRangeClick = this.handleRangeClick.bind(this);
     this.formatHistData = this.formatHistData.bind(this);
+    this.buyingPowerFormClick = this.buyingPowerFormClick.bind(this);
   }
 
   componentDidMount() {
@@ -35,6 +37,10 @@ export default class Dashboard extends React.Component {
     const symbols = this.createSymbolStr();
     this.props.requestHistoricalPrices(symbols, range)
       .then(() => this.formatHistData());
+  }
+
+  buyingPowerFormClick() {
+    this.setState({ buyingPowerFormActive: !this.state.buyingPowerFormActive});
   }
 
   createSymbolStr() {
@@ -71,7 +77,7 @@ export default class Dashboard extends React.Component {
     quotes.forEach(quote => {
       if (this.isShareOwned(quote)) {
         const num_owned = user.shares[quote.symbol].numSharesOwned;
-        sum += (quote.iexRealtimePrice * num_owned); // switch to iexRealtimePrice?
+        sum += (quote.iexRealtimePrice * num_owned); // delayedPrice or iexRealtimePrice?
         changePrice += (quote.change * num_owned);
         changePercent += (quote.changePercent * num_owned);
       }
@@ -152,7 +158,7 @@ export default class Dashboard extends React.Component {
 
 
   render() {
-    const { user, quotes, shares } = this.props;
+    const { user, quotes, shares, updateUser } = this.props;
     return (
       <div className='dashboard-left'>
         {/* <button onClick={this.fetchBatchIntradayPrices}>intraday prices</button> */}
@@ -190,10 +196,15 @@ export default class Dashboard extends React.Component {
               <button className='range-btn' onClick={e => this.handleRangeClick('1y', e)}>1Y</button>
           </div>
           <div className='buying-power-dd'>
-            <button>
+            <button onClick={this.buyingPowerFormClick} className='buying-power-btn'>
               <p>Buying Power</p>
               <p>${user.availableFunds.toFixed(2)}</p>
             </button>
+            {this.state.buyingPowerFormActive ? (
+              <BuyingPowerForm user={user} updateUser={updateUser}/>
+            ) : (
+              null
+            )}
           </div>
         </div>
         <br/>
