@@ -71,7 +71,7 @@ export default class Dashboard extends React.Component {
     quotes.forEach(quote => {
       if (this.isShareOwned(quote)) {
         const num_owned = user.shares[quote.symbol].numSharesOwned;
-        sum += (quote.delayedPrice * num_owned); // switch to iexRealtimePrice?
+        sum += (quote.iexRealtimePrice * num_owned); // switch to iexRealtimePrice?
         changePrice += (quote.change * num_owned);
         changePercent += (quote.changePercent * num_owned);
       }
@@ -91,7 +91,7 @@ export default class Dashboard extends React.Component {
         let i = 0;
         const num_owned = user.shares[quote.symbol].numSharesOwned;
         quote.intradayPrices.forEach(price => {
-          if (i % 5 === 0) {
+          if (i % i === 0) {
             i++;
             let sum = 0;
             sum += (price.average * num_owned);

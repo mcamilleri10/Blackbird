@@ -51,7 +51,7 @@
 .share-index-item {
   width: 100%;
   display: flex;
-  padding: 10px 20px;
+  padding: 10px 22px;
   /* border-bottom: 1px solid rgba(128, 128, 128, 0.514); */
   justify-content: space-between;
   font-size: 14px;
@@ -102,8 +102,8 @@
 .dashboard-watchlist-form-component {
   display: flex;
   justify-content: space-between;
-  padding-left: 22px;
-  padding-right: 22px;
+  padding-left: 23px;
+  padding-right: 25px;
   border-top: 1px solid rgba(128, 128, 128, 0.514);
   border-bottom: 1px solid rgba(128, 128, 128, 0.514);
   min-height: 56px;
@@ -165,7 +165,7 @@
   color: limegreen;
 }
 
-.sidebar-form {
+.dashboard-sidebar-form {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -173,7 +173,7 @@
   padding-top: 10px;
 }
 
-.sidebar-form input {
+.dashboard-sidebar-form input {
   width: 200px;
   height: 30px;
   padding: 18px 15px;
@@ -184,20 +184,20 @@
   border: 1px solid rgba(211, 211, 211, 0.151);
 }
 
-.sidebar-form input:hover {
+.dashboard-sidebar-form input:hover {
   background-color: rgba(211, 211, 211, 0);
   border: 1px solid rgba(128, 128, 128, 0.514);
 }
 
-.sidebar-form input:focus {
+.dashboard-sidebar-form input:focus {
   border: 1px solid limegreen;
 }
 
-.sidebar-form div {
+.dashboard-sidebar-form div {
   display: flex;
 }
 
-.sidebar-form button {
+.dashboard-sidebar-form button {
   display: inline-block;
   height: 25px;
   border: 1px solid limegreen;

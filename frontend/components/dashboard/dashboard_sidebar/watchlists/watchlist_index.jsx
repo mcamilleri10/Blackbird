@@ -8,10 +8,6 @@ import WatchlistDropdown from './watchlist_dropdown';
 
 export default class WatchlistIndex extends React.Component {
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {};
-  // }
 
 
   render() {

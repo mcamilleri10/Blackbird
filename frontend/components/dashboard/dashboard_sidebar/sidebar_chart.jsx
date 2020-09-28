@@ -28,6 +28,7 @@ export default class SidebarChart extends React.Component {
     } else {
       color = '#ff0000';
     }
+    // debugger
     return (
       <LineChart className='sidebar-chart' width={75} height={35} data={data}
         margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>
@@ -35,9 +36,8 @@ export default class SidebarChart extends React.Component {
         <YAxis 
           hide={true} 
           type='number' 
-          domain={['dataMin - 10', 'dataMax + 10 ']}
+          // domain={['dataMin - 10', 'dataMax + 10 ']}
         />
-        {/* <Tooltip content={<CustomTooltip />} /> */}
         <Line type="monotone" dataKey="price" stroke={color} dot={false}
           strokeWidth={1}
         />

@@ -1,7 +1,7 @@
 import React from 'react';
 import ShareIndex from './shares/share_index';
 import WatchlistIndex from './watchlists/watchlist_index';
-import WatchlistFormDropdown from './watchlists/watchlist_form_dropdown';
+import CreateWatchlistForm from './watchlists/create_watchlist_form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,14 +11,15 @@ export default class DashboardSidebar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      user_id: this.props.match.params.userId,
+      // name: '',
+      // userId: this.props.match.params.userId,
       listFormActive: false
     };
     this.listFormClick = this.listFormClick.bind(this);
-    this.listFormBlur = this.listFormBlur.bind(this);
-    this.formSubmit = this.formSubmit.bind(this);
-    this.listFormChange = this.listFormChange.bind(this);
+    this.closeForm = this.closeForm.bind(this);
+    // this.listFormBlur = this.listFormBlur.bind(this);
+    // this.formSubmit = this.formSubmit.bind(this);
+    // this.listFormChange = this.listFormChange.bind(this);
   }
 
 
@@ -34,26 +35,30 @@ export default class DashboardSidebar extends React.Component {
   listFormClick() {
     this.setState({ listFormActive: true });
   }
-  
-  listFormBlur() {
-    this.setState({ 
-      listFormActive: false,
-      name: ''
-    });
+
+  closeForm() {
+    this.setState({ listFormActive: false });
   }
   
-  listFormChange(e) {
-    this.setState({ name: e.currentTarget.value });
-  }
+  // listFormBlur() {
+  //   this.setState({ 
+  //     listFormActive: false,
+  //     name: ''
+  //   });
+  // }
   
-  formSubmit(e) {
-    e.preventDefault();
-    console.log(this.state.name);
-    this.props.createWatchlist({
-      'name': this.state.name,
-      'user_id': this.state.user_id
-    });
-  }
+  // listFormChange(e) {
+  //   this.setState({ name: e.currentTarget.value });
+  // }
+  
+  // formSubmit(e) {
+  //   e.preventDefault();
+  //   console.log(this.state.name);
+  //   this.props.createWatchlist({
+  //     'name': this.state.name,
+  //     'user_id': this.state.user_id
+  //   });
+  // }
   
   
   render() {
@@ -80,18 +85,11 @@ export default class DashboardSidebar extends React.Component {
           </button>
         </div>
         {this.state.listFormActive ? (
-          <form onSubmit={this.formSubmit} className='sidebar-form'>
-            <input 
-              type="text" 
-              placeholder='List Name'
-              value={this.state.name} 
-              onChange={this.listFormChange}
-            />
-            <div>
-              <button className='cancel-btn' type='button' onClick={this.listFormBlur}>Cancel</button>
-              <button className='create-list-btn'>Create List</button>
-            </div>
-          </form>
+          <CreateWatchlistForm 
+            userId={this.props.match.params.userId}
+            createWatchlist={this.props.createWatchlist}
+            closeForm={this.closeForm}
+          />
         ) : (
           null
         )}        

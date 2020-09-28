@@ -33,10 +33,12 @@ export default class ShareIndexItem extends React.Component {
      });
     const data = [];
     quote.intradayPrices.forEach(time => {
-      if (parseInt(time.label) % 10 === 0) {
-        const datum = { 'time': time.label, 'price': time.average }; 
+      // debugger
+      // if (parseInt(time.minute) % 10 === 0) {
+        const datum = { 'time': time.minute, 'price': time.average }; 
+        debugger
         data.push(datum);
-      }
+      // }
     });
     this.setState({ data: data });
   }
@@ -52,7 +54,7 @@ export default class ShareIndexItem extends React.Component {
     //   return <div className='spinner'>{spinner}</div>;
     // }
     if (!data || !quote) return null;
-    debugger
+    // debugger
     return (
       <Link to={`/auth/companies/${quote.symbol}`} className='share-index-item'>
         <div className='share-btn-left'>
