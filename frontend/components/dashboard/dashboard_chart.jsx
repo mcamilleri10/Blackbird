@@ -23,7 +23,7 @@ export default class DashboardChart extends React.Component {
     return (
       <LineChart width={675} height={350} data={data}
         margin={{top: 5, right: 5, bottom: 5, left: 5}} className='line-chart'>
-        <XAxis hide={true} />
+        <XAxis hide={true} doman={'dataMin + 10, dataMax - 10'}/>
         <YAxis hide={true} type='number' domain={[0, 78]}/>
         <Tooltip content={<CustomTooltip />} />
         <Line type="linear" dataKey="price" stroke={color} dot={false}

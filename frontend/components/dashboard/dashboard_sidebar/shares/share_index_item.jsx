@@ -34,11 +34,11 @@ export default class ShareIndexItem extends React.Component {
     const data = [];
     quote.intradayPrices.forEach(time => {
       // debugger
-      // if (parseInt(time.minute) % 10 === 0) {
+      if (parseInt(time.minute) % 10 === 0) {
         const datum = { 'time': time.minute, 'price': time.average }; 
         // debugger
         data.push(datum);
-      // }
+      }
     });
     this.setState({ data: data });
   }

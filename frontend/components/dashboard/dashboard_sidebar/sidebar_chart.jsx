@@ -36,7 +36,7 @@ export default class SidebarChart extends React.Component {
         <YAxis 
           hide={true} 
           type='number' 
-          // domain={['dataMin - 10', 'dataMax + 10 ']}
+          domain={['dataMin - 10', 'dataMax + 10 ']}
         />
         <Line type="monotone" dataKey="price" stroke={color} dot={false}
           strokeWidth={1}

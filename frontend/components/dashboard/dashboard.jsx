@@ -96,9 +96,14 @@ export default class Dashboard extends React.Component {
       if (this.isShareOwned(quote)) {
         let i = 0;
         const num_owned = user.shares[quote.symbol].numSharesOwned;
+        let nullPrice;
         quote.intradayPrices.forEach(price => {
-          if (i % i === 0) {
+          if (i % 5 === 0) {
             i++;
+            if (price.average === null) {
+              price.average = nullPrice;
+            }
+            nullPrice = price.average;   
             let sum = 0;
             sum += (price.average * num_owned);
             if (dataObj[price.label]) {
