@@ -6,6 +6,7 @@ export const RECEIVE_COMPANY = 'RECEIVE_COMPANY';
 export const RECEIVE_INTRADAY_PRICES = 'RECEIVE_INTRADAY_PRICES';
 // export const RECEIVE_BATCH_INTRADAY_PRICES = 'RECEIVE_BATCH_INTRADAY_PRICES';
 export const RECEIVE_HISTORICAL_PRICES = 'RECEIVE_HISTORICAL_PRICES';
+export const RECEIVE_SEARCH_RESULTS = 'RECEIVE_SEARCH_RESULTS';
 export const START_LOADING = 'START_LOADING';
 
 const receiveQuote = quote => {
@@ -26,6 +27,13 @@ const receiveCompany = company => {
   return {
     type: RECEIVE_COMPANY,
     company
+  };
+};
+
+const receiveSearchResults = results => {
+  return {
+    type: RECEIVE_SEARCH_RESULTS,
+    results
   };
 };
 
@@ -105,9 +113,9 @@ export const requestHistoricalPrices = (symbols, range) => {
 };
 
 
-// export const symbolSearch = fragment => {
-//   return dispatch => {
-//     return IexApiUtil.symbolSearch(fragment)
-//       .then(company => dispatch(receiveCompany(company)));
-//   };
-// };
+export const symbolSearch = fragment => {
+  return dispatch => {
+    return CompaniesApiUtil.symbolSearch(fragment)
+      .then(results => dispatch(receiveSearchResults(results)));
+  };
+};

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session/session_actions';
+import { symbolSearch } from '../../actions/companies/company_actions';
 import Navbar from './navbar';
 
 const mSTP = (state, ownProps) => {
@@ -10,7 +11,8 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => {
   return {
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    symbolSearch: fragment => dispatch(symbolSearch(fragment))
   };
 };
 

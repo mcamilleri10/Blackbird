@@ -51,11 +51,11 @@ export const saveCompany = company => {
   });
 };
 
-// export const symbolSearch = fragment => {
-//   return $.ajax({
-//     url: `https://sandbox.iexapis.com/stable/search/${fragment}?token=${iex_key}`
-//   });
-// };
+export const symbolSearch = fragment => {
+  return $.ajax({
+    url: `https://sandbox.iexapis.com/stable/search/${fragment}?token=${iex_test_key}`
+  });
+};
 
 
 

@@ -4,7 +4,8 @@ import {
   RECEIVE_COMPANY, 
   RECEIVE_INTRADAY_PRICES, 
   // RECEIVE_BATCH_INTRADAY_PRICES,
-  RECEIVE_HISTORICAL_PRICES
+  RECEIVE_HISTORICAL_PRICES, 
+  RECEIVE_SEARCH_RESULTS
 } from '../../../actions/companies/company_actions';
 
 
@@ -42,6 +43,15 @@ const companiesReducer = (state = {}, action) => {
       Object.values(newState).forEach(company => {
         const mergeHist = Object.assign({}, newState[company.symbol], action.prices[company.symbol]);
         newState[company.symbol] = mergeHist;
+      });
+      // debugger
+      return newState;
+    case RECEIVE_SEARCH_RESULTS:
+      action.results.forEach(result => {
+        if (result.region === 'US') {
+          const merged = Object.assign({}, newState[result.symbol], result);
+          newState[result.symbol] = merged;
+        }
       });
       // debugger
       return newState;
