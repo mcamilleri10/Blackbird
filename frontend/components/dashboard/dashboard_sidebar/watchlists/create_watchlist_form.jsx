@@ -45,7 +45,6 @@ export default class CreateWatchlistForm extends React.Component {
         <input
           type="text"
           placeholder='List Name'
-          value={this.state.name}
           onChange={this.listFormChange}
         />
         <div>

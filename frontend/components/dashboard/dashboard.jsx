@@ -196,14 +196,18 @@ export default class Dashboard extends React.Component {
               <button className='range-btn' onClick={e => this.handleRangeClick('1y', e)}>1Y</button>
           </div>
           <div className='buying-power-dd'>
-            <button onClick={this.buyingPowerFormClick} className='buying-power-btn'>
-              <p>Buying Power</p>
-              <p>${user.availableFunds.toFixed(2)}</p>
-            </button>
             {this.state.buyingPowerFormActive ? (
-              <BuyingPowerForm user={user} updateUser={updateUser}/>
+              <div>
+                <button onClick={this.buyingPowerFormClick} className='buying-power-btn active'>
+                  <p>Buying Power</p>
+                </button>
+                  <BuyingPowerForm user={user} updateUser={updateUser}/>
+              </div>
             ) : (
-              null
+              <button onClick={this.buyingPowerFormClick} className='buying-power-btn'>
+                <p>Buying Power</p>
+                <p>${user.availableFunds.toFixed(2)}</p>
+              </button>
             )}
           </div>
         </div>

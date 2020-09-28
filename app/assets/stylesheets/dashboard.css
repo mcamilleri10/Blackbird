@@ -100,7 +100,7 @@
   width: 701px;
   position: relative;
   left: -13px;
-  
+
 } */
 
 .buying-power-btn{
@@ -114,6 +114,17 @@
   border-radius: 5px;
 }
 
+.buying-power-btn.active {
+  border-radius: 5px 5px 0 0;
+  background-color: rgba(211, 211, 211, 0.151);
+  width: 711px;
+  position: relative;
+  left: -18px;
+}
+
+.buying-power-btn.active p {
+  padding: 18px;
+}
 
 .buying-power-btn:hover {
   background-color: rgba(211, 211, 211, 0.151);
@@ -132,9 +143,96 @@
   /* padding: 20px; */
 }
 
-.buying-power-form {
-  height: 250px;
+.buying-power-form-container {
+  width: 711px;
   background-color: rgba(211, 211, 211, 0.151);
+  position: relative;
+  left: -18px;
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.buying-power-form-container div {
+  width: 325px;
+  /* display: flex;
+  justify-content: space-between; */
+}
+
+.buying-power-right p, .buying-power-left p {
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.buying-power-left div {
+  display: flex;
+  justify-content: space-between;
+  text-align: right;
+  border-top: 1px solid rgba(128, 128, 128, 0.514);
+  padding-top: 25px;
+}
+
+.buying-power-right {
+  display: flex;
+  padding-top: 43px;
+  font-weight: 600;
+}
+
+
+.buying-power-form {
+  border-top: 1px solid rgba(128, 128, 128, 0.514);
+  width: 675px;
+  height: 250px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-top: 20px;
+}
+
+.buying-power-form input {
+  width: 200px;
+  height: 30px;
+  padding: 18px 15px;
+  background-color: rgba(211, 211, 211, 0.151);
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  border: 1px solid rgba(211, 211, 211, 0.151);
+}
+
+.buying-power-form input:hover {
+  background-color: rgba(211, 211, 211, 0);
+  border: 1px solid rgba(128, 128, 128, 0.514);
+}
+
+.buying-power-form input:focus {
+  border: 1px solid limegreen;
+}
+
+.buying-power-form p {
+  width: 92px;
+  margin-right: 0;
+  font-size: 16px;
+}
+
+.buying-power-form p:last-of-type {
+  font-weight: 600;
+}
+
+.buying-power-form button {
+  width: 296px;
+  padding: 15px;
+  background-color: limegreen;
+  color: black;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.buying-power-form button:hover {
+  background-color: rgb(68, 207, 68);
 }
 
 .tooltip-label {

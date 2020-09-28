@@ -224,6 +224,10 @@
   margin-left: 10px;
 }
 
+.create-list-btn:hover {
+  background-color: rgb(68, 207, 68);
+}
+
 /* .watchlist-form-dd-btn {
   width: 227px;
   display: flex;
