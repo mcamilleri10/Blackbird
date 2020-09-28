@@ -5,9 +5,10 @@ import configureStore from './store/store';
 
 // testing imports
 import { login, logout, signup } from './actions/session/session_actions';
-import { requestQuote, fetchCompany, requestIntradayPrices, symbolSearch } from './actions/companies/company_actions';
+import { requestQuote, fetchCompany, requestIntradayPrices } from './actions/companies/company_actions';
 import { requestCompanyInfo } from './util/companies/companies_api_util';
 import { fetchShare } from './actions/shares/share_actions';
+import { symbolSearch } from './actions/search/search_actions';
 import { fetchWatchlist } from './actions/watchlists/watchlist_actions';
 import { fetchUser } from './actions/users/user_actions';
 

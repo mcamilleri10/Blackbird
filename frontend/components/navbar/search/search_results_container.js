@@ -4,7 +4,7 @@ import SearchResults from './search_results';
 
 const mSTP = (state, ownProps) => {
   return {
-    
+    searchResults: state.entities.searchResults
   };
 };
 
