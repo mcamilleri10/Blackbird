@@ -16,6 +16,7 @@ class Api::WatchlistsController < ApplicationController
   end
 
   def create
+    # debugger
     @watchlist = Watchlist.new(watchlist_params)
     if @watchlist.save
       render :create
@@ -43,8 +44,8 @@ class Api::WatchlistsController < ApplicationController
   def watchlist_params
     params
       .require(:watchlist)
-      .params.transform_keys(&:underscore)
       .permit(:name, :user_id)
+    end
+    
   end
-
-end
+  # .params.transform_keys(&:underscore)

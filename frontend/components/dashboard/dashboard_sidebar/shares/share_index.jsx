@@ -15,7 +15,7 @@ export default class ShareIndex extends React.Component {
     if (loading) {
       return <div className='spinner'>{spinner}</div>;
     }
-    if (!shares) {
+    if (!shares || !quotes) {
       return null;
     }
     

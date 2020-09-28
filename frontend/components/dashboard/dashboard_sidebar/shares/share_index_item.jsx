@@ -29,7 +29,7 @@ export default class ShareIndexItem extends React.Component {
     this.setState({ 
       dayPriceChange: quote.change,
       dayPercentChange: quote.changePercent,
-      delayedPrice: quote.delayedPrice
+      delayedPrice: quote.iexRealtimePrice
      });
     const data = [];
     quote.intradayPrices.forEach(time => {
@@ -52,6 +52,7 @@ export default class ShareIndexItem extends React.Component {
     //   return <div className='spinner'>{spinner}</div>;
     // }
     if (!data || !quote) return null;
+    debugger
     return (
       <Link to={`/auth/companies/${quote.symbol}`} className='share-index-item'>
         <div className='share-btn-left'>

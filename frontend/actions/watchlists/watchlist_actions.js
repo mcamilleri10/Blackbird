@@ -15,3 +15,10 @@ export const fetchWatchlist = watchlistId => {
       .then(watchlist => dispatch(receiveWatchlist(watchlist)));
   };
 };
+
+export const createWatchlist = watchlist => {
+  return dispatch => {
+    return WatchlistApiUtil.createWatchlist(watchlist)
+      .then(watchlist => dispatch(receiveWatchlist(watchlist)));
+  };
+};

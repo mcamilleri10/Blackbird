@@ -22,8 +22,8 @@
 .share-index-title {
   display: flex;
   justify-content: space-between;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
   border-bottom: 1px solid rgba(128, 128, 128, 0.514);
   min-height: 60px;
 }
@@ -83,10 +83,12 @@
 
 .green {
   color: limegreen;
+  text-align: right;
 }
 
 .red {
   color: red;
+  text-align: right;
 }
 
 .plus-sign {
@@ -100,8 +102,8 @@
 .dashboard-watchlist-form-component {
   display: flex;
   justify-content: space-between;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 22px;
+  padding-right: 22px;
   border-top: 1px solid rgba(128, 128, 128, 0.514);
   border-bottom: 1px solid rgba(128, 128, 128, 0.514);
   min-height: 56px;

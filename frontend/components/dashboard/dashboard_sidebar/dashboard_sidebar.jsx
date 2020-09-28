@@ -11,7 +11,8 @@ export default class DashboardSidebar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      watchlistInput: '',
+      name: '',
+      user_id: this.props.match.params.userId,
       listFormActive: false
     };
     this.listFormClick = this.listFormClick.bind(this);
@@ -37,17 +38,21 @@ export default class DashboardSidebar extends React.Component {
   listFormBlur() {
     this.setState({ 
       listFormActive: false,
-      watchlistInput: ''
+      name: ''
     });
   }
   
   listFormChange(e) {
-    this.setState({ watchlistInput: e.currentTarget.value });
+    this.setState({ name: e.currentTarget.value });
   }
   
   formSubmit(e) {
     e.preventDefault();
-    console.log(this.state.watchlistInput);
+    console.log(this.state.name);
+    this.props.createWatchlist({
+      'name': this.state.name,
+      'user_id': this.state.user_id
+    });
   }
   
   
@@ -79,7 +84,7 @@ export default class DashboardSidebar extends React.Component {
             <input 
               type="text" 
               placeholder='List Name'
-              value={this.state.watchlistInput} 
+              value={this.state.name} 
               onChange={this.listFormChange}
             />
             <div>
