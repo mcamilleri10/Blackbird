@@ -1,8 +1,10 @@
 import React from 'react';
 import ShareIndex from './shares/share_index';
 import WatchlistIndex from './watchlists/watchlist_index';
+import WatchlistFormDropdown from './watchlists/watchlist_form_dropdown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
 
 export default class DashboardSidebar extends React.Component {
 
@@ -27,23 +29,27 @@ export default class DashboardSidebar extends React.Component {
   }
 
   
+  
   listFormClick() {
     this.setState({ listFormActive: true });
   }
-
+  
   listFormBlur() {
-    this.setState({ listFormActive: false });
+    this.setState({ 
+      listFormActive: false,
+      watchlistInput: ''
+    });
   }
-
+  
   listFormChange(e) {
     this.setState({ watchlistInput: e.currentTarget.value });
   }
-
+  
   formSubmit(e) {
     e.preventDefault();
     console.log(this.state.watchlistInput);
   }
-
+  
   
   render() {
     // debugger
@@ -56,39 +62,47 @@ export default class DashboardSidebar extends React.Component {
           shares={shares} 
           quotes={quotes} 
           loading={loading}
-        />
+          />
         </div>
         <div className='dashboard-watchlist-form-component'>
-          <h3>Lists</h3>
-          <button 
-            className='plus-sign' 
-            onClick={this.listFormClick} 
-            // onBlur={this.listFormBlur}
-          >
+        <h3>Lists</h3>
+        <button 
+          className='plus-sign' 
+          onClick={this.listFormClick} 
+          // onBlur={this.listFormBlur}
+        >
             {plusSign}
           </button>
         </div>
         {this.state.listFormActive ? (
-          <form onSubmit={this.formSubmit} className='sidebar-form' onClick={e => e.stopPropagation()}>
+          <form onSubmit={this.formSubmit} className='sidebar-form'>
             <input 
               type="text" 
+              placeholder='List Name'
               value={this.state.watchlistInput} 
               onChange={this.listFormChange}
             />
-            <button className='cancel-btn' type='button' onClick={this.listFormBlur}>Cancel</button>
-            <button className='create-list-btn'>Create List</button>
+            <div>
+              <button className='cancel-btn' type='button' onClick={this.listFormBlur}>Cancel</button>
+              <button className='create-list-btn'>Create List</button>
+            </div>
           </form>
         ) : (
           null
-        )}
+        )}        
         <div className='watchlist-index-component'>
           <WatchlistIndex
             watchlists={watchlists}
             quotes={quotes}
             loading={loading}
-          />
+            />
         </div>
       </div>
     );
   }
 }
+
+
+
+
+
