@@ -65,3 +65,13 @@
 .navbar-right button:hover {
   color: limegreen;
 }
+
+.search-results {
+  height: 200px;
+  width: 480px;
+  z-index: 10;
+  position: absolute;
+  background-color: red;
+  color: black;
+  
+}

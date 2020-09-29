@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFeatherAlt } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import SearchResults from './search/search_results';
 
 
 export default class Navbar extends React.Component {
@@ -28,7 +29,7 @@ export default class Navbar extends React.Component {
   render() {
     const logo = <FontAwesomeIcon icon={faFeatherAlt}/>;
     const search = <FontAwesomeIcon icon={faSearch}/>;
-
+    const { searchResults } = this.props;
     return (
       <div className='navbar'>
         <div className='navbar-left'>

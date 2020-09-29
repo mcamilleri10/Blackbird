@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import SearchResultItem from './search_result_item';
 
 export default class SearchResults extends React.Component {
 
@@ -6,22 +8,26 @@ export default class SearchResults extends React.Component {
 
   render() {
     const { searchResults } = this.props;
-    const results = searchResults.slice(0, 5);
+    if (!searchResults) return null;
+    // debugger
     return (
       <div>
-        {(typeof results[0] === 'undefined') ? (
+        {(typeof searchResults[0] === 'undefined') ? (
           null
         ) : (
-          <div>
+          <div className='search-results'>
             <ul>
-              {results.forEach(result => {
+              {searchResults.slice(0, 5).map(result => {
+                // debugger
                 return (
-                  <li key={result.symbol}>
-                    <div>{result.symbol}</div>
-                    <div>{result.securityName}</div>
-                  </li>
+                  <SearchResultItem 
+                    key={result.symbol}
+                    symbol={result.symbol}
+                    name={result.securityName}
+                  />
                 );
               })}
+
             </ul>
           </div>
         )}
