@@ -1,7 +1,7 @@
 import { RECEIVE_COLOR } from '../../../actions/ui/ui_actions';
 
 
-const colorReducer = (state = 'limegreen', action) => {
+const colorReducer = (state = 'gray', action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_COLOR:

@@ -12,7 +12,11 @@ export default class Dashboard extends React.Component {
       dayPercentChange: 0,
       data: null,
       buyingPowerFormActive: false,
-      activeRangeBtn: '1d'
+      active1dBtn: true,
+      active5dmBtn: false,
+      active1mmBtn: false,
+      active3mBtn: false,
+      active1yBtn: false
     };
 
     this.fetchRealtimeQuotes = this.fetchRealtimeQuotes.bind(this);
@@ -22,6 +26,8 @@ export default class Dashboard extends React.Component {
     this.formatHistData = this.formatHistData.bind(this);
     this.buyingPowerFormClick = this.buyingPowerFormClick.bind(this);
   }
+
+  // `range-btn ${color}-h`
 
   componentDidMount() {
     // this.props.startLoading();
@@ -42,6 +48,20 @@ export default class Dashboard extends React.Component {
       this.props.requestHistoricalPrices(symbols, range)
         .then(() => this.formatHistData());
     }
+    // debugger
+    this.rangeBtnClass(range);
+  }
+
+  rangeBtnClass(range) {
+    this.setState({
+      active1dBtn: false,
+      active5dmBtn: false,
+      active1mmBtn: false,
+      active3mBtn: false,
+      active1yBtn: false
+    });
+    const activeBtn = `active${range}Btn`;
+    this.setState({ [activeBtn]: true });
   }
 
   buyingPowerFormClick() {
@@ -174,6 +194,7 @@ export default class Dashboard extends React.Component {
 
   render() {
     const { user, quotes, shares, updateUser, color, receiveColor } = this.props;
+    debugger
     return (
       <div className='dashboard-left'>
         {/* <button onClick={this.fetchBatchIntradayPrices}>intraday prices</button> */}
@@ -204,19 +225,34 @@ export default class Dashboard extends React.Component {
             />
           </div>
           <div className='range-btns'>
-              <button className={`range-btn ${color}-h`} onClick={e => this.handleRangeClick('1d', e)}>
+              <button 
+                className={this.state.active1dBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)} 
+                onClick={e => this.handleRangeClick('1d', e)}
+              >
                 1D
               </button>
-              <button className={`range-btn ${color}-h`} onClick={e => this.handleRangeClick('5dm', e)}>
+              <button 
+                className={this.state.active5dmBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
+                onClick={e => this.handleRangeClick('5dm', e)}
+              >
                 1W
               </button>
-              <button className={`range-btn ${color}-h`} onClick={e => this.handleRangeClick('1mm', e)}>
+              <button 
+                className={this.state.active1mmBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
+                onClick={e => this.handleRangeClick('1mm', e)}
+              >
                 1M
               </button>
-              <button className={`range-btn ${color}-h`} onClick={e => this.handleRangeClick('3m', e)}>
+              <button 
+                className={this.state.active3mBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
+                onClick={e => this.handleRangeClick('3m', e)}
+              >
                 3M
               </button>
-              <button className={`range-btn ${color}-h`} onClick={e => this.handleRangeClick('1y', e)}>
+              <button 
+                className={this.state.active1yBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
+                onClick={e => this.handleRangeClick('1y', e)}
+              >
                 1Y
               </button>
           </div>

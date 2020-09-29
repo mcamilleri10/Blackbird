@@ -74,19 +74,13 @@
   border-bottom: 1px solid rgba(128, 128, 128, 0.514);
 }
 
-.range-btns button {
+.range-btn {
   margin-right: 20px;
   font-size: 16px;
   font-weight: 600;
   padding-bottom: 16px;
 }
 
-
-
-.range-btns button:focus {
-  border-bottom: 2px solid limegreen;
-  color: limegreen;
-}
 
 .buying-power-dd {
   border-bottom: 1px solid rgba(128, 128, 128, 0.514);
@@ -293,4 +287,15 @@
 
 .red-bfocus:focus {
   border:1px solid red;
+}
+
+.limegreen-bb {
+  color: limegreen;
+  border-bottom: 2px solid limegreen;
+}
+
+.red-bb {
+  font-size: 17px;
+  color: red;
+  border-bottom: 2px solid red;
 }
