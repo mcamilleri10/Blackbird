@@ -21,7 +21,7 @@ const App = () => {
         <AuthRoute exact path='/' component={SplashContainer}/>
       </Switch>
       <ProtectedRoute path='/auth' component={NavbarContainer}/>
-      <ProtectedRoute paht='/auth' component={SearchResultsContainer}/>
+      {/* <ProtectedRoute paht='/auth' component={SearchResultsContainer}/> */}
       <div className='dashboard-body'>
         <div className='dashboard'>
           <ProtectedRoute path='/auth/users/:userId' component={DashboardContainer}/>

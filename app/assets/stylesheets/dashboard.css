@@ -1,9 +1,9 @@
 .dashboard-body {
-  background-color: black;
+  background-color: rgb(12, 12, 12);
 }
 
 .dashboard {
-  background-color: black;
+  background-color: rgb(12, 12, 12);
   color: white;
   display: flex;
   justify-content: space-around;
@@ -15,7 +15,7 @@
 .dashboard-left {
   display: block;
   /* justify-content: space-evenly; */
-  background-color: rgba(0, 0, 0, 0.960);
+  background-color: rgb(12, 12, 12);
   color: white;
   padding-bottom: 15vh;
   /* position: relative; */

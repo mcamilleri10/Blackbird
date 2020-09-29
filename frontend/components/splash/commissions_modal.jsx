@@ -9,7 +9,7 @@ const CommissionsModal = () => {
         self-directed accounts via mobile devices or web. Keep in mind, 
         other fees may still apply. */}
         While blackbird does indeed offer commission-free trading, it is becuase 
-        none of the transactions are real! But it's fun to pretend isn't it?
+        none of the transactions are real!
       </p>
     </div>
   );

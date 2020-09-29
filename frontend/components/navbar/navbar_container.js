@@ -5,7 +5,7 @@ import Navbar from './navbar';
 
 const mSTP = (state, ownProps) => {
   return {
-    // searchResults: state.entities.searchResults
+    searchResults: state.entities.searchResults
   };
 };
 
