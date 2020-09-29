@@ -14,6 +14,7 @@ export default class Search extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.resultsActive = this.resultsActive.bind(this);
     this.resultsInactive = this.resultsInactive.bind(this);
+    this.closeResults = this.closeResults.bind(this);
   }
 
   handleChange(e) {
@@ -22,12 +23,18 @@ export default class Search extends React.Component {
   }
 
   initiateSearch() {
-    this.resultsActive();
-    this.props.symbolSearch(this.state.searchValue);
+    if (this.state.searchValue.length > 0) {
+      this.resultsActive();
+      this.props.symbolSearch(this.state.searchValue);
+    } else {
+      this.closeResults();
+    }
   }
 
   resultsActive() {
-    this.setState({ resultsActive: true });
+    if (this.state.searchValue.length > 0) {
+      this.setState({ resultsActive: true });
+    }
   }
 
   resultsInactive(e) {
@@ -35,11 +42,17 @@ export default class Search extends React.Component {
       this.setState({ resultsActive: false });
     }
   }
+
+  closeResults() {
+    this.setState({ resultsActive: false });
+  }
   
 
   render() {
     const { searchResults } = this.props;
     const search = <FontAwesomeIcon icon={faSearch} />;
+    if (this.state.searchValue === '') this.closeResults;
+    // debugger
     return (
       <div className='search-bar'>
         <div className='search-icon'>{search}</div>
@@ -48,12 +61,12 @@ export default class Search extends React.Component {
             type="text"
             placeholder='Search'
             onChange={this.handleChange}
-            // onFocus={this.resultsActive}
+            onFocus={this.resultsActive}
             onBlur={this.resultsInactive}
           />
         </form>
         {this.state.resultsActive ? (
-          <SearchResults 
+          <SearchResults
             searchResults={searchResults} 
             searchValue={this.state.searchValue}
           />

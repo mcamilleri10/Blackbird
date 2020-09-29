@@ -9,10 +9,13 @@ export default class SearchResultItem extends React.Component {
     let symbol2 = '';
     let name1 = '';
     let name2 = '';
-    debugger
+    // debugger
     for (let i = 0; i < searchValue.length; i++) {
-      debugger
-      if (searchValue[i].toUpperCase() === symbol[i].toUpperCase()) {
+      // debugger
+      if (
+        (symbol.length >= searchValue.length) &&
+        (searchValue[i].toUpperCase() === symbol[i].toUpperCase())
+      ) {
         symbol1 += symbol[i];
       } else {
         symbol2 += symbol[i];
@@ -25,14 +28,17 @@ export default class SearchResultItem extends React.Component {
     }
     symbol2 += symbol.slice(searchValue.length);
     name2 += name.slice(searchValue.length);
-    debugger
+    // debugger
 
     return (
-      <li className='search-result-item' onClick={e => e.stopPropagation()}>
-        <Link to='/' onClick={e => e.stopPropagation()}>
-          {/* <p className='search-match'>{symbol1}</p><p>{symbol2}</p> */}
-          <div>{symbol}</div>
-          <div>{name}</div>
+      <li className='search-result-item' key={symbol}>
+        <Link to='/'>
+          {/* <div>{symbol}</div> */}
+          <p className='search-match'>{symbol1}</p>
+          <p className='search-leftover'>{symbol2}</p>
+          {/* <div>{name}</div> */}
+          <p className='search-match'>{name1}</p>
+          <p className='search-leftover'>{name2}</p>
         </Link>
       </li>
     );

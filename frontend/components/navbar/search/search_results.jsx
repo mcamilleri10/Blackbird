@@ -6,23 +6,33 @@ export default class SearchResults extends React.Component {
 
 
   render() {
-    const { searchResults, searchValue } = this.props;
+    const { searchResults, searchValue, closeResults } = this.props;
     if (!searchResults) return null;
-    // debugger
     return (
-      <div className='search-results' onClick={e => e.stopPropagation()}>
-        <ul>
-          {searchResults.slice(0, 5).map(result => {
-            return (
-              <SearchResultItem 
-                key={result.symbol}
-                symbol={result.symbol}
-                name={result.securityName}
-                searchValue={searchValue}
-              />
-            );
-          })}
-        </ul>
+      <div className='search-results'>
+        {searchResults.length < 1 ? (
+          <p className='search-error'>
+            We were unable to find any results for your search.
+          </p>
+        ) : (
+          <div>
+            <h5 className='search-title'>Stocks</h5>
+              <ul>
+              {searchResults.slice(0, 5).map(result => {
+                // debugger
+                return (
+                  <div key={result.symbol}>                
+                    <SearchResultItem 
+                      symbol={result.symbol}
+                      name={result.securityName}
+                      searchValue={searchValue}
+                    />
+                  </div>
+                );
+              })}
+            </ul>
+          </div>
+        )}
       </div>
     );
   }
