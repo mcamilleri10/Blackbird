@@ -33,7 +33,7 @@ export default class CreateWatchlistForm extends React.Component {
 
   formSubmit(e) {
     e.preventDefault();
-    console.log(this.state.name);
+    // console.log(this.state.name);
     this.props.createWatchlist(this.state);
     this.setState({ name: '' });
     this.props.closeForm();
