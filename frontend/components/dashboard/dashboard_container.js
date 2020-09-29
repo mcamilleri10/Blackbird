@@ -4,6 +4,7 @@ import { logout } from '../../actions/session/session_actions';
 import { fetchShare } from '../../actions/shares/share_actions';
 import { fetchUser, updateUser } from '../../actions/users/user_actions';
 import { fetchWatchlist } from '../../actions/watchlists/watchlist_actions';
+import { receiveColor } from '../../actions/ui/ui_actions';
 import { 
   requestQuote, 
   requestQuotes,
@@ -18,7 +19,8 @@ const mSTP = (state, ownProps) => {
     user: user,
     shares: Object.values(state.entities.shares),
     watchlists: Object.values(state.entities.watchlists),
-    quotes: Object.values(state.entities.companies)
+    quotes: Object.values(state.entities.companies),
+    color: state.ui.color
   };
 };
 
@@ -32,7 +34,8 @@ const mDTP = dispatch => {
     requestQuotes: (symbols) => dispatch(requestQuotes(symbols)),
     requestHistoricalPrices: (symbols, range) => dispatch(requestHistoricalPrices(symbols, range)),
     startLoading: () => dispatch(startLoading()),
-    updateUser: user => dispatch(updateUser(user))
+    updateUser: user => dispatch(updateUser(user)),
+    receiveColor: color => dispatch(receiveColor(color))
   };
 };
 

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default class SearchResultItem extends React.Component {
 
   render() {
-    const { symbol, name, searchValue } = this.props;
+    const { symbol, name, searchValue, color } = this.props;
     let symbol1 = '';
     let symbol2 = '';
     let name1 = '';
@@ -32,13 +32,15 @@ export default class SearchResultItem extends React.Component {
 
     return (
       <li className='search-result-item' key={symbol}>
-        <Link to='/'>
-          {/* <div>{symbol}</div> */}
-          <p className='search-match'>{symbol1}</p>
-          <p className='search-leftover'>{symbol2}</p>
-          {/* <div>{name}</div> */}
-          <p className='search-match'>{name1}</p>
-          <p className='search-leftover'>{name2}</p>
+        <Link to='/' className='search-result-link'>
+          <div>
+            <p className={`search-match ${color}`}>{symbol1}</p>
+            <p className='search-leftover'>{symbol2}</p>
+          </div>
+          <div>
+            <p className={`search-match ${color}`}>{name1}</p>
+            <p className='search-leftover'>{name2}</p>
+          </div>
         </Link>
       </li>
     );

@@ -11,7 +11,8 @@ export default class Dashboard extends React.Component {
       dayPriceChange: 0,
       dayPercentChange: 0,
       data: null,
-      buyingPowerFormActive: false
+      buyingPowerFormActive: false,
+      activeRangeBtn: '1d'
     };
 
     this.fetchRealtimeQuotes = this.fetchRealtimeQuotes.bind(this);
@@ -35,8 +36,12 @@ export default class Dashboard extends React.Component {
   handleRangeClick(range, e) {
     e.preventDefault();
     const symbols = this.createSymbolStr();
-    this.props.requestHistoricalPrices(symbols, range)
-      .then(() => this.formatHistData());
+    if (range === '1d') {
+      this.formatIntraData();
+    } else {
+      this.props.requestHistoricalPrices(symbols, range)
+        .then(() => this.formatHistData());
+    }
   }
 
   buyingPowerFormClick() {
@@ -70,7 +75,7 @@ export default class Dashboard extends React.Component {
   }
 
   calculateTotalValue() {
-    const { quotes, user } = this.props;
+    const { quotes, user, receiveColor } = this.props;
     let sum = user.availableFunds;
     let changePrice = 0;
     let changePercent = 0;
@@ -84,9 +89,14 @@ export default class Dashboard extends React.Component {
     });
     this.setState({ 
       totalValue: sum.toFixed(2),
-      dayPriceChange: changePrice.toFixed(2),
-      dayPercentChange: changePercent.toFixed(2)
+      dayPriceChange: changePrice,
+      dayPercentChange: changePercent
     });
+    if (changePrice >= 0) {
+      receiveColor('limegreen');
+    } else {
+      receiveColor('red');
+    }
   }
 
   formatIntraData() {
@@ -163,7 +173,7 @@ export default class Dashboard extends React.Component {
 
 
   render() {
-    const { user, quotes, shares, updateUser } = this.props;
+    const { user, quotes, shares, updateUser, color, receiveColor } = this.props;
     return (
       <div className='dashboard-left'>
         {/* <button onClick={this.fetchBatchIntradayPrices}>intraday prices</button> */}
@@ -174,14 +184,14 @@ export default class Dashboard extends React.Component {
           <div className='total-account-value'>
             <h1>${this.state.totalValue}</h1>
             {this.state.dayPriceChange >= 0 ? (
-              <p>+${this.state.dayPriceChange}</p>
+              <p>+${this.state.dayPriceChange.toFixed(2)}</p>
             ) : (
-              <p>-${this.state.dayPriceChange}</p>
+              <p>-${-this.state.dayPriceChange.toFixed(2)}</p>
             )}
             {this.state.dayPercentChange >= 0 ? (
-              <p>(+{this.state.dayPercentChange}%)</p>
+              <p>(+{this.state.dayPercentChange.toFixed(2)}%)</p>
             ) : (
-              <p>(-{this.state.dayPercentChange}%)</p>
+              <p>(-{-this.state.dayPercentChange.toFixed(2)}%)</p>
             )}
           </div>
           <div className='dashboard-graph'>
@@ -194,11 +204,21 @@ export default class Dashboard extends React.Component {
             />
           </div>
           <div className='range-btns'>
-              <button className='range-btn' onClick={this.formatIntraData}>1D</button>
-              <button className='range-btn' onClick={e => this.handleRangeClick('5dm', e)}>1W</button>
-              <button className='range-btn' onClick={e => this.handleRangeClick('1mm', e)}>1M</button>
-              <button className='range-btn' onClick={e => this.handleRangeClick('3m', e)}>3M</button>
-              <button className='range-btn' onClick={e => this.handleRangeClick('1y', e)}>1Y</button>
+              <button className={`range-btn ${color}-h`} onClick={e => this.handleRangeClick('1d', e)}>
+                1D
+              </button>
+              <button className={`range-btn ${color}-h`} onClick={e => this.handleRangeClick('5dm', e)}>
+                1W
+              </button>
+              <button className={`range-btn ${color}-h`} onClick={e => this.handleRangeClick('1mm', e)}>
+                1M
+              </button>
+              <button className={`range-btn ${color}-h`} onClick={e => this.handleRangeClick('3m', e)}>
+                3M
+              </button>
+              <button className={`range-btn ${color}-h`} onClick={e => this.handleRangeClick('1y', e)}>
+                1Y
+              </button>
           </div>
           <div className='buying-power-dd'>
             {this.state.buyingPowerFormActive ? (
@@ -206,7 +226,11 @@ export default class Dashboard extends React.Component {
                 <button onClick={this.buyingPowerFormClick} className='buying-power-btn active'>
                   <p>Buying Power</p>
                 </button>
-                  <BuyingPowerForm user={user} updateUser={updateUser}/>
+                  <BuyingPowerForm 
+                    user={user} 
+                    updateUser={updateUser} 
+                    color={color}
+                  />
               </div>
             ) : (
               <button onClick={this.buyingPowerFormClick} className='buying-power-btn'>

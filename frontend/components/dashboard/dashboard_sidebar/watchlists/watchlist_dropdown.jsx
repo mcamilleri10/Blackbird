@@ -22,7 +22,7 @@ export default class WatchlistDropdown extends React.Component {
 
 
   render() {
-    const { watchlist, quotes, loading } = this.props;
+    const { watchlist, quotes, loading, color } = this.props;
     const downArrow = <FontAwesomeIcon icon={faAngleDown} />;
     const upArrow = <FontAwesomeIcon icon={faAngleUp} />;
     
@@ -33,9 +33,9 @@ export default class WatchlistDropdown extends React.Component {
             {watchlist.name}
           </Link>
           {this.state.active ? (
-            <div className='arrow'>{upArrow}</div>
+            <div className={`arrow ${color}-h`}>{upArrow}</div>
           ) : (
-            <div className='arrow'>{downArrow}</div>
+            <div className={`arrow ${color}-h`}>{downArrow}</div>
           )}
         </div>
 

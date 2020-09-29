@@ -11,7 +11,7 @@ export default class WatchlistIndex extends React.Component {
 
 
   render() {
-    const { watchlists, quotes, loading } = this.props;
+    const { watchlists, quotes, loading, color } = this.props;
     const spinner = <FontAwesomeIcon icon={faSpinner} spin />;
 
     if (loading) {
@@ -26,6 +26,7 @@ export default class WatchlistIndex extends React.Component {
             watchlist={watchlist}
             quotes={quotes}
             loading={loading}
+            color={color}
           />;
         })}
       </div>

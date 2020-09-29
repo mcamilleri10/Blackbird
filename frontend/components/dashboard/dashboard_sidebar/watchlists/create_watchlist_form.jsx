@@ -40,16 +40,24 @@ export default class CreateWatchlistForm extends React.Component {
   }
 
   render() {
+    const { closeForm, color } = this.props;
     return (
       <form onSubmit={this.formSubmit} className='dashboard-sidebar-form'>
         <input
           type="text"
           placeholder='List Name'
           onChange={this.listFormChange}
+          className={`${color}-bfocus`}
         />
         <div>
-          <button className='cancel-btn' type='button' onClick={this.props.closeForm}>Cancel</button>
-          <button className='create-list-btn'>Create List</button>
+          <button 
+            className={`cancel-btn ${color} ${color}-b`} 
+            type='button' 
+            onClick={closeForm}
+          >
+            Cancel
+          </button>
+          <button className={`create-list-btn ${color}-bg ${color}-hlite`}>Create List</button>
         </div>
       </form>
     );

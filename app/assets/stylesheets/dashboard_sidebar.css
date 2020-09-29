@@ -95,9 +95,9 @@
   line-height: 56px;
 }
 
-.plus-sign:hover {
+/* .plus-sign:hover {
   color: limegreen;
-}
+} */
 
 .dashboard-watchlist-form-component {
   display: flex;
@@ -127,9 +127,9 @@
   cursor: pointer;
 }
 
-.watchlist-list-item:hover .arrow {
+/* .watchlist-list-item:hover .arrow {
   color: limegreen;
-}
+} */
 
 .dashboard-sidebar .recharts-surface:hover {
   cursor: pointer;
@@ -161,9 +161,9 @@
   font-size: 20px;
 }
 
-.share-index-dd:hover {
+/* .share-index-dd:hover {
   color: limegreen;
-}
+} */
 
 .dashboard-sidebar-form {
   display: flex;
@@ -186,12 +186,12 @@
 
 .dashboard-sidebar-form input:hover {
   background-color: rgba(211, 211, 211, 0);
-  border: 1px solid rgba(128, 128, 128, 0.514);
+  /* border: 1px solid rgba(128, 128, 128, 0.514); */
 }
 
-.dashboard-sidebar-form input:focus {
+/* .dashboard-sidebar-form input:focus {
   border: 1px solid limegreen;
-}
+} */
 
 .dashboard-sidebar-form div {
   display: flex;
@@ -200,7 +200,7 @@
 .dashboard-sidebar-form button {
   display: inline-block;
   height: 25px;
-  border: 1px solid limegreen;
+  /* border: 1px solid limegreen; */
   font-size: 15px;
   font-weight: 600;
   line-height: 2px;
@@ -211,21 +211,21 @@
 .cancel-btn {
   width: 80px;
   padding: 15px;
-  color: limegreen;
+  /* color: limegreen; */
   border-radius: 5px;
 }
 
 .create-list-btn {
   width: 100px;
   padding: 15px;
-  background-color: limegreen;
+  /* background-color: limegreen; */
   color: black;
   border-radius: 5px;
   margin-left: 10px;
 }
 
 .create-list-btn:hover {
-  background-color: rgb(68, 207, 68);
+  /* background-color: rgb(68, 207, 68); */
 }
 
 /* .watchlist-form-dd-btn {

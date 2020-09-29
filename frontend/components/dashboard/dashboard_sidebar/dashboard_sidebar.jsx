@@ -63,7 +63,7 @@ export default class DashboardSidebar extends React.Component {
   
   render() {
     // debugger
-    const { shares, watchlists, quotes, loading } = this.props;
+    const { shares, watchlists, quotes, loading, color } = this.props;
     const plusSign = <FontAwesomeIcon icon={faPlus} />;
     return (
       <div className='dashboard-sidebar'>
@@ -72,12 +72,13 @@ export default class DashboardSidebar extends React.Component {
           shares={shares} 
           quotes={quotes} 
           loading={loading}
+          color={color}
           />
         </div>
         <div className='dashboard-watchlist-form-component'>
         <h3>Lists</h3>
         <button 
-          className='plus-sign' 
+          className={`plus-sign ${color}-h`} 
           onClick={this.listFormClick} 
           // onBlur={this.listFormBlur}
         >
@@ -89,6 +90,7 @@ export default class DashboardSidebar extends React.Component {
             userId={this.props.match.params.userId}
             createWatchlist={this.props.createWatchlist}
             closeForm={this.closeForm}
+            color={color}
           />
         ) : (
           null
@@ -98,6 +100,7 @@ export default class DashboardSidebar extends React.Component {
             watchlists={watchlists}
             quotes={quotes}
             loading={loading}
+            color={color}
             />
         </div>
       </div>

@@ -45,7 +45,7 @@ export default class ShareIndexItem extends React.Component {
 
 
   render() {
-    const { share, quote, loading } = this.props;
+    const { share, quote, loading, color } = this.props;
     const { data, dayPriceChange, dayPercentChange, delayedPrice } = this.state;
     // debugger
     const spinner = <FontAwesomeIcon icon={faSpinner} className='spinner' spin />;
@@ -75,7 +75,7 @@ export default class ShareIndexItem extends React.Component {
         </div>
         <div className='share-btn-right'>
           <p>${delayedPrice.toFixed(2)}</p>
-          <p className={dayPercentChange >= 0 ? 'green' : 'red'}>
+          <p className={dayPercentChange >= 0 ? 'limegreen' : 'red'}>
             {dayPercentChange.toFixed(2)}%
             </p>
         </div>

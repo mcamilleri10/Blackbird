@@ -11,7 +11,8 @@ const mSTP = (state, ownProps) => {
     shares: Object.values(state.entities.shares),
     watchlists: Object.values(state.entities.watchlists),
     quotes: state.entities.companies,
-    loading: state.ui.loading
+    loading: state.ui.loading,
+    color: state.ui.color
   };
 };
 

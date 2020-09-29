@@ -81,9 +81,7 @@
   padding-bottom: 16px;
 }
 
-.range-btns button:hover {
-  color: limegreen;
-}
+
 
 .range-btns button:focus {
   border-bottom: 2px solid limegreen;
@@ -247,4 +245,52 @@
 
 .line-chart {
   border-bottom: 1px dotted rgba(211, 211, 211, 0.603);
+}
+
+.limegreen {
+  color: limegreen;
+}
+
+.red {
+  color: red;
+}
+
+.limegreen-bg {
+  background-color: limegreen;
+}
+
+.red-bg {
+  background-color: red;
+}
+
+.limegreen-h:hover {
+  color: limegreen;
+}
+
+.red-h:hover {
+  color: red;
+}
+
+.limegreen-hlite:hover {
+  background-color: rgb(68, 207, 68);
+}
+
+.red-hlite:hover {
+  background-color: rgb(255, 64, 64);
+}
+
+.limegreen-b {
+  border: 1px solid limegreen;
+}
+
+.red-b {
+  border: 1px solid red;
+}
+
+.limegreen-bfocus:focus {
+  border: 1px solid limegreen;
+}
+
+.red-bfocus:focus {
+  border:1px solid red;
 }

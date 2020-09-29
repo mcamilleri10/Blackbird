@@ -25,7 +25,7 @@ export default class BuyingPowerForm extends React.Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, color } = this.props;
     const dollarSign = <FontAwesomeIcon icon={faDollarSign} />;
     return (
       <div className='buying-power-form-container'>

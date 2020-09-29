@@ -8,7 +8,7 @@ export default class ShareIndex extends React.Component {
 
 
   render() {
-    const { shares, quotes, loading } = this.props;
+    const { shares, quotes, loading, color } = this.props;
     const spinner = <FontAwesomeIcon icon={faSpinner} spin/>;
     const ellipsis = <FontAwesomeIcon icon={faEllipsisH}/>;
     
@@ -24,7 +24,7 @@ export default class ShareIndex extends React.Component {
       <div className='share-index'>
         <div className='share-index-title'>
           <h3>Stocks</h3>
-          <button className='share-index-dd'>
+          <button className={`share-index-dd ${color}-h`}>
             {ellipsis}
           </button>
         </div>
@@ -37,6 +37,7 @@ export default class ShareIndex extends React.Component {
                   share={share} 
                   quote={quotes[share.companyId]}
                   loading={loading}
+                  color={color}
                 />
               );
             })}

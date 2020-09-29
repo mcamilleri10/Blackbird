@@ -49,7 +49,7 @@ export default class Search extends React.Component {
   
 
   render() {
-    const { searchResults } = this.props;
+    const { searchResults, color } = this.props;
     const search = <FontAwesomeIcon icon={faSearch} />;
     if (this.state.searchValue === '') this.closeResults;
     // debugger
@@ -69,6 +69,7 @@ export default class Search extends React.Component {
           <SearchResults
             searchResults={searchResults} 
             searchValue={this.state.searchValue}
+            color={color}
           />
         ) : (
           null

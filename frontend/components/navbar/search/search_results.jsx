@@ -6,7 +6,7 @@ export default class SearchResults extends React.Component {
 
 
   render() {
-    const { searchResults, searchValue, closeResults } = this.props;
+    const { searchResults, searchValue, closeResults, color } = this.props;
     if (!searchResults) return null;
     return (
       <div className='search-results'>
@@ -21,11 +21,12 @@ export default class SearchResults extends React.Component {
               {searchResults.slice(0, 5).map(result => {
                 // debugger
                 return (
-                  <div key={result.symbol}>                
+                  <div key={result.symbol} className='search-hover'>                
                     <SearchResultItem 
                       symbol={result.symbol}
                       name={result.securityName}
                       searchValue={searchValue}
+                      color={color}
                     />
                   </div>
                 );
