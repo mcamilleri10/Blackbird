@@ -28,7 +28,9 @@ const App = () => {
           <ProtectedRoute path='/auth/users/:userId' component={DashboardSidebarContainer}/>
         </div>
       </div>
-      <ProtectedRoute path='/auth/companies/:companyId' component={CompanyContainer}/>
+      <div className='company-body'>
+        <ProtectedRoute path='/auth/companies/:companyId' component={CompanyContainer}/>
+      </div>
       <ProtectedRoute path='/auth/watchlists/:watchlistId' component={WatchlistContainer}/>
     </div>
   );

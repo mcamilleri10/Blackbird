@@ -16,6 +16,7 @@ const companiesReducer = (state = {}, action) => {
     case RECEIVE_QUOTE:
       const quote = action.quote;
       const merged = Object.assign({}, newState[quote.symbol], quote); // merge company info and company quote
+      debugger
       return Object.assign({}, { [quote.symbol]: merged });
     case RECEIVE_QUOTES:
       const quotes = action.quotes;
