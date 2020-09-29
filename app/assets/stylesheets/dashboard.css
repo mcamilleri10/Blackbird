@@ -290,12 +290,15 @@
 }
 
 .limegreen-bb {
+  font-size: 17px;
   color: limegreen;
   border-bottom: 2px solid limegreen;
+  padding-bottom: 14px;
 }
 
 .red-bb {
   font-size: 17px;
   color: red;
   border-bottom: 2px solid red;
+  padding-bottom: 14px;
 }
