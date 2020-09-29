@@ -35,7 +35,7 @@
 }
 
 .spinner {
-  color: limegreen;
+  color: rgba(211, 211, 211, 0.329);
   text-align: center;
   padding-top: 18px;
   /* max-height: 6px; */
@@ -79,6 +79,13 @@
 .share-btn-left h4 {
   margin: 0;
   font-weight: 600;
+}
+
+.share-btn-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-evenly;
 }
 
 .green {

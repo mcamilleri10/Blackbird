@@ -29,9 +29,12 @@ export default class WatchlistDropdown extends React.Component {
     return (
       <div className='watchlist-dd' onClick={this.handleClick}>       
         <div className='watchlist-list-item'>
-          <Link to={`/auth/watchlists/${watchlist.id}`} className='watchlist-link'>
+          {/* <Link to={`/auth/watchlists/${watchlist.id}`} className='watchlist-link'>  // COME BACK TO THIS!!
             {watchlist.name}
-          </Link>
+          </Link> */}
+          <div to={`/auth/watchlists/${watchlist.id}`} className='watchlist-link'>
+            {watchlist.name}
+          </div>
           {this.state.active ? (
             <div className={`arrow ${color}-h`}>{upArrow}</div>
           ) : (

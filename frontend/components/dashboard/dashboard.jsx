@@ -194,7 +194,7 @@ export default class Dashboard extends React.Component {
 
   render() {
     const { user, quotes, shares, updateUser, color, receiveColor } = this.props;
-    debugger
+    // debugger
     return (
       <div className='dashboard-left'>
         {/* <button onClick={this.fetchBatchIntradayPrices}>intraday prices</button> */}

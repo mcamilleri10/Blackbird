@@ -24,9 +24,9 @@ export default class ShareIndex extends React.Component {
       <div className='share-index'>
         <div className='share-index-title'>
           <h3>Stocks</h3>
-          <button className={`share-index-dd ${color}-h`}>
+          {/* <button className={`share-index-dd ${color}-h`}>       // COME BACK TO THIS!!
             {ellipsis}
-          </button>
+          </button> */}
         </div>
         <div>
           <ul className='share-index-list'>

@@ -1,4 +1,5 @@
 const iex_test_key = 'Tpk_c2b1b5e41fc9492eadc4c2968a80494f';
+const iex_key = 'pk_661467c711ba46b98c5d7ee264d4ccaf'
 
 
 export const requestCompanyInfo = symbol => {
