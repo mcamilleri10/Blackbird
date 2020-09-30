@@ -17,15 +17,20 @@ export default class Company extends React.Component {
       active5dmBtn: false,
       active1mmBtn: false,
       active3mBtn: false,
-      active1yBtn: false
+      active1yBtn: false,
+      active5yBtn: false,
+      showMoreActive: false,
+      showMoreText: 'Show More',
+      readMoreActive: false,
+      readMoreText: 'Read More',
+      description
     };
-
     this.formatChartValue = this.formatChartValue.bind(this);
     this.formatIntraData = this.formatIntraData.bind(this);
     this.handleRangeClick = this.handleRangeClick.bind(this);
     this.formatHistData = this.formatHistData.bind(this);
-    // this.fetchRealtimeQuotes = this.fetchRealtimeQuotes.bind(this);
-    // this.buyingPowerFormClick = this.buyingPowerFormClick.bind(this);
+    this.showMore = this.showMore.bind(this);
+    this.readMore = this.readMore.bind(this);
   }
 
   componentDidMount() {
@@ -118,20 +123,29 @@ export default class Company extends React.Component {
     this.setState({ data: data });
   }
 
+  showMore() {
+    if (this.state.showMoreText === 'Show More') {
+      this.setState({ showMoreText: 'Show Less' });
+    } else {
+      this.setState({ showMoreText: 'Show More' });
+    }
+  }
+
+  readMore() {
+    if (this.state.readMoreText === 'Read More') {
+      this.setState({ readMoreText: 'Read Less'});
+    } else {
+      this.setState({ readMoreText: 'Read More'});      
+    }
+
+  }
+
 
   render() {
     const { company, color } = this.props;
-    const { 
-      chartValue, 
-      dayPriceChange, 
-      dayPercentChange, 
-      data,
-      active1dBtn,
-      active5dmBtn,
-      active1mmBtn,
-      active3mBtn,
-      active1yBtn
-    } = this.state;
+    const { chartValue, dayPriceChange, dayPercentChange, data, active1dBtn,
+      active5dmBtn, active1mmBtn, active3mBtn, active1yBtn, active5yBtn,
+      showMoreActive, showMoreText, readMoreText } = this.state;
     if (!company) return null;
     // debugger
     return (
@@ -163,27 +177,46 @@ export default class Company extends React.Component {
                 className={active1dBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
                 onClick={e => this.handleRangeClick('1d', e)}
               > 1D
-                </button>
+              </button>
               <button
                 className={active5dmBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
                 onClick={e => this.handleRangeClick('5dm', e)}
               > 1W
-                </button>
+              </button>
               <button
                 className={active1mmBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
                 onClick={e => this.handleRangeClick('1mm', e)}
-              >1M
-                </button>
+              > 1M
+              </button>
               <button
                 className={active3mBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
                 onClick={e => this.handleRangeClick('3m', e)}
               > 3M
-                </button>
+              </button>
               <button
                 className={active1yBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
                 onClick={e => this.handleRangeClick('1y', e)}
               > 1Y
+              </button>
+              <button
+                className={active5yBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
+                onClick={e => this.handleRangeClick('5y', e)}
+              > 5Y
+              </button>
+            </div>
+            <div className='company-about'>
+              <div className='company-about-title'>
+                <h2>About</h2>
+                <button onClick={this.showMore} className={`${color} ${color}-hlite2`} >
+                  {showMoreText}
                 </button>
+              </div>
+              <div className='company-description'>
+                <p>{company.description}</p>
+                <button onClick={this.readMore} className='read-more'>
+                  {readMoreText}
+                </button>
+              </div>
             </div>
           </div>
         </div>

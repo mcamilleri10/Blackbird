@@ -266,11 +266,19 @@
 }
 
 .limegreen-hlite:hover {
-  background-color: rgb(68, 207, 68);
+  background-color: rgb(82, 209, 82);
+}
+
+.limegreen-hlite2:hover {
+  color: rgb(101, 230, 101);
+}
+
+.red-hlite2:hover {
+  color: rgb(255, 64, 64);
 }
 
 .red-hlite:hover {
-  background-color: rgb(255, 64, 64);
+  background-color: rgb(255, 85, 85);
 }
 
 .limegreen-b {

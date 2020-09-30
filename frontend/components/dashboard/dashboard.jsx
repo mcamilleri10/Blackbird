@@ -18,7 +18,6 @@ export default class Dashboard extends React.Component {
       active3mBtn: false,
       active1yBtn: false
     };
-
     this.fetchRealtimeQuotes = this.fetchRealtimeQuotes.bind(this);
     this.calculateTotalValue = this.calculateTotalValue.bind(this);
     this.formatIntraData = this.formatIntraData.bind(this);
@@ -194,17 +193,8 @@ export default class Dashboard extends React.Component {
 
   render() {
     const { user, quotes, shares, updateUser, color, receiveColor } = this.props;
-    const { 
-      totalValue, 
-      dayPriceChange, 
-      dayPercentChange,
-      data,
-      active1dBtn,
-      active5dmBtn,
-      active1mmBtn,
-      active3mBtn,
-      active1yBtn,
-      buyingPowerFormActive
+    const { totalValue, dayPriceChange, dayPercentChange, data, active1dBtn,
+      active5dmBtn, active1mmBtn, active3mBtn, active1yBtn, buyingPowerFormActive
     } = this.state;
     // debugger
     return (
