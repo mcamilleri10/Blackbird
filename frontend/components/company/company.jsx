@@ -111,16 +111,16 @@ export default class Company extends React.Component {
   }
 
   formatHistData() {
-    const { company } = this.props;
+    const { company, formatDateStr } = this.props;
     const data = [];
-    let timeStr;
+    let dateStr;
     company.chart.forEach(price => {
       if (price.average) {
-        timeStr = price.date + ', ' + price.label;
+        dateStr = formatDateStr(price.date + ', ' + price.label);
       } else {
-        timeStr = price.date;
+        dateStr = formatDateStr(price.date);
       }
-      data.push({'date/time': timeStr, 'price': price.high});
+      data.push({'date/time': dateStr, 'price': price.high});
     });
     this.setState({ data: data });
   }

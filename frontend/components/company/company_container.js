@@ -7,6 +7,7 @@ import {
   saveCompany
 } from '../../actions/companies/company_actions';
 import { receiveColor } from '../../actions/ui/ui_actions';
+import { formatDateStr } from '../../util/chart/chart_util';
 
 const mSTP = (state, ownProps) => {
   const company = state.entities.companies[ownProps.match.params.companyId];
@@ -15,7 +16,8 @@ const mSTP = (state, ownProps) => {
   return {
     user: user,
     company: company,
-    color: state.ui.color
+    color: state.ui.color,
+    formatDateStr
   };
 };
 

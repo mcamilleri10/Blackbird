@@ -155,26 +155,28 @@ export default class Dashboard extends React.Component {
   }
 
   formatHistData() {
-    const { quotes, user } = this.props;
+    const { quotes, user, formatDateStr } = this.props;
     const dataObj = {};
     quotes.forEach(quote => {
       if (this.isShareOwned(quote)) {
         const num_owned = user.shares[quote.symbol].numSharesOwned;
-        let timeStr;
+        let dateStr;
         quote.chart.forEach(price => {
           // debugger
           if (price.average) {
-            timeStr = price.date + ', ' + price.label;
+            // dateStr = price.date + ', ' + price.label;
+            dateStr = formatDateStr(price.date + ', ' + price.label);
           } else {
-            timeStr = price.date;
+            // dateStr = price.date;
+            dateStr = formatDateStr(price.date);
           }
           let sum = 0;
           sum += (price.high * num_owned);
-          if (dataObj[timeStr]) {
-            dataObj[timeStr]['price'] += sum;
+          if (dataObj[dateStr]) {
+            dataObj[dateStr]['price'] += sum;
           } else {
-            dataObj[timeStr] = {
-              'date/time': timeStr,
+            dataObj[dateStr] = {
+              'date/time': dateStr,
               'price': sum
             };
           }
@@ -183,11 +185,7 @@ export default class Dashboard extends React.Component {
       }
     });
     this.setState({ data: Object.values(dataObj)});
-    // debugger
   }
-
-
-
 
 
 

@@ -12,6 +12,7 @@
   box-sizing: border-box;
   display: block;
   flex-direction: column;
+  overflow: scroll;
 }
 
 .share-index-component {
