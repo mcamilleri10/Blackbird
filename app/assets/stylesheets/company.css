@@ -1,6 +1,6 @@
 .company-body {
   background-color: rgb(12, 12, 12);
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .company {
@@ -54,6 +54,10 @@
   font-weight: 600;
 }
 
+.company-description {
+  margin-bottom: 35px;
+}
+
 .chart-value p {
   font-size: 15px;
   font-weight: 600;
@@ -65,4 +69,19 @@
   height: 350px;
   width: 100%;
   margin: 0;
+}
+
+.company-stats {
+  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.company-stats div p:first-of-type {
+  font-weight: 700;
+}
+
+.company-stats div {
+  width: 160px;
+  margin-bottom: 15px;
 }

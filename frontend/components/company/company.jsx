@@ -23,7 +23,7 @@ export default class Company extends React.Component {
       showMoreText: 'Show More',
       readMoreActive: false,
       readMoreText: 'Read More',
-      description
+      description: ''
     };
     this.formatChartValue = this.formatChartValue.bind(this);
     this.formatIntraData = this.formatIntraData.bind(this);
@@ -38,7 +38,8 @@ export default class Company extends React.Component {
     const companyId = this.props.match.params.companyId;
     requestQuote(companyId).then(() => requestCompanyInfo(companyId)
       .then(() => this.formatChartValue())
-      .then(() => this.formatIntraData()));
+      .then(() => this.formatIntraData())
+      .then(() => this.formatDescription()));
   }
 
   componentDidUpdate(prevProps) {
@@ -48,7 +49,8 @@ export default class Company extends React.Component {
     if (prevProps.match.params.companyId !== companyId) {
       requestQuote(companyId).then(() => requestCompanyInfo(companyId)
         .then(() => this.formatChartValue())
-        .then(() => this.formatIntraData()));
+        .then(() => this.formatIntraData())
+        .then(() => this.formatDescription()));
     }
   }
 
@@ -125,19 +127,32 @@ export default class Company extends React.Component {
 
   showMore() {
     if (this.state.showMoreText === 'Show More') {
-      this.setState({ showMoreText: 'Show Less' });
+      this.setState({ showMoreActive: true, showMoreText: 'Show Less' });
     } else {
-      this.setState({ showMoreText: 'Show More' });
+      this.setState({ showMoreActive: false, showMoreText: 'Show More' });
     }
   }
 
-  readMore() {
+  readMore(e) {
     if (this.state.readMoreText === 'Read More') {
       this.setState({ readMoreText: 'Read Less'});
     } else {
       this.setState({ readMoreText: 'Read More'});      
     }
+    // debugger
+    this.formatDescription(e.currentTarget.innerHTML);
+  }
 
+  formatDescription(readText) {
+    const { company } = this.props;
+    if (readText === 'Read More') {
+      // debugger
+      this.setState({ description: company.description});
+    } else {
+      // debugger
+      const shortened = company.description.split('.').slice(0, 3).join('.');
+      this.setState({ description: shortened });
+    }
   }
 
 
@@ -145,7 +160,7 @@ export default class Company extends React.Component {
     const { company, color } = this.props;
     const { chartValue, dayPriceChange, dayPercentChange, data, active1dBtn,
       active5dmBtn, active1mmBtn, active3mBtn, active1yBtn, active5yBtn,
-      showMoreActive, showMoreText, readMoreText } = this.state;
+      showMoreActive, showMoreText, readMoreText, description } = this.state;
     if (!company) return null;
     // debugger
     return (
@@ -212,11 +227,77 @@ export default class Company extends React.Component {
                 </button>
               </div>
               <div className='company-description'>
-                <p>{company.description}</p>
-                <button onClick={this.readMore} className='read-more'>
-                  {readMoreText}
-                </button>
+                <p>
+                  {description}
+                  <button onClick={this.readMore} className='read-more'>
+                    {readMoreText}
+                  </button>
+                </p>
               </div>
+              <div className='company-stats'>
+                  <div>
+                    <p>CEO</p>
+                    <p>{company.CEO}</p>
+                  </div>
+                  <div>
+                    <p>Employees</p>
+                    <p>{company.employees}</p>
+                  </div>
+                  <div>
+                    <p>Headquarters</p>
+                    <p>{`${company.city}, ${company.state}`}</p>
+                  </div>
+                  <div>
+                    <p>Country</p>
+                    <p>{company.country}</p>
+                  </div>
+                  <div>
+                    <p>Market Cap</p>
+                    <p>{company.marketCap}</p>
+                  </div>
+                  <div>
+                    <p>Price-Earnings Ratio</p>
+                    <p>{company.peRatio}</p>
+                  </div>
+                  <div>
+                    <p>Exchange</p>
+                    <p>{company.exchange}</p>
+                  </div>
+                  <div>
+                    <p>Average Volume</p>
+                    <p>{company.avtTotalVolume}</p>
+                  </div>
+                </div>
+                {showMoreActive ? (
+                  <div className='company-stats'>
+                    <div>
+                      <p>High Today</p>
+                      <p>{company.high}</p>
+                    </div>
+                    <div>
+                      <p>Low Today</p>
+                      <p>{company.low}</p>
+                    </div>
+                    <div>
+                      <p>Open Price</p>
+                      <p>{company.open}</p>
+                    </div>
+                    <div>
+                      <p>Volume</p>
+                      <p>{company.volume}</p>
+                    </div>
+                    <div>
+                      <p>52 Week High</p>
+                      <p>{company.week52High}</p>
+                    </div>
+                    <div>
+                      <p>52 Week Low</p>
+                      <p>{company.week52Low}</p>
+                    </div>
+                  </div>
+                ) : (
+                  null
+                )}
             </div>
           </div>
         </div>
