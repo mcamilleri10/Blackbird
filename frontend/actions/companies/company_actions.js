@@ -118,8 +118,8 @@ export const requestHistoricalPrices = (symbol, range) => {
   return dispatch => {
     return CompaniesApiUtil.requestHistoricalPrices(symbol, range)
       .then(prices => dispatch(receiveHistoricalPrices(prices, symbol)));
-  }
-}
+  };
+};
 
 export const requestBatchHistoricalPrices = (symbols, range) => {
   return dispatch => {

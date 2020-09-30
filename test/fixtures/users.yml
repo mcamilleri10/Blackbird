@@ -9,7 +9,7 @@
 #  email           :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
-#  available_funds :integer          default(100), not null
+#  available_funds :float            default(200.0), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

@@ -13,22 +13,22 @@ Company.destroy_all
 User.destroy_all
 
 # users
-demo = User.create(username: "demo_user", email: "demo@blackbird.com", 
+demo = User.create(username: "demo_username", email: "demo@blackbird.com", 
   first_name: "Demo", last_name: "User", password: "hunter12")
 
 
 # companies
-aapl = Company.create(name: "Apple, Inc.", symbol: "AAPL")
-tsla = Company.create(name: "Tesla, Inc.", symbol: "TSLA")
-msft = Company.create(name: "Microsoft Corp.", symbol: "MSFT")
-sne = Company.create(name: "Sony Corp.", symbol: "SNE")
-pton = Company.create(name: "Peloton Interactive Inc.", symbol: "PTON")
-amzn = Company.create(name: "Amazon.com, Inc.", symbol: "AMZN")
-ba = Company.create(name: "The Boeing Co.", symbol: "BA")
-dis = Company.create(name: "The Walt Disney Co.", symbol: "DIS")
-amd = Company.create(name: "Advanced Micro Devices, Inc.", symbol: "AMD")
-uber = Company.create(name: "Uber Technologies, Inc.", symbol: "UBER")
-ttd = Company.create(name: "The Trade Desk, Inc.", symbol: "TTD")
+aapl = Company.create(symbol: "AAPL")
+tsla = Company.create(symbol: "TSLA")
+msft = Company.create(symbol: "MSFT")
+sne = Company.create(symbol: "SNE")
+pton = Company.create(symbol: "PTON")
+amzn = Company.create(symbol: "AMZN")
+ba = Company.create(symbol: "BA")
+dis = Company.create(symbol: "DIS")
+amd = Company.create(symbol: "AMD")
+uber = Company.create(symbol: "UBER")
+ttd = Company.create(symbol: "TTD")
 
 
 # shares
