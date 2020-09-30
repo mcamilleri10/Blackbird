@@ -14,13 +14,19 @@ export const requestIntradayPrices = symbol => {
   });
 };
 
+export const requestHistoricalPrices = (symbol, range) => {
+  return $.ajax({
+    url: `https://sandbox.iexapis.com/stable/stock/${symbol}/chart/${range}?token=${iex_test_key}`
+  })
+}
+
 export const requestBatchIntradayPrices = symbols => {
   return $.ajax({
     url: `https://sandbox.iexapis.com/stable/stock/market/batch?symbols=${symbols}&types=intraday-prices&token=${iex_test_key}`
   });
 };
 
-export const requestHistoricalPrices = (symbols, range) => {
+export const requestBatchHistoricalPrices = (symbols, range) => {
   return $.ajax({
     url: `https://sandbox.iexapis.com/stable/stock/market/batch?symbols=${symbols}&types=chart&range=${range}&token=${iex_test_key}`
   });

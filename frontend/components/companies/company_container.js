@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
 import Company from './company';
-import { requestQuote } from '../../actions/companies/company_actions';
+import { 
+  requestQuote, 
+  requestHistoricalPrices 
+} from '../../actions/companies/company_actions';
 
 const mSTP = (state, ownProps) => {
   const company = state.entities.companies[ownProps.match.params.companyId];
@@ -14,7 +17,8 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => {
   return {
-    requestQuote: symbol => dispatch(requestQuote(symbol))
+    requestQuote: symbol => dispatch(requestQuote(symbol)),
+    requestHistoricalPrices: (symbol, range) => dispatch(requestHistoricalPrices(symbol, range))
   };
 };
 

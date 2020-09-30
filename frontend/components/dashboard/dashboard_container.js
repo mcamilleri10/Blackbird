@@ -8,7 +8,7 @@ import { receiveColor } from '../../actions/ui/ui_actions';
 import { 
   requestQuote, 
   requestQuotes,
-  requestHistoricalPrices,
+  requestBatchHistoricalPrices,
   startLoading
  } from '../../actions/companies/company_actions';
 
@@ -32,7 +32,7 @@ const mDTP = dispatch => {
     fetchWatchlist: (watchlistId) => dispatch(fetchWatchlist(watchlistId)),
     requestQuote: (symbol) => dispatch(requestQuote(symbol)),
     requestQuotes: (symbols) => dispatch(requestQuotes(symbols)),
-    requestHistoricalPrices: (symbols, range) => dispatch(requestHistoricalPrices(symbols, range)),
+    requestBatchHistoricalPrices: (symbols, range) => dispatch(requestBatchHistoricalPrices(symbols, range)),
     startLoading: () => dispatch(startLoading()),
     updateUser: user => dispatch(updateUser(user)),
     receiveColor: color => dispatch(receiveColor(color))

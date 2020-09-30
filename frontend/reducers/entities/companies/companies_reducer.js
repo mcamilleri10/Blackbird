@@ -4,7 +4,8 @@ import {
   RECEIVE_COMPANY, 
   RECEIVE_INTRADAY_PRICES, 
   // RECEIVE_BATCH_INTRADAY_PRICES,
-  RECEIVE_HISTORICAL_PRICES, 
+  RECEIVE_HISTORICAL_PRICES,
+  RECEIVE_BATCH_HISTORICAL_PRICES, 
   // RECEIVE_SEARCH_RESULTS
 } from '../../../actions/companies/company_actions';
 
@@ -14,17 +15,19 @@ const companiesReducer = (state = {}, action) => {
   const newState = Object.assign({}, state);
   switch (action.type) {
     case RECEIVE_QUOTE:
-      const quote = action.quote;
-      const merged = Object.assign({}, newState[quote.symbol], quote); // merge company info and company quote
-      debugger
-      return Object.assign({}, { [quote.symbol]: merged });
+      const quote = action.quote.quote;
+      const iPrices = action.quote['intraday-prices'];
+      // const merged = Object.assign({}, {[quote.symbol]: quote});
+      newState[quote.symbol] = quote;
+      newState[quote.symbol].intradayPrices = iPrices;
+      return newState;
     case RECEIVE_QUOTES:
       const quotes = action.quotes;
       Object.values(quotes).forEach(nQuote => {
         const quote = Object.values(nQuote)[0];
-        const iPrice = Object.values(nQuote)[1];
+        const iPrices = Object.values(nQuote)[1];
         newState[quote.symbol] = quote;
-        newState[quote.symbol].intradayPrices = iPrice;
+        newState[quote.symbol].intradayPrices = iPrices;
       });
       // debugger
       return newState;
@@ -41,6 +44,9 @@ const companiesReducer = (state = {}, action) => {
     //   });
     //   return newState;
     case RECEIVE_HISTORICAL_PRICES:
+      newState[action.symbol.toUpperCase()].chart = action.prices;
+      return newState;
+    case RECEIVE_BATCH_HISTORICAL_PRICES:
       Object.values(newState).forEach(company => {
         const mergeHist = Object.assign({}, newState[company.symbol], action.prices[company.symbol]);
         newState[company.symbol] = mergeHist;

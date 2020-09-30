@@ -45,7 +45,7 @@ export default class Dashboard extends React.Component {
     if (range === '1d') {
       this.formatIntraData();
     } else {
-      this.props.requestHistoricalPrices(symbols, range)
+      this.props.requestBatchHistoricalPrices(symbols, range)
         .then(() => this.formatHistData());
     }
     // debugger

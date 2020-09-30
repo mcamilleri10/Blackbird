@@ -5,7 +5,7 @@ import configureStore from './store/store';
 
 // testing imports
 import { login, logout, signup } from './actions/session/session_actions';
-import { requestQuote, fetchCompany, requestIntradayPrices } from './actions/companies/company_actions';
+import { requestQuote, fetchCompany, requestIntradayPrices, requestHistoricalPrices } from './actions/companies/company_actions';
 import { requestCompanyInfo } from './util/companies/companies_api_util';
 import { fetchShare } from './actions/shares/share_actions';
 import { symbolSearch } from './actions/search/search_actions';
@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchUser = fetchUser;
   window.fetchShare = fetchShare;
   window.symbolSearch = symbolSearch;
+  window.requestHistoricalPrices = requestHistoricalPrices;
 
   ReactDOM.render(<Root store={store}/>, root);
 });
