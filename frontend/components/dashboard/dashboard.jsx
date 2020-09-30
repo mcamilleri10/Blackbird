@@ -197,7 +197,6 @@ export default class Dashboard extends React.Component {
     // debugger
     return (
       <div className='dashboard-left'>
-        {/* <button onClick={this.fetchBatchIntradayPrices}>intraday prices</button> */}
         <div className='dashboard-content'>
           <div className='dashboard-main'>
             <div className='total-account-value'>
@@ -246,7 +245,7 @@ export default class Dashboard extends React.Component {
                 > 1Y
                 </button>
             </div>
-            <div className='buying-power-dd'>
+            <div className={buyingPowerFormActive ? 'buying-power-dd' : 'buying-power-dd-b'}>
               {buyingPowerFormActive ? (
                 <div>
                   <button onClick={this.buyingPowerFormClick} className='buying-power-btn active'>

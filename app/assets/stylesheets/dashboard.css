@@ -81,21 +81,16 @@
   padding-bottom: 16px;
 }
 
-
 .buying-power-dd {
-  border-bottom: 1px solid rgba(128, 128, 128, 0.514);
-  /* display: flex;
-  justify-content: space-evenly; */
+  border-bottom: none;
 }
 
-/* .buying-power-dd:hover {
-  width: 701px;
-  position: relative;
-  left: -13px;
+.buying-power-dd-b {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.514);
+}
 
-} */
 
-.buying-power-btn{
+.buying-power-btn {
   width: 100%;
   height: 75px;
   /* margin: 0 10px; */
@@ -129,10 +124,9 @@
   padding: 18px
 }
 
-.buying-power-dd p {
+.buying-power-dd p, .buying-power-dd-b p {
   font-size: 18px;
   font-weight: 600;
-  /* padding: 20px; */
 }
 
 .buying-power-form-container {

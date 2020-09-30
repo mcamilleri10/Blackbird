@@ -17,19 +17,20 @@ export default class SearchResults extends React.Component {
         ) : (
           <div>
             <h5 className='search-title'>Stocks</h5>
-              <ul>
+              <ul className='search-results-ul'>
               {searchResults.slice(0, 5).map(result => {
                 // debugger
                 return (
-                  <div key={result.symbol} className='search-hover'>                
+                                
                     <SearchResultItem 
+                      key={result.symbol}
                       symbol={result.symbol}
                       name={result.securityName}
                       searchValue={searchValue}
                       color={color}
                       closeResults={closeResults}
                     />
-                  </div>
+                  
                 );
               })}
             </ul>
