@@ -6,12 +6,9 @@ export default class Company extends React.Component {
     super(props);
   }
 
-  // componentDidMount() {
-  //   const { company, requestQuote } = this.props; 
-  //   requestQuote(company.symbol).then(
-
-  //   );  
-  // }
+  componentDidMount() {
+    debugger
+  }
 
 
   render() {

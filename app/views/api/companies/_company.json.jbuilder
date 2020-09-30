@@ -1,3 +1,3 @@
 json.key_format! camelize: :lower
 
-json.extract! company, :name, :symbol
+json.extract! company, :symbol

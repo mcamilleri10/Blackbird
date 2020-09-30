@@ -9,7 +9,7 @@
 #
 class Company < ApplicationRecord
 
-  validates :name, :symbol, presence: true
+  validates :symbol, presence: true
 
   has_many :shares,
     foreign_key: :company_id,

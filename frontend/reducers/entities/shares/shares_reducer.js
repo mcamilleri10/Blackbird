@@ -9,6 +9,7 @@ const sharesReducer = (state = {}, action) => {
       newState[action.share.id] = action.share;
       return newState;
     case RECEIVE_USER:
+      // debugger
       Object.values(action.shares).forEach(share => {
         newState[share.companyId] = share;
       });

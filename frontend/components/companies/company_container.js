@@ -8,6 +8,7 @@ import {
 const mSTP = (state, ownProps) => {
   const company = state.entities.companies[ownProps.match.params.companyId];
   const user = state.entities.users[state.session.id];
+  // debugger
   return {
     user: user,
     company: company

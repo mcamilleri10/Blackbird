@@ -44,7 +44,8 @@ export default class Search extends React.Component {
   }
 
   closeResults() {
-    this.setState({ resultsActive: false });
+    // debugger
+    this.setState({ resultsActive: false, searchValue: '' });
   }
   
 
@@ -60,6 +61,7 @@ export default class Search extends React.Component {
           <input
             type="text"
             placeholder='Search'
+            value={this.state.searchValue}
             onChange={this.handleChange}
             onFocus={this.resultsActive}
             onBlur={this.resultsInactive}
@@ -70,6 +72,7 @@ export default class Search extends React.Component {
             searchResults={searchResults} 
             searchValue={this.state.searchValue}
             color={color}
+            closeResults={this.closeResults}
           />
         ) : (
           null

@@ -9,7 +9,7 @@ class Api::UsersController < ApplicationController
     #     @symbols << company.symbol
     #   end
     # end
-    
+    # debugger
     if @user
       render :show
     else

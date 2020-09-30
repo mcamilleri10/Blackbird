@@ -27,6 +27,7 @@ export default class SearchResults extends React.Component {
                       name={result.securityName}
                       searchValue={searchValue}
                       color={color}
+                      closeResults={closeResults}
                     />
                   </div>
                 );

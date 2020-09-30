@@ -12,7 +12,7 @@ class Api::CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
-    if Company.find_by(name: @company.name)
+    if Company.find_by(symbol: @company.symbol)
       return nil;
     end
     if @company.save
@@ -28,7 +28,7 @@ class Api::CompaniesController < ApplicationController
     params
       .require(:company)
       .params.transform_keys(&:underscore)
-      .permit(:name, :symbol)
+      .permit(:symbol)
   end
 
 end
