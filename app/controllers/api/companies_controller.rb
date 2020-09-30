@@ -13,13 +13,14 @@ class Api::CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     if Company.find_by(symbol: @company.symbol)
+      # debugger
       return nil;
-    end
-    if @company.save
+    elsif @company.save
       render :create
     else
-      render nil;
+      return nil;
     end
+    return nil;
   end
 
   private
@@ -27,7 +28,7 @@ class Api::CompaniesController < ApplicationController
   def company_params
     params
       .require(:company)
-      .params.transform_keys(&:underscore)
+      .transform_keys(&:underscore)
       .permit(:symbol)
   end
 

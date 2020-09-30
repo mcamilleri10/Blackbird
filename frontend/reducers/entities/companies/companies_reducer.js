@@ -1,7 +1,8 @@
 import { 
   RECEIVE_QUOTE, 
   RECEIVE_QUOTES, 
-  RECEIVE_COMPANY, 
+  RECEIVE_COMPANY,
+  RECEIVE_COMPANY_INFO, 
   RECEIVE_INTRADAY_PRICES, 
   // RECEIVE_BATCH_INTRADAY_PRICES,
   RECEIVE_HISTORICAL_PRICES,
@@ -20,6 +21,7 @@ const companiesReducer = (state = {}, action) => {
       // const merged = Object.assign({}, {[quote.symbol]: quote});
       newState[quote.symbol] = quote;
       newState[quote.symbol].intradayPrices = iPrices;
+      // debugger
       return newState;
     case RECEIVE_QUOTES:
       const quotes = action.quotes;
@@ -33,7 +35,14 @@ const companiesReducer = (state = {}, action) => {
       return newState;
     case RECEIVE_COMPANY:
       const company = { [action.company.symbol]: action.company };
+      // debugger
       return Object.assign({}, newState, company);
+    case RECEIVE_COMPANY_INFO:
+      const symbol = action.companyInfo.symbol;
+      const merged = Object.assign({}, newState[symbol], action.companyInfo);
+      newState[symbol] = merged;
+      // debugger
+      return newState;
     case RECEIVE_INTRADAY_PRICES:
       newState[action.symbol].intradayPrices = action.prices;
       return newState; 

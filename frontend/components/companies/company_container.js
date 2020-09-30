@@ -2,7 +2,9 @@ import { connect } from 'react-redux';
 import Company from './company';
 import { 
   requestQuote, 
-  requestHistoricalPrices 
+  requestHistoricalPrices,
+  requestCompanyInfo,
+  saveCompany
 } from '../../actions/companies/company_actions';
 
 const mSTP = (state, ownProps) => {
@@ -19,7 +21,9 @@ const mSTP = (state, ownProps) => {
 const mDTP = dispatch => {
   return {
     requestQuote: symbol => dispatch(requestQuote(symbol)),
-    requestHistoricalPrices: (symbol, range) => dispatch(requestHistoricalPrices(symbol, range))
+    requestHistoricalPrices: (symbol, range) => dispatch(requestHistoricalPrices(symbol, range)),
+    requestCompanyInfo: symbol => dispatch(requestCompanyInfo(symbol)),
+    saveCompany: symbol => dispatch(saveCompany(symbol))
   };
 };
 

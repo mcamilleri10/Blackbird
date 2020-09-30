@@ -50,11 +50,11 @@ export const fetchCompany = (symbol) => {
   });
 };
 
-export const saveCompany = company => {
+export const saveCompany = companyId => {
   return $.ajax({
     url: '/api/companies',
     method: 'post',
-    data: { company: {symbol: company.symbol, name: company.companyName} }
+    data: { company: {symbol: companyId}}
   });
 };
 

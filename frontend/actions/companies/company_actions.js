@@ -3,6 +3,7 @@ import * as CompaniesApiUtil from '../../util/companies/companies_api_util';
 export const RECEIVE_QUOTE = 'RECEIVE_QUOTE';
 export const RECEIVE_QUOTES = 'RECEIVE_QUOTES';
 export const RECEIVE_COMPANY = 'RECEIVE_COMPANY';
+export const RECEIVE_COMPANY_INFO = 'RECEIVE_COMPANY_INFO';
 export const RECEIVE_INTRADAY_PRICES = 'RECEIVE_INTRADAY_PRICES';
 // export const RECEIVE_BATCH_INTRADAY_PRICES = 'RECEIVE_BATCH_INTRADAY_PRICES';
 export const RECEIVE_HISTORICAL_PRICES = 'RECEIVE_HISTORICAL_PRICES';
@@ -28,6 +29,13 @@ const receiveCompany = company => {
   return {
     type: RECEIVE_COMPANY,
     company
+  };
+};
+
+const receiveCompanyInfo = companyInfo => {
+  return {
+    type: RECEIVE_COMPANY_INFO,
+    companyInfo
   };
 };
 
@@ -75,6 +83,20 @@ export const startLoading = () => {
 };
 
 
+export const saveCompany = companyId => {
+  return dispatch => {
+    return CompaniesApiUtil.saveCompany(companyId)
+      .then(company => dispatch(receiveCompany(company)));
+  };
+};
+
+export const requestCompanyInfo = companyId => {
+  return dispatch => {
+    return CompaniesApiUtil.requestCompanyInfo(companyId)
+      .then(companyInfo => dispatch(receiveCompanyInfo(companyInfo)));
+  };
+};
+
 export const fetchCompany = companyId => {
   return dispatch => {
     return CompaniesApiUtil.fetchCompany(companyId).then(company => {
@@ -86,6 +108,7 @@ export const fetchCompany = companyId => {
 };
 
 export const requestQuote = symbol => {
+  // debugger
   return dispatch => {
     return CompaniesApiUtil.requestQuote(symbol)
       .then(quote => dispatch(receiveQuote(quote)));

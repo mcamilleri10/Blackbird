@@ -5,8 +5,14 @@ import configureStore from './store/store';
 
 // testing imports
 import { login, logout, signup } from './actions/session/session_actions';
-import { requestQuote, fetchCompany, requestIntradayPrices, requestHistoricalPrices } from './actions/companies/company_actions';
-import { requestCompanyInfo } from './util/companies/companies_api_util';
+import { requestQuote, 
+  fetchCompany, 
+  requestIntradayPrices, 
+  requestHistoricalPrices, 
+  saveCompany,
+  requestCompanyInfo
+} from './actions/companies/company_actions';
+// import { requestCompanyInfo } from './util/companies/companies_api_util';
 import { fetchShare } from './actions/shares/share_actions';
 import { symbolSearch } from './actions/search/search_actions';
 import { fetchWatchlist } from './actions/watchlists/watchlist_actions';
@@ -52,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchShare = fetchShare;
   window.symbolSearch = symbolSearch;
   window.requestHistoricalPrices = requestHistoricalPrices;
+  window.saveCompany = saveCompany;
 
   ReactDOM.render(<Root store={store}/>, root);
 });
