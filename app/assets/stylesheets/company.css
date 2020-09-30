@@ -3,6 +3,66 @@
   height: 100vh;
 }
 
-.company-left {
+.company {
+  background-color: rgb(12, 12, 12);
   color: white;
+  display: flex;
+  justify-content: space-around;
+  width: 1100px;
+  margin: 0 auto;
+  /* padding: 0 300px; */
+}
+
+.company-left {
+  display: block;
+  /* justify-content: space-evenly; */
+  background-color: rgb(12, 12, 12);
+  color: white;
+  padding-bottom: 15vh;
+  /* position: relative; */
+  height: 100vh;
+  /* margin: 0 auto; */
+  /* padding-left: 15%; */
+  margin-right: 295px;
+  width: 700px;
+}
+
+.company-content {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  /* width: 1000px; */
+}
+
+.company-main {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  width: 675px;
+  margin-top: 25px;
+  padding-top: 15px;
+  position: relative;
+  /* left: 50px; */
+}
+
+.chart-value {
+  margin-bottom: 30px;
+}
+
+.chart-value h1 {
+  font-size: 35px;
+  font-weight: 600;
+}
+
+.chart-value p {
+  font-size: 15px;
+  font-weight: 600;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.company-graph {
+  height: 350px;
+  width: 100%;
+  margin: 0;
 }

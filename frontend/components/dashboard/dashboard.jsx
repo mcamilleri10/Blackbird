@@ -194,93 +194,91 @@ export default class Dashboard extends React.Component {
 
   render() {
     const { user, quotes, shares, updateUser, color, receiveColor } = this.props;
+    const { 
+      totalValue, 
+      dayPriceChange, 
+      dayPercentChange,
+      data,
+      active1dBtn,
+      active5dmBtn,
+      active1mmBtn,
+      active3mBtn,
+      active1yBtn,
+      buyingPowerFormActive
+    } = this.state;
     // debugger
     return (
       <div className='dashboard-left'>
         {/* <button onClick={this.fetchBatchIntradayPrices}>intraday prices</button> */}
         <div className='dashboard-content'>
-
-       
-        <div className='dashboard-main'>
-          <div className='total-account-value'>
-            <h1>${this.state.totalValue}</h1>
-            {this.state.dayPriceChange >= 0 ? (
-              <p>+${this.state.dayPriceChange.toFixed(2)}</p>
-            ) : (
-              <p>-${-this.state.dayPriceChange.toFixed(2)}</p>
-            )}
-            {this.state.dayPercentChange >= 0 ? (
-              <p>(+{this.state.dayPercentChange.toFixed(2)}%)</p>
-            ) : (
-              <p>(-{-this.state.dayPercentChange.toFixed(2)}%)</p>
-            )}
-          </div>
-          <div className='dashboard-graph'>
-            <DashboardChart 
-              // quotes={quotes} 
-              // user={user} 
-              // shares={shares} 
-              data={this.state.data}
-              dayChange={this.state.dayPriceChange}
-            />
-          </div>
-          <div className='range-btns'>
-              <button 
-                className={this.state.active1dBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)} 
-                onClick={e => this.handleRangeClick('1d', e)}
-              >
-                1D
-              </button>
-              <button 
-                className={this.state.active5dmBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
-                onClick={e => this.handleRangeClick('5dm', e)}
-              >
-                1W
-              </button>
-              <button 
-                className={this.state.active1mmBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
-                onClick={e => this.handleRangeClick('1mm', e)}
-              >
-                1M
-              </button>
-              <button 
-                className={this.state.active3mBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
-                onClick={e => this.handleRangeClick('3m', e)}
-              >
-                3M
-              </button>
-              <button 
-                className={this.state.active1yBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
-                onClick={e => this.handleRangeClick('1y', e)}
-              >
-                1Y
-              </button>
-          </div>
-          <div className='buying-power-dd'>
-            {this.state.buyingPowerFormActive ? (
-              <div>
-                <button onClick={this.buyingPowerFormClick} className='buying-power-btn active'>
-                  <p>Buying Power</p>
+          <div className='dashboard-main'>
+            <div className='total-account-value'>
+              <h1>${totalValue}</h1>
+              {dayPriceChange >= 0 ? (
+                <p>+${dayPriceChange.toFixed(2)}</p>
+              ) : (
+                <p>-${-dayPriceChange.toFixed(2)}</p>
+              )}
+              {dayPercentChange >= 0 ? (
+                <p>(+{dayPercentChange.toFixed(2)}%)</p>
+              ) : (
+                <p>(-{-dayPercentChange.toFixed(2)}%)</p>
+              )}
+            </div>
+            <div className='dashboard-graph'>
+              <DashboardChart 
+                data={data}
+                dayChange={dayPriceChange}
+              />
+            </div>
+            <div className='range-btns'>
+                <button 
+                  className={active1dBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)} 
+                  onClick={e => this.handleRangeClick('1d', e)}
+                > 1D
                 </button>
-                  <BuyingPowerForm 
-                    user={user} 
-                    updateUser={updateUser} 
-                    color={color}
-                  />
-              </div>
-            ) : (
-              <button onClick={this.buyingPowerFormClick} className='buying-power-btn'>
-                <p>Buying Power</p>
-                <p>${user.availableFunds.toFixed(2)}</p>
-              </button>
-            )}
+                <button 
+                  className={active5dmBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
+                  onClick={e => this.handleRangeClick('5dm', e)}
+                > 1W
+                </button>
+                <button 
+                  className={active1mmBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
+                  onClick={e => this.handleRangeClick('1mm', e)}
+                > 1M
+                </button>
+                <button 
+                  className={active3mBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
+                  onClick={e => this.handleRangeClick('3m', e)}
+                > 3M
+                </button>
+                <button 
+                  className={active1yBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
+                  onClick={e => this.handleRangeClick('1y', e)}
+                > 1Y
+                </button>
+            </div>
+            <div className='buying-power-dd'>
+              {buyingPowerFormActive ? (
+                <div>
+                  <button onClick={this.buyingPowerFormClick} className='buying-power-btn active'>
+                    <p>Buying Power</p>
+                  </button>
+                    <BuyingPowerForm 
+                      user={user} 
+                      updateUser={updateUser} 
+                      color={color}
+                    />
+                </div>
+              ) : (
+                <button onClick={this.buyingPowerFormClick} className='buying-power-btn'>
+                  <p>Buying Power</p>
+                  <p>${user.availableFunds.toFixed(2)}</p>
+                </button>
+              )}
+            </div>
           </div>
-        </div>
         <br/>
-        {/* <div className='dashboard-sidebar-component'>
-          <DashboardSidebar />
-        </div> */}
-
         </div>
       </div>
     );

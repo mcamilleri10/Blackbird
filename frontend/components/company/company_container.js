@@ -6,6 +6,7 @@ import {
   requestCompanyInfo,
   saveCompany
 } from '../../actions/companies/company_actions';
+import { receiveColor } from '../../actions/ui/ui_actions';
 
 const mSTP = (state, ownProps) => {
   const company = state.entities.companies[ownProps.match.params.companyId];
@@ -13,8 +14,8 @@ const mSTP = (state, ownProps) => {
   // debugger
   return {
     user: user,
-    company: company
-    
+    company: company,
+    color: state.ui.color
   };
 };
 
@@ -23,7 +24,8 @@ const mDTP = dispatch => {
     requestQuote: symbol => dispatch(requestQuote(symbol)),
     requestHistoricalPrices: (symbol, range) => dispatch(requestHistoricalPrices(symbol, range)),
     requestCompanyInfo: symbol => dispatch(requestCompanyInfo(symbol)),
-    saveCompany: symbol => dispatch(saveCompany(symbol))
+    saveCompany: symbol => dispatch(saveCompany(symbol)),
+    receiveColor: color => dispatch(receiveColor(color))
   };
 };
 

@@ -302,3 +302,14 @@
   border-bottom: 2px solid red;
   padding-bottom: 14px;
 }
+
+/* remove arrows in number input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}

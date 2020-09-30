@@ -14,12 +14,20 @@ export default class BuyingPowerForm extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({ availableFunds: parseFloat(e.currentTarget.value) });
+    if (e.currentTarget.value === '') {
+      this.setState({ availableFunds: '' });
+    } else {
+      this.setState({ availableFunds: parseFloat(e.currentTarget.value) });
+    }
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.user.availableFunds += this.state.availableFunds;
+    if (this.state.availableFunds === '') {
+      this.props.user.availableFunds;
+    } else {
+      this.props.user.availableFunds += this.state.availableFunds;
+    }
     this.setState({ availableFunds: '' });
     this.props.updateUser(this.props.user);
   }
@@ -34,7 +42,7 @@ export default class BuyingPowerForm extends React.Component {
             <div className='buying-power-dollar-sign'>
               {dollarSign}
             <input 
-              type="text" 
+              type="number" 
               onChange={this.handleChange}
               value={this.state.availableFunds}
               placeholder='Add Funds'

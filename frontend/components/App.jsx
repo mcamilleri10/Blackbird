@@ -8,7 +8,7 @@ import DashboardContainer from '../components/dashboard/dashboard_container';
 import DashboardSidebarContainer from '../components/dashboard/dashboard_sidebar/dashboard_sidebar_container';
 import NavbarContainer from '../components/navbar/navbar_container';
 import SearchResultsContainer from './navbar/search/search_results_container';
-import CompanyContainer from './companies/company_container';
+import CompanyContainer from './company/company_container';
 import WatchlistContainer from './watchlists/watchlist_container';
 
 
