@@ -17,6 +17,7 @@ const mSTP = (state, ownProps) => {
     user: user,
     company: company,
     color: state.ui.color,
+    loading: state.ui.loading,
     formatDateStr
   };
 };

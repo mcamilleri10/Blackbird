@@ -1,5 +1,6 @@
 import { RECEIVE_WATCHLIST } from '../../../actions/watchlists/watchlist_actions';
 import { RECEIVE_USER } from '../../../actions/users/user_actions';
+import { LOGOUT_CURRENT_USER } from '../../../actions/session/session_actions';
 
 const watchlistsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -9,11 +10,13 @@ const watchlistsReducer = (state = {}, action) => {
       newState[action.watchlist.id] = action.watchlist;
       return newState;
     case RECEIVE_USER:
-      if (action.watchlists) {
-        return action.watchlists;
+      if (!action.watchlists) {
+        return state;
       } else {
-        return {};
+        return action.watchlists;
       }
+    case LOGOUT_CURRENT_USER:
+      return {};
     default:
       return state;
   }

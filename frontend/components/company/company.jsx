@@ -2,6 +2,8 @@ import React from 'react';
 import { requestQuote } from '../../actions/companies/company_actions';
 import { requestCompanyInfo } from '../../util/companies/companies_api_util';
 import DashboardChart from '../dashboard/dashboard_chart';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 export default class Company extends React.Component {
 
@@ -157,10 +159,12 @@ export default class Company extends React.Component {
 
 
   render() {
-    const { company, color } = this.props;
+    const { company, color, loading } = this.props;
     const { chartValue, dayPriceChange, dayPercentChange, data, active1dBtn,
       active5dmBtn, active1mmBtn, active3mBtn, active1yBtn, active5yBtn,
-      showMoreActive, showMoreText, readMoreText, description } = this.state;
+      showMoreActive, showMoreText, readMoreText, description 
+    } = this.state;
+    const spinner = <FontAwesomeIcon icon={faSpinner} spin />;
     if (!company) return null;
     // debugger
     return (
@@ -218,6 +222,7 @@ export default class Company extends React.Component {
                 onClick={e => this.handleRangeClick('5y', e)}
               > 5Y
               </button>
+              {loading ? <div className={`${color}`}>{spinner}</div> : null}
             </div>
             <div className='company-about'>
               <div className='company-about-title'>
