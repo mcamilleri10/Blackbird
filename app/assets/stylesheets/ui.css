@@ -67,3 +67,15 @@
   border-bottom: 2px solid red;
   padding-bottom: 14px;
 }
+
+.limegreen-bb2 {
+  font-size: 17px;
+  color: limegreen;
+  border-bottom: 2px solid limegreen;
+}
+
+.red-bb2 {
+  font-size: 17px;
+  color: red;
+  border-bottom: 2px solid red;
+}

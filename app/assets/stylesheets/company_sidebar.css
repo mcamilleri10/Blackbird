@@ -3,12 +3,10 @@
   position: fixed;
   height: fit-content;
   width: 280px;
-  /* right: 15%; */
   border: 1px solid rgba(128, 128, 128, 0.514);
   border-radius: 5px;
   margin-top: 25px;
   margin-left: 775px;
-  /* padding: 5px; */
   box-sizing: border-box;
   display: block;
   flex-direction: column;
@@ -27,6 +25,28 @@
   font-weight: 600;
   font-size: 17px;
   max-height: 60px;
+}
+
+.share-form-title-btns {
+  display: flex;
+}
+
+.buy-btn, .sell-btn {
+  font-size: 17px;
+  font-weight: 600;
+  max-height: 60px;
+  z-index: 5;
+}
+
+.pad2 {
+  padding-bottom: 2px;
+}
+
+.buy-btn {
+  padding-right: 7px;
+}
+.sell-btn {
+  padding-left: 7px;
 }
 
 .company-about {
@@ -53,7 +73,6 @@
 .company-description p {
   font-size: 15px;
   display: inline-block;
-  /* max-height: 98px; */
   overflow: hidden;
 }
 
@@ -66,9 +85,7 @@
 .share-form-container {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
   margin: 15px 25px 0 25px;
-  /* border-bottom: 1px solid rgba(128, 128, 128, 0.514); */
   min-height: 95px;
   height: 100%;
   position: relative; 
