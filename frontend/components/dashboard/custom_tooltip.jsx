@@ -10,7 +10,7 @@ const CustomTooltip = ({ active, payload }) => {
             `${payload[0].payload['date/time']}  -  $${payload[0].value.toFixed(2)}`
           ) : (
             null
-          )};
+          )}
         </p>
       </div>
     );

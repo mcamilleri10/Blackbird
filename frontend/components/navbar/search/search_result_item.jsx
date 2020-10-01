@@ -9,26 +9,21 @@ export default class SearchResultItem extends React.Component {
     let symbol2 = '';
     let name1 = '';
     let name2 = '';
-    // debugger
-    for (let i = 0; i < searchValue.length; i++) {
-      // debugger
-      if (
-        (symbol.length >= searchValue.length) &&
-        (searchValue[i].toUpperCase() === symbol[i].toUpperCase())
-      ) {
-        symbol1 += symbol[i];
-      } else {
-        symbol2 += symbol[i];
-      }
-      if (searchValue[i].toUpperCase() === name[i].toUpperCase()) {
-        name1 += name[i];
-      } else {
-        name2 += name[i];
-      }
+    
+    if (searchValue.toUpperCase() === symbol.slice(0, searchValue.length).toUpperCase()) {
+      symbol1 += symbol.slice(0, searchValue.length);
+      symbol2 += symbol.slice(searchValue.length);
+    } else {
+      symbol2 = symbol;
     }
-    symbol2 += symbol.slice(searchValue.length);
-    name2 += name.slice(searchValue.length);
-    // debugger
+    
+    if (searchValue.toUpperCase() === name.slice(0, searchValue.length).toUpperCase()) {
+      name1 += name.slice(0, searchValue.length);
+      name2 += name.slice(searchValue.length);
+    } else {
+      name2 = name;
+    }
+
 
     return (
       <li className='search-result-item' key={symbol}>

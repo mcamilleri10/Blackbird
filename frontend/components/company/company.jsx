@@ -147,10 +147,10 @@ export default class Company extends React.Component {
     const { company } = this.props;
     if (readText === 'Read More') {
       // debugger
-      this.setState({ description: company.description});
+      this.setState({ description: company.description + ' '});
     } else {
       // debugger
-      const shortened = company.description.split('.').slice(0, 3).join('.');
+      const shortened = company.description.split('.').slice(0, 3).join('.') + '. ';
       this.setState({ description: shortened });
     }
   }
@@ -265,7 +265,7 @@ export default class Company extends React.Component {
                   </div>
                   <div>
                     <p>Average Volume</p>
-                    <p>{company.avtTotalVolume}</p>
+                    <p>{company.avgTotalVolume}</p>
                   </div>
                 </div>
                 {showMoreActive ? (

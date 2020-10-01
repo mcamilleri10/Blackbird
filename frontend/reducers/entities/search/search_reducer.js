@@ -5,8 +5,9 @@ const searchReducer = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_SEARCH_RESULTS:
       const usOnly = [];
+      // debugger
       action.results.forEach(result => {
-        if (result.region === 'US') {
+        if (result.securityType === 'cs' && result.region === 'US') {
           usOnly.push(result);
         }
       });
@@ -18,3 +19,4 @@ const searchReducer = (state = [], action) => {
 };
 
 export default searchReducer;
+

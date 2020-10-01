@@ -64,7 +64,7 @@ export default class Search extends React.Component {
             value={this.state.searchValue}
             onChange={this.handleChange}
             onFocus={this.resultsActive}
-            // onBlur={this.resultsInactive}
+            onBlur={this.resultsInactive}
           />
         </form>
         {this.state.resultsActive ? (
