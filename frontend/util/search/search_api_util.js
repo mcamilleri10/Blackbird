@@ -3,6 +3,6 @@ const iex_key = 'pk_d120548e43e84c93ae0cd2512a4a5d3d';
 
 export const symbolSearch = fragment => {
   return $.ajax({
-    url: `https://sandbox.iexapis.com/stable/search/${fragment}?token=${iex_test_key}`
+    url: `https://cloud.iexapis.com/stable/search/${fragment}?token=${iex_key}`
   });
 };
