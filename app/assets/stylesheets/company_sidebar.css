@@ -63,3 +63,99 @@
   font-weight: 700;
   display: inline-block;
 }
+
+.share-form-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 25px 0 25px;
+  /* border-bottom: 1px solid rgba(128, 128, 128, 0.514); */
+  min-height: 95px; 
+}
+
+.buy-shares-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  font-size: 14px;
+  /* border-bottom: 1px solid rgba(128, 128, 128, 0.514); */
+  padding-bottom: 15px;
+}
+
+.buy-shares-select, .shares-input-div, .market-price-div, .estimated-cost {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 48px;
+  line-height: 48px;
+  /* margin-bottom: 10px; */
+}
+
+.market-price-div {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.514);
+}
+
+.buy-shares-form label {
+  height: 38px;
+  line-height: 38px;
+}
+
+.buy-shares-form select {
+  outline: none;
+  height: 38px;
+  width: 130px;
+  padding: 1px 4px;
+  background-color: rgb(31, 31, 31);
+  border: 1px solid rgba(128, 128, 128, 0.514);
+  border-radius: 5px;
+  color: white;
+  transition: box-shadow 0.5s ease-out;
+}
+
+.buy-shares-form select:hover {
+  box-shadow: 0px 2px 14px 0px rgb(2, 2, 2);
+  transition: box-shadow 0.2s ease-in;
+}
+
+.buy-shares-form option {
+  color: white;
+}
+
+.shares-input {
+  width: 80px;
+  height: 28px;
+  padding: 18px 15px;
+  background-color: rgba(211, 211, 211, 0.151);
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: 1px solid rgba(211, 211, 211, 0.151);
+  align-self: flex-end;
+  text-align: right;
+}
+
+.shares-input:hover {
+  background-color: rgba(211, 211, 211, 0);
+}
+
+.invest-in-shares-form {
+  width: 100%;
+  height: 76px;
+  display: flex;
+  flex-direction: column;
+}
+
+.buy-shares-form button {
+  width: 100%;
+  height: 45px;
+  padding: 15px;
+  background-color: limegreen;
+  color: black;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  bottom: 20px;
+  margin-top: 28px;
+}

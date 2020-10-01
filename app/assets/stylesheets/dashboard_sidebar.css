@@ -194,12 +194,7 @@
 
 .dashboard-sidebar-form input:hover {
   background-color: rgba(211, 211, 211, 0);
-  /* border: 1px solid rgba(128, 128, 128, 0.514); */
 }
-
-/* .dashboard-sidebar-form input:focus {
-  border: 1px solid limegreen;
-} */
 
 .dashboard-sidebar-form div {
   display: flex;
