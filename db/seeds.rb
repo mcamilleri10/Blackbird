@@ -9,12 +9,9 @@
 WatchlistCompany.destroy_all
 Watchlist.destroy_all
 Share.destroy_all
-Company.destroy_all
 User.destroy_all
+Company.destroy_all
 
-# users
-demo = User.create(username: "demo_username", email: "demo@blackbird.com", 
-  first_name: "Demo", last_name: "User", password: "hunter12")
 
 
 # companies
@@ -37,7 +34,11 @@ dal = Company.create(symbol: "DAL")
 ual = Company.create(symbol: "UAL")
 luv = Company.create(symbol: "LUV")
 
-# shares
+# users
+demo = User.create(username: "demo_username", email: "demo@blackbird.com", 
+  first_name: "Demo", last_name: "User", password: "hunter12")
+
+ # shares
 share1 = Share.create(user_id: demo.id, company_id: aapl.id, num_shares_owned: 2, total_cost: 300)
 share2 = Share.create(user_id: demo.id, company_id: msft.id, num_shares_owned: 3, total_cost: 600)
 # share3 = Share.create(user_id: demo.id, company_id: ba.id, num_shares_owned: 10, total_cost: 800)
