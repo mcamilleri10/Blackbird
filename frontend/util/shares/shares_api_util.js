@@ -3,3 +3,11 @@ export const fetchShare = shareId => {
     url: `/api/shares/${shareId}`
   });
 };
+
+export const createShare = (share) => {
+  return $.ajax({
+    url: `/api/shares`,
+    method: 'post',
+    data: { share }
+  });
+};

@@ -6,7 +6,7 @@ import configureStore from './store/store';
 // testing imports
 import { login, logout, signup } from './actions/session/session_actions';
 import { requestQuote, 
-  fetchCompany, 
+  // fetchCompany, 
   requestIntradayPrices, 
   requestHistoricalPrices, 
   saveCompany,
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.dispatch = store.dispatch;
 
   window.requestQuote = requestQuote;
-  window.fetchCompany = fetchCompany;
+  // window.fetchCompany = fetchCompany;
   // window.symbolSearch = symbolSearch;
   window.requestCompanyInfo = requestCompanyInfo;
   window.requestIntradayPrices = requestIntradayPrices;

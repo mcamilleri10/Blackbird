@@ -12,6 +12,17 @@ class Api::SharesController < ApplicationController
   end
 
   def create
+    symbol = params[:share][:companyId]
+    @company = Company.find_by(symbol: symbol)
+    # debugger
+    if @company
+      params[:share][:companyId] = @company.id
+      # debugger
+    else
+      @company = Company.create(company: {symbol: symbol})
+      # debugger
+    end
+    # debugger
     @share = Share.new(share_params)
     if @share.save
       render :create
@@ -39,7 +50,7 @@ class Api::SharesController < ApplicationController
   def share_params
     params
       .require(:share)
-      .params.transform_keys(&:underscore)
+      .transform_keys(&:underscore)
       .permit(:user_id, :company_id, :num_shares_owned, :total_cost)
   end
 

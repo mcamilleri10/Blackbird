@@ -18,7 +18,7 @@ export default class CompanySidebar extends React.Component {
   }
 
   render() {
-    const { user, company, color } = this.props;
+    const { user, company, color, createShare, updateUser } = this.props;
     const { inputValue, selectValue } = this.state;
     if (!company) return null;
     return (
@@ -39,12 +39,16 @@ export default class CompanySidebar extends React.Component {
               user={user} 
               company={company} 
               color={color}
+              createShare={createShare}
+              updateUser={updateUser}
             />
           ) : (
             <InvestInDollarsForm
               user={user}
               company={company}
               color={color}
+              createShare={createShare}
+              updateUser={updateUser}
             />
           )}
             <span className={`buying-power-available ${color}`}>

@@ -7,7 +7,7 @@ const sharesReducer = (state = {}, action) => {
   const newState = Object.assign({}, state);
   switch (action.type) {
     case RECEIVE_SHARE:
-      newState[action.share.id] = action.share;
+      newState[action.share.companyId] = action.share;
       return newState;
     case RECEIVE_USER:
       Object.values(action.shares).forEach(share => {

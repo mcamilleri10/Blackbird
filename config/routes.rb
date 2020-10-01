@@ -8,9 +8,9 @@
 #                  api_user GET    /api/users/:id(.:format)                                                                 api/users#show {:format=>:json}
 #                           PATCH  /api/users/:id(.:format)                                                                 api/users#update {:format=>:json}
 #                           PUT    /api/users/:id(.:format)                                                                 api/users#update {:format=>:json}
-#        api_company_shares POST   /api/companies/:company_id/shares(.:format)                                              api/shares#create {:format=>:json}
 #             api_companies POST   /api/companies(.:format)                                                                 api/companies#create {:format=>:json}
 #               api_company GET    /api/companies/:id(.:format)                                                             api/companies#show {:format=>:json}
+#                api_shares POST   /api/shares(.:format)                                                                    api/shares#create {:format=>:json}
 #                 api_share GET    /api/shares/:id(.:format)                                                                api/shares#show {:format=>:json}
 #                           PATCH  /api/shares/:id(.:format)                                                                api/shares#update {:format=>:json}
 #                           PUT    /api/shares/:id(.:format)                                                                api/shares#update {:format=>:json}
@@ -40,10 +40,10 @@ Rails.application.routes.draw do
     end
 
     resources :companies, only: [:create, :show] do
-      resources :shares, only: [:create]
+      # resources :shares, only: [:create]
     end
     
-    resources :shares, only: [:show, :update, :destroy]
+    resources :shares, only: [:show, :create, :update, :destroy]
     
     resources :watchlists, only: [:show, :update, :destroy]
 

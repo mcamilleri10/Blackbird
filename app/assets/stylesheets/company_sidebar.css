@@ -186,3 +186,9 @@
   left: -25px;
   width: 122%;
 }
+
+.share-error {
+  position: relative;
+  top: 55px;
+  left: 56px;
+}

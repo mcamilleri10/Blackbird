@@ -3,6 +3,7 @@ class Api::CompaniesController < ApplicationController
   def show
     companySymbol = params[:id].upcase
     @company = Company.find_by(symbol: companySymbol)
+    # debugger
     if @company
       render :show
     else
@@ -11,16 +12,17 @@ class Api::CompaniesController < ApplicationController
   end
 
   def create
-    @company = Company.new(company_params)
-    if Company.find_by(symbol: @company.symbol)
-      # debugger
-      return nil;
-    elsif @company.save
-      render :create
-    else
-      return nil;
+    @company = Company.find_by(symbol: params[:company][:symbol])
+    if @company
+      render :show
+    else 
+      @company = Company.new(company_params)
+      if @company.save
+        render :create
+      else
+        render json: @company.errors.full_messages, status: 422
+      end
     end
-    return nil;
   end
 
   private

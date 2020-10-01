@@ -75,7 +75,7 @@ export default class ShareIndexItem extends React.Component {
         </div>
         <div className='share-btn-right'>
           <p>${delayedPrice.toFixed(2)}</p>
-          <p className={dayPercentChange >= 0 ? 'limegreen' : 'red'}>
+          <p className={`${color}`}>
             {dayPercentChange.toFixed(2)}%
             </p>
         </div>

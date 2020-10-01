@@ -15,3 +15,11 @@ export const fetchShare = shareId => {
       .then(share => dispatch(receiveShare(share)));
   };
 };
+
+export const createShare = share => {
+  // debugger
+  return dispatch => {
+    return ShareApiUtil.createShare(share)
+      .then(share => dispatch(receiveShare(share)));
+  };
+};

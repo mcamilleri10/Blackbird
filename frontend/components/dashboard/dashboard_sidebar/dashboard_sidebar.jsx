@@ -39,27 +39,7 @@ export default class DashboardSidebar extends React.Component {
   closeForm() {
     this.setState({ listFormActive: false });
   }
-  
-  // listFormBlur() {
-  //   this.setState({ 
-  //     listFormActive: false,
-  //     name: ''
-  //   });
-  // }
-  
-  // listFormChange(e) {
-  //   this.setState({ name: e.currentTarget.value });
-  // }
-  
-  // formSubmit(e) {
-  //   e.preventDefault();
-  //   console.log(this.state.name);
-  //   this.props.createWatchlist({
-  //     'name': this.state.name,
-  //     'user_id': this.state.user_id
-  //   });
-  // }
-  
+ 
   
   render() {
     // debugger

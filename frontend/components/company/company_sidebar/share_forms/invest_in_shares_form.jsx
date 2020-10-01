@@ -5,28 +5,45 @@ export default class InvestInSharesForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputValue: ''
+      userId: this.props.user.id,
+      companyId: this.props.company.symbol,
+      numSharesOwned: '',
+      totalCost: null,
+      error: null
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
-    if (e.currentTarget.value === '') {
-      this.setState({ inputValue: '' });
+    const { company } = this.props;
+    const inputVal = e.currentTarget.value;
+    if (inputVal === '') {
+      this.setState({ numSharesOwned: '', error: null });
     } else {
-      this.setState({ inputValue: parseFloat(e.currentTarget.value) });
+      this.setState({ 
+        numSharesOwned: parseFloat(inputVal),
+        totalCost: parseFloat((inputVal * company.iexRealtimePrice).toFixed(2))
+      });
     }
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state.inputValue);
+    const { user } = this.props;
+    const { totalCost } = this.state;
+    if (user.availableFunds < this.state.totalCost) {
+      this.setState({ error: 'Insufficient Funds'});
+    } else {
+      user.availableFunds -= totalCost;
+      this.props.createShare(this.state)
+        .then(() => this.props.updateUser(user));
+    }
   }
 
   render() {
     const { user, company, color, handleChange } = this.props;
-    const { inputValue } = this.state;
+    const { numSharesOwned, error } = this.state;
     if (!company) return null;
     // debugger
     return (
@@ -36,7 +53,7 @@ export default class InvestInSharesForm extends React.Component {
           <input
             className={`shares-input ${color}-bfocus`}
             type="number"
-            value={inputValue}
+            value={numSharesOwned}
             onChange={this.handleChange}
             placeholder='0'
           />
@@ -47,9 +64,10 @@ export default class InvestInSharesForm extends React.Component {
         </div>
         <div className='estimated-cost'>
           <span>Estimated Cost</span>
-          <span>${(inputValue * company.iexRealtimePrice).toFixed(2)}</span>
+          <span>${(numSharesOwned * company.iexRealtimePrice).toFixed(2)}</span>
         </div>
         <button className={`${color}-bg ${color}-hlite`}>Purchase Shares</button>
+        {error ? <div className='share-error red'>{error}</div> : null}
       </form>
     );
   }
