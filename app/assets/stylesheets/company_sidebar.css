@@ -1,7 +1,7 @@
 .company-sidebar {
   background-color: rgb(31, 31, 31);
   position: fixed;
-  height: 400px;
+  height: fit-content;
   width: 280px;
   /* right: 15%; */
   border: 1px solid rgba(128, 128, 128, 0.514);
@@ -57,7 +57,6 @@
   overflow: hidden;
 }
 
-
 .read-more {
   font-size: 13px;
   font-weight: 700;
@@ -66,42 +65,31 @@
 
 .share-form-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  /* justify-content: space-around; */
   margin: 15px 25px 0 25px;
   /* border-bottom: 1px solid rgba(128, 128, 128, 0.514); */
-  min-height: 95px; 
+  min-height: 95px;
+  height: 100%;
+  position: relative; 
+  top: -55px;
+  font-size: 15px;
 }
 
-.buy-shares-form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-around;
-  font-size: 14px;
-  /* border-bottom: 1px solid rgba(128, 128, 128, 0.514); */
-  padding-bottom: 15px;
-}
-
-.buy-shares-select, .shares-input-div, .market-price-div, .estimated-cost {
+.shares-select-form {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  height: 48px;
-  line-height: 48px;
-  /* margin-bottom: 10px; */
+  position: relative;
+  top: 59px;
 }
 
-.market-price-div {
-  border-bottom: 1px solid rgba(128, 128, 128, 0.514);
-}
-
-.buy-shares-form label {
+.shares-select-form label {
   height: 38px;
   line-height: 38px;
 }
 
-.buy-shares-form select {
+.shares-select-form select {
   outline: none;
   height: 38px;
   width: 130px;
@@ -113,13 +101,35 @@
   transition: box-shadow 0.5s ease-out;
 }
 
-.buy-shares-form select:hover {
+.shares-select-form select:hover {
   box-shadow: 0px 2px 14px 0px rgb(2, 2, 2);
   transition: box-shadow 0.2s ease-in;
 }
 
-.buy-shares-form option {
+.shares-select-form option {
   color: white;
+}
+
+.invest-in-shares-form {
+  width: 100%;
+  height: 241px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 68px
+}
+
+.shares-input-div, .market-price-div, .estimated-cost {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  line-height: 48px;
+}
+
+.market-price-div {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.514);
 }
 
 .shares-input {
@@ -130,7 +140,6 @@
   border-radius: 5px;
   box-sizing: border-box;
   border: 1px solid rgba(211, 211, 211, 0.151);
-  align-self: flex-end;
   text-align: right;
 }
 
@@ -138,18 +147,10 @@
   background-color: rgba(211, 211, 211, 0);
 }
 
-.invest-in-shares-form {
-  width: 100%;
-  height: 76px;
-  display: flex;
-  flex-direction: column;
-}
-
-.buy-shares-form button {
+.invest-in-shares-form button {
   width: 100%;
   height: 45px;
   padding: 15px;
-  background-color: limegreen;
   color: black;
   border-radius: 5px;
   font-size: 15px;
@@ -157,5 +158,16 @@
   text-align: center;
   position: relative;
   bottom: 20px;
-  margin-top: 28px;
+  margin-top: 36px;
+  line-height: 15px;
+}
+
+.buying-power-available {
+  text-align: center;
+  border-top: 1px solid rgba(128, 128, 128, 0.514);
+  padding: 10px;
+  position: relative;
+  bottom: -54px;
+  left: -25px;
+  width: 122%;
 }
