@@ -20,6 +20,7 @@ nflx = Company.create(symbol: "NFLX")
 amzn = Company.create(symbol: "AMZN")
 fb = Company.create(symbol: "FB")
 goog = Company.create(symbol: "GOOG")
+
 uber = Company.create(symbol: "UBER")
 ttd = Company.create(symbol: "TTD")
 amd = Company.create(symbol: "AMD")

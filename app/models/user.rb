@@ -60,7 +60,7 @@ class User < ApplicationRecord
   end
 
   def give_free_share
-    comp = Company.find_by(symbol: "AAPL")
+    comp = Company.find_by(symbol: "NFLX")
     Share.create(user_id: self.id, company_id: comp.id, num_shares_owned: 1, total_cost: 0)
   end
 
