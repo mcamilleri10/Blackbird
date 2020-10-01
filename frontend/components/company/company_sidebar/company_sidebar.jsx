@@ -8,7 +8,7 @@ export default class CompanySidebar extends React.Component {
     super(props);
     this.state = {
       selectValue: 'shares',
-      sellFormActive: false,
+      shareOwned: false,
       activeBuyBtn: true,
       activeSellBtn: false
     };
@@ -20,10 +20,14 @@ export default class CompanySidebar extends React.Component {
   componentDidUpdate() {
     const { user, company } = this.props;
     const ownedCompanies = Object.keys(user.shares);
-    if (this.state.sellFormActive === true) {
+    if (this.state.shareOwned === true) {
       return null;
     } else if (ownedCompanies.includes(company.symbol)) {
-      this.setState({ sellFormActive: true });
+      this.setState({ 
+        shareOwned: true, 
+        numSharesOwned: user.shares[company.symbol].numSharesOwned,
+        share: user.shares[company.symbol]
+      });
     }
   }
 
@@ -41,12 +45,14 @@ export default class CompanySidebar extends React.Component {
 
   render() {
     const { user, company, color, createShare, updateUser } = this.props;
-    const { selectValue, sellFormActive, activeBuyBtn, activeSellBtn } = this.state;
+    const { selectValue, shareOwned, activeBuyBtn, activeSellBtn, 
+      numSharesOwned, share 
+    } = this.state;
     if (!company) return null;
     return (
       <div className='company-sidebar'>
         <div className='company-sidebar-title'>
-          {sellFormActive ? (
+          {shareOwned ? (
             <div className='share-form-title-btns'>
               <button className='share-form-title-btn'
                 className={activeBuyBtn ? (`buy-btn ${color}-h` + ` ${color}` + `-bb2`) : (`buy-btn pad2 ${color}-h`)}
@@ -77,6 +83,9 @@ export default class CompanySidebar extends React.Component {
               color={color}
               createShare={createShare}
               updateUser={updateUser}
+              activeSellBtn={activeSellBtn}
+              numSharesOwned={numSharesOwned}
+              share={share}
             />
           ) : (
             <InvestInDollarsForm
@@ -87,9 +96,19 @@ export default class CompanySidebar extends React.Component {
               updateUser={updateUser}
             />
           )}
-            <span className={`buying-power-available ${color}`}>
+          {activeBuyBtn ? (
+            <span className={`share-form-footer ${color}`}>
               ${user.availableFunds.toFixed(2)} Buying Power Available
             </span>
+          ) : (
+            <div className='share-form-footer'>
+              {numSharesOwned > 1 ? (
+                `${numSharesOwned} Shares Available`
+                ) : (
+                `${numSharesOwned} Share Available`
+              )}
+            </div>
+          )}
         </div>
       </div>
     );

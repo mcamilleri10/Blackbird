@@ -43,10 +43,7 @@
 }
 
 .buy-btn {
-  padding-right: 7px;
-}
-.sell-btn {
-  padding-left: 7px;
+  margin-right: 12px;
 }
 
 .company-about {
@@ -194,7 +191,7 @@
   line-height: 15px;
 }
 
-.buying-power-available {
+.share-form-footer {
   text-align: center;
   border-top: 1px solid rgba(128, 128, 128, 0.514);
   padding: 10px;
@@ -202,6 +199,7 @@
   bottom: -54px;
   left: -25px;
   width: 122%;
+  font-size: 14px;
 }
 
 .share-error {

@@ -4,8 +4,10 @@ import { createShare } from '../../../actions/shares/share_actions';
 import { updateUser } from '../../../actions/users/user_actions';
 
 const mSTP = (state, ownProps) => {
+  const symbol = ownProps.match.params.companyId;
   const user = state.entities.users[state.session.id];
-  const company = state.entities.companies[ownProps.match.params.companyId];
+  const company = state.entities.companies[symbol];
+  // const share = state.shares[symbol];
   return {
     company,
     user,

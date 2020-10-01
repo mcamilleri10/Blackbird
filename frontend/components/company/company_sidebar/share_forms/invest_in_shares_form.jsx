@@ -13,6 +13,9 @@ export default class InvestInSharesForm extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.sellSomeShare = this.sellSomeShare.bind(this);
+    this.buySomeShares = this.buySomeShares.bind(this);
+    this.sellAllShares = this.sellAllShares.bind(this);
   }
 
   handleChange(e) {
@@ -30,19 +33,49 @@ export default class InvestInSharesForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { user } = this.props;
+    const { user, activeSellBtn, numSharesOwned, share } = this.props;
     const { totalCost } = this.state;
-    if (user.availableFunds < this.state.totalCost) {
-      this.setState({ error: 'Insufficient Funds'});
-    } else {
-      user.availableFunds -= totalCost;
-      this.props.createShare(this.state)
-        .then(() => this.props.updateUser(user));
+    debugger
+    if (numSharesOwned) { // OWNED SHARES
+      if (numSharesOwned > this.state.numSharesOwned && activeSellBtn) { // UPDATE SHARE SELL SOME
+        this.sellSomeShares();
+      } else if (numSharesOwned > this.state.numSharesOwned) { // UPDATE SHARE BUY SOME
+        this.buySomeShares();
+      } else {  // DESTROY SHARE
+        this.sellAllShares();
+      }
+    } else { // NO OWNED SHARES - BUY
+      if (user.availableFunds < this.state.totalCost) {
+        this.setState({ error: 'Insufficient Funds'});
+      } else {
+        user.availableFunds -= totalCost;
+        this.props.createShare(this.state)
+          .then(() => this.props.updateUser(user));
+      }
     }
   }
 
+  sellSomeShare() {
+    const { user, company } = this.props;
+    const { totalCost } = this.state;
+    user.availableFunds += totalCost;
+  }
+
+  buySomeShares() {
+    const { user, company } = this.props;
+    const { totalCost } = this.state;
+    user.availableFunds -= totalCost;
+  }
+
+  sellAllShares() {
+
+  }
+
+
+
+
   render() {
-    const { user, company, color, handleChange } = this.props;
+    const { user, company, color, handleChange, activeSellBtn } = this.props;
     const { numSharesOwned, error } = this.state;
     if (!company) return null;
     // debugger
@@ -63,10 +96,18 @@ export default class InvestInSharesForm extends React.Component {
           <span>${company.iexRealtimePrice.toFixed(2)}</span>
         </div>
         <div className='estimated-cost'>
-          <span>Estimated Cost</span>
+          {activeSellBtn ? (
+            <span>Estimated Cost</span>
+          ) : (
+            <span>Estimated Credit</span>
+          )}
           <span>${(numSharesOwned * company.iexRealtimePrice).toFixed(2)}</span>
         </div>
-        <button className={`${color}-bg ${color}-hlite`}>Purchase Shares</button>
+        {activeSellBtn ? (
+          <button className={`${color}-bg ${color}-hlite`}>Sell Shares</button>
+        ) : (
+          <button className={`${color}-bg ${color}-hlite`}>Purchase Shares</button>
+        )}
         {error ? <div className='share-error red'>{error}</div> : null}
       </form>
     );
