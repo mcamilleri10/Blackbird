@@ -9,12 +9,11 @@ const watchlistsReducer = (state = {}, action) => {
       newState[action.watchlist.id] = action.watchlist;
       return newState;
     case RECEIVE_USER:
-      // debugger
-      return action.watchlists;
-
-
-
-
+      if (action.watchlists) {
+        return action.watchlists;
+      } else {
+        return {};
+      }
     default:
       return state;
   }

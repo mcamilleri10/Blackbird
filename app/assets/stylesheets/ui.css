@@ -1,0 +1,69 @@
+.limegreen {
+  color: limegreen;
+}
+
+.red {
+  color: red;
+}
+
+.limegreen-bg {
+  background-color: limegreen;
+}
+
+.red-bg {
+  background-color: red;
+}
+
+.limegreen-h:hover {
+  color: limegreen;
+}
+
+.red-h:hover {
+  color: red;
+}
+
+.limegreen-hlite:hover {
+  background-color: rgb(82, 209, 82);
+}
+
+.limegreen-hlite2:hover {
+  color: rgb(101, 230, 101);
+}
+
+.red-hlite2:hover {
+  color: rgb(255, 64, 64);
+}
+
+.red-hlite:hover {
+  background-color: rgb(255, 85, 85);
+}
+
+.limegreen-b {
+  border: 1px solid limegreen;
+}
+
+.red-b {
+  border: 1px solid red;
+}
+
+.limegreen-bfocus:focus {
+  border: 1px solid limegreen;
+}
+
+.red-bfocus:focus {
+  border:1px solid red;
+}
+
+.limegreen-bb {
+  font-size: 17px;
+  color: limegreen;
+  border-bottom: 2px solid limegreen;
+  padding-bottom: 14px;
+}
+
+.red-bb {
+  font-size: 17px;
+  color: red;
+  border-bottom: 2px solid red;
+  padding-bottom: 14px;
+}

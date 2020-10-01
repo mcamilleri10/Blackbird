@@ -19,6 +19,7 @@ class User < ApplicationRecord
   validates :username, :email, :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   after_initialize :ensure_session_token
+  after_create :give_free_share
 
   attr_reader :password
 
@@ -29,11 +30,6 @@ class User < ApplicationRecord
   has_many :watchlists,
     foreign_key: :user_id,
     class_name: :Watchlist
-
-  # has_many :companies,
-  #   through: :watchlists,
-  #   class_name: :Watchlist
-
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
@@ -63,6 +59,10 @@ class User < ApplicationRecord
     self.session_token
   end
 
+  def give_free_share
+    comp = Company.find_by(symbol: "AAPL")
+    Share.create(user_id: self.id, company_id: comp.id, num_shares_owned: 1, total_cost: 0)
+  end
 
 
   

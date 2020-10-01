@@ -7,7 +7,6 @@ import LoginFormContainer from '../components/session/login_form_container';
 import DashboardContainer from '../components/dashboard/dashboard_container';
 import DashboardSidebarContainer from '../components/dashboard/dashboard_sidebar/dashboard_sidebar_container';
 import NavbarContainer from '../components/navbar/navbar_container';
-// import SearchResultsContainer from './navbar/search/search_results_container';
 import CompanyContainer from './company/company_container';
 import CompanySidebarContainer from './company/company_sidebar/company_sidebar_container';
 import WatchlistContainer from './watchlists/watchlist_container';
@@ -22,7 +21,6 @@ const App = () => {
         <AuthRoute exact path='/' component={SplashContainer}/>
       </Switch>
       <ProtectedRoute path='/auth' component={NavbarContainer}/>
-      {/* <ProtectedRoute paht='/auth' component={SearchResultsContainer}/> */}
       <div className='dashboard-body'>
         <div className='dashboard'>
           <ProtectedRoute path='/auth/users/:userId' component={DashboardContainer}/>

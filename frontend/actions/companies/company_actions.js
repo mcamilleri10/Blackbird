@@ -139,6 +139,7 @@ export const requestIntradayPrices = symbol => {
 
 export const requestHistoricalPrices = (symbol, range) => {
   return dispatch => {
+    dispatch(startLoading());
     return CompaniesApiUtil.requestHistoricalPrices(symbol, range)
       .then(prices => dispatch(receiveHistoricalPrices(prices, symbol)));
   };
@@ -146,6 +147,7 @@ export const requestHistoricalPrices = (symbol, range) => {
 
 export const requestBatchHistoricalPrices = (symbols, range) => {
   return dispatch => {
+    dispatch(startLoading());
     return CompaniesApiUtil.requestBatchHistoricalPrices(symbols, range)
       .then(prices => dispatch(receiveBatchHistoricalPrices(prices)));
   };

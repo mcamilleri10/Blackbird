@@ -15,7 +15,7 @@ export default class Navbar extends React.Component {
     return (
       <div className='navbar'>
         <div className='navbar-left'>
-          <div><Link to={`/`}>{logo}</Link></div>
+          <div><Link to={`/`} className={`${color}-h`}>{logo}</Link></div>
         </div>
         <div className='navbar-center'>
           <Search 
@@ -24,7 +24,7 @@ export default class Navbar extends React.Component {
             color={color}
           />
         </div>
-        <div className='navbar-right'>
+        <div className={`navbar-right ${color}-h`}>
           <button onClick={() => this.props.logout()}>Logout</button>
         </div>
       </div>

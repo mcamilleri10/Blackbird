@@ -1,6 +1,8 @@
 import React from 'react';
 import DashboardChart from './dashboard_chart';
 import BuyingPowerForm from './buying_power_form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 export default class Dashboard extends React.Component {
 
@@ -190,10 +192,11 @@ export default class Dashboard extends React.Component {
 
 
   render() {
-    const { user, quotes, shares, updateUser, color, receiveColor } = this.props;
+    const { user, quotes, shares, updateUser, color, receiveColor, loading } = this.props;
     const { totalValue, dayPriceChange, dayPercentChange, data, active1dBtn,
       active5dmBtn, active1mmBtn, active3mBtn, active1yBtn, buyingPowerFormActive
     } = this.state;
+    const spinner = <FontAwesomeIcon icon={faSpinner} spin />;
     // debugger
     return (
       <div className='dashboard-left'>
@@ -244,6 +247,7 @@ export default class Dashboard extends React.Component {
                   onClick={e => this.handleRangeClick('1y', e)}
                 > 1Y
                 </button>
+                {loading ? <div className={`${color}`}>{spinner}</div> : null }
             </div>
             <div className={buyingPowerFormActive ? 'buying-power-dd' : 'buying-power-dd-b'}>
               {buyingPowerFormActive ? (

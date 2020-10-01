@@ -14,10 +14,6 @@
   color: white;
 }
 
-.navbar-left div:hover {
-  color: limegreen;
-}
-
 .navbar-center {
   width: 700px;
   color: white;
@@ -74,10 +70,6 @@
 .navbar-right button {
   font-size: 15px;
   font-weight: 600;
-}
-
-.navbar-right button:hover {
-  color: limegreen;
 }
 
 .search-results {

@@ -22,6 +22,7 @@ const mSTP = (state, ownProps) => {
     watchlists: Object.values(state.entities.watchlists),
     quotes: Object.values(state.entities.companies),
     color: state.ui.color,
+    loading: state.ui.loading,
     formatDateStr
   };
 };
