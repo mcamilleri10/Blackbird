@@ -110,7 +110,7 @@
   color: white;
 }
 
-.invest-in-shares-form {
+.invest-in-shares-form, .invest-in-dollars-form {
   width: 100%;
   height: 241px;
   display: flex;
@@ -119,7 +119,12 @@
   top: 68px
 }
 
-.shares-input-div, .market-price-div, .estimated-cost {
+.invest-in-dollars-form {
+  height: 193px;
+}
+
+.shares-input-div, .market-price-div, .estimated-cost, .dollars-input-div, 
+  .estimated-quantity {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -128,11 +133,17 @@
   line-height: 48px;
 }
 
+.estimated-quantity {
+  border-top: 1px solid rgba(128, 128, 128, 0.514);
+  position: relative;
+  top: 5px;
+}
+
 .market-price-div {
   border-bottom: 1px solid rgba(128, 128, 128, 0.514);
 }
 
-.shares-input {
+.shares-input, .dollars-input {
   width: 80px;
   height: 28px;
   padding: 18px 15px;
@@ -143,11 +154,15 @@
   text-align: right;
 }
 
-.shares-input:hover {
+.dollars-input {
+  width: 130px;
+}
+
+.shares-input:hover, .dollars-input:hover {
   background-color: rgba(211, 211, 211, 0);
 }
 
-.invest-in-shares-form button {
+.share-form-container button {
   width: 100%;
   height: 45px;
   padding: 15px;

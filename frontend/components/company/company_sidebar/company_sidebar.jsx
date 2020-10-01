@@ -1,5 +1,6 @@
 import React from 'react';
 import InvestInSharesForm from './share_forms/invest_in_shares_form';
+import InvestInDollarsForm from './share_forms/invest_in_dollars_form';
 
 export default class CompanySidebar extends React.Component {
 
@@ -40,7 +41,11 @@ export default class CompanySidebar extends React.Component {
               color={color}
             />
           ) : (
-            <div></div>
+            <InvestInDollarsForm
+              user={user}
+              company={company}
+              color={color}
+            />
           )}
             <span className={`buying-power-available ${color}`}>
               ${user.availableFunds.toFixed(2)} Buying Power Available
