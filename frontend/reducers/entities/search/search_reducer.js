@@ -7,7 +7,7 @@ const searchReducer = (state = [], action) => {
       const usOnly = [];
       // debugger
       action.results.forEach(result => {
-        if (result.securityType === 'cs' && result.region === 'US') {
+        if (result.securityType === 'cs' && (result.exchange === 'NAS' || result.exchange === 'NYS')) {
           usOnly.push(result);
         }
       });

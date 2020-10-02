@@ -22,14 +22,16 @@ export default class BuyingPowerForm extends React.Component {
   }
 
   handleSubmit(e) {
+    const { user, updateUser, calculateTotalValue } = this.props;
     e.preventDefault();
     if (this.state.availableFunds === '') {
-      this.props.user.availableFunds;
+      user.availableFunds;
     } else {
-      this.props.user.availableFunds += this.state.availableFunds;
+      user.availableFunds += this.state.availableFunds;
     }
     this.setState({ availableFunds: '' });
-    this.props.updateUser(this.props.user);
+    calculateTotalValue();
+    updateUser(user);
   }
 
   render() {

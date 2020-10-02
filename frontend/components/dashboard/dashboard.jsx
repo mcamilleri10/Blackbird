@@ -28,11 +28,9 @@ export default class Dashboard extends React.Component {
     this.buyingPowerFormClick = this.buyingPowerFormClick.bind(this);
   }
 
-  // `range-btn ${color}-h`
+
 
   componentDidMount() {
-    // this.props.startLoading();
-    // debugger
     this.props.fetchUser(this.props.match.params.userId)
       .then(() => this.fetchRealtimeQuotes()
         .then(() => this.formatIntraData())
@@ -121,7 +119,7 @@ export default class Dashboard extends React.Component {
   }
 
   formatIntraData() {
-    const { quotes, user } = this.props;
+    const { quotes, user, availableFunds } = this.props;
     const dataObj = {};
     quotes.forEach(quote => {
       if (this.isShareOwned(quote)) {
@@ -157,7 +155,7 @@ export default class Dashboard extends React.Component {
   }
 
   formatHistData() {
-    const { quotes, user, formatDateStr } = this.props;
+    const { quotes, user, formatDateStr, availableFunds } = this.props;
     const dataObj = {};
     quotes.forEach(quote => {
       if (this.isShareOwned(quote)) {
@@ -259,6 +257,7 @@ export default class Dashboard extends React.Component {
                       user={user} 
                       updateUser={updateUser} 
                       color={color}
+                      calculateTotalValue={this.calculateTotalValue}
                     />
                 </div>
               ) : (

@@ -17,7 +17,8 @@ const mSTP = (state, ownProps) => {
   const user = state.entities.users[ownProps.match.params.userId];
   // debugger
   return {
-    user: user,
+    user,
+    availableFunds: user.availableFunds,
     shares: Object.values(state.entities.shares),
     watchlists: Object.values(state.entities.watchlists),
     quotes: Object.values(state.entities.companies),

@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-left: -310px;
+  margin-left: -76px;
 }
 
 .search-bar {
@@ -65,6 +65,19 @@
   display: flex;
   align-items: center;
   margin-right: 40px;
+}
+
+.navbar-right a {
+  font-size: 15px;
+  margin-right: 35px;
+}
+
+/* .navbar-right a:last-of-type {
+  margin-right: 30px;
+} */
+
+.navbar-right span {
+  margin-left: 5px;
 }
 
 .navbar-right button {

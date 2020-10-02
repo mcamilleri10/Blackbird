@@ -19,10 +19,9 @@ class Api::SharesController < ApplicationController
       params[:share][:companyId] = @company.id
       # debugger
     else
-      @company = Company.create(company: {symbol: symbol})
-      # debugger
+      @company = Company.create(symbol: symbol)
+      params[:share][:companyId] = @company.id
     end
-    # debugger
     @share = Share.new(share_params)
     if @share.save
       render :create
