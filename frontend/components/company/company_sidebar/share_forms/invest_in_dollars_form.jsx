@@ -34,20 +34,30 @@ export default class InvestInDollarsForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { user, updateUser, createShare } = this.props;
-    const { totalCost } = this.state;
+    const { user, company, createShare, updateUser, updateShare, shareOwned } = this.props;
+    const { totalCost, numSharesOwned } = this.state;
     if (user.availableFunds < this.state.totalCost) {
       this.setState({ error: 'Insufficient Funds' });
     } else {
       user.availableFunds -= totalCost;
-      this.setState({ inputVal: '' });
-      createShare(this.state)
+      if (shareOwned) {
+        const share = user.shares[company.symbol];
+        share.numSharesOwned += numSharesOwned;
+        share.totalCost += totalCost;
+        updateShare(share)
+          .then(() => updateUser(user));
+      } else {
+        createShare(this.state)
         .then(() => updateUser(user));
+      }
+      this.setState({ inputVal: '' });
     }
   }
 
   render() {
-    const { user, company, color, activeSellBtn, updateUser, deleteShare } = this.props;
+    const { user, company, color, activeSellBtn, updateUser, deleteShare,
+      updateShare
+    } = this.props;
     const { inputVal, error } = this.state;
     if (!company) return null;
     // debugger
@@ -60,6 +70,7 @@ export default class InvestInDollarsForm extends React.Component {
             color={color}
             updateUser={updateUser}
             deleteShare={deleteShare}
+            updateShare={updateShare}
           />
         ) : (
         <form onSubmit={this.handleSubmit} className='invest-in-dollars-form'>

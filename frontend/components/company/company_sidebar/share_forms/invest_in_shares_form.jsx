@@ -14,9 +14,6 @@ export default class InvestInSharesForm extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.sellSomeShare = this.sellSomeShare.bind(this);
-    // this.buySomeShares = this.buySomeShares.bind(this);
-    // this.sellAllShares = this.sellAllShares.bind(this);
   }
 
   handleChange(e) {
@@ -50,32 +47,17 @@ export default class InvestInSharesForm extends React.Component {
         createShare(this.state)
           .then(() => updateUser(user));
       }
-
       this.setState({ numSharesOwned: '' });
     }
   }
-
-  // sellSomeShare() {
-  //   const { user, company } = this.props;
-  //   const { totalCost } = this.state;
-  //   user.availableFunds += totalCost;
-  // }
-
-  // buySomeShares() {
-  //   const { user, company } = this.props;
-  //   const { totalCost } = this.state;
-  //   user.availableFunds -= totalCost;
-  // }
-
-  // sellAllShares() {
-
-  // }
 
 
 
 
   render() {
-    const { user, company, color, updateUser, activeSellBtn, deleteShare } = this.props;
+    const { user, company, color, updateUser, activeSellBtn, deleteShare,
+      updateShare
+    } = this.props;
     const { numSharesOwned, error } = this.state;
     if (!company) return null;
     // debugger
@@ -88,6 +70,7 @@ export default class InvestInSharesForm extends React.Component {
             color={color}
             updateUser={updateUser}
             deleteShare={deleteShare}
+            updateShare={updateShare}
           />
         ) : (
           <form onSubmit={this.handleSubmit} className='invest-in-shares-form'>

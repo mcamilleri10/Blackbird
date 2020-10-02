@@ -1,4 +1,5 @@
 import React from 'react';
+import { updateShare } from '../../../../actions/shares/share_actions';
 
 export default class SellInSharesForm extends React.Component {
 
@@ -13,8 +14,6 @@ export default class SellInSharesForm extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.sellSomeShare = this.sellSomeShare.bind(this);
-    this.sellAllShares = this.sellAllShares.bind(this);
   }
 
   handleChange(e) {
@@ -32,33 +31,26 @@ export default class SellInSharesForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { user, company, updateUser, deleteShare } = this.props;
+    const { user, company, updateUser, deleteShare, updateShare } = this.props;
     const { totalCost, numSharesOwned } = this.state;
     const share = user.shares[company.symbol];
     const numShares = share.numSharesOwned; // NUM SHARES ACTUALLY OWNED
     if (numShares < numSharesOwned) {
       this.setState({ error: 'Insufficient Shares Owned' });
-    } else if (numShares === numSharesOwned) {
+    } else {
       user.availableFunds += totalCost;
       this.setState({ numSharesOwned: '' });
-      deleteShare(share.id)
-        .then(() => updateUser(user));
-    } else {
-      // SELL SOME SHARES
+      if (numShares === numSharesOwned) {
+        deleteShare(share.id)
+          .then(() => updateUser(user));
+      } else {
+        share.totalCost = (share.totalCost - (share.totalCost / share.numSharesOwned * numSharesOwned));
+        share.numSharesOwned -= numSharesOwned;
+        updateShare(share)
+          .then(() => updateUser(user));
+      }
     }
   }
-
-  sellSomeShare() {
-    const { user, company } = this.props;
-    const { totalCost } = this.state;
-    user.availableFunds += totalCost;
-  }
-
-  sellAllShares() {
-
-  }
-
-
 
 
   render() {

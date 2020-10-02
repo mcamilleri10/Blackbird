@@ -115,6 +115,8 @@ export default class CompanySidebar extends React.Component {
               updateUser={updateUser}
               activeSellBtn={activeSellBtn}
               deleteShare={deleteShare}
+              updateShare={updateShare}
+              shareOwned={shareOwned}
             />
           )}
           {activeBuyBtn ? (

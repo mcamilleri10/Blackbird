@@ -33,19 +33,24 @@ export default class SellInDollarsForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { user, company, updateUser, deleteShare } = this.props;
+    const { user, company, updateUser, deleteShare, updateShare } = this.props;
     const { totalCost, numSharesOwned } = this.state;
     const share = user.shares[company.symbol];
     const numShares = share.numSharesOwned; // NUM SHARES ACTUALLY OWNED
     if (numShares < numSharesOwned) {
       this.setState({ error: 'Insufficient Shares Owned' });
-    } else if (numShares === numSharesOwned) {
+    } else {
       user.availableFunds += totalCost;
       this.setState({ inputVal: '' });
-      deleteShare(share.id)
-        .then(() => updateUser(user));
-    } else {
-      // SELL SOME SHARES
+      if (numShares === numSharesOwned) {
+        deleteShare(share.id)
+          .then(() => updateUser(user));
+      } else {
+        share.totalCost = (share.totalCost - (share.totalCost / share.numSharesOwned * numSharesOwned));
+        share.numSharesOwned -= numSharesOwned;
+        updateShare(share)
+          .then(() => updateUser(user));
+      }
     }
   }
 
