@@ -1,4 +1,4 @@
-import { RECEIVE_SHARE } from '../../../actions/shares/share_actions';
+import { RECEIVE_SHARE, REMOVE_SHARE } from '../../../actions/shares/share_actions';
 import { RECEIVE_USER } from '../../../actions/users/user_actions';
 import { LOGOUT_CURRENT_USER } from '../../../actions/session/session_actions';
 
@@ -8,6 +8,10 @@ const sharesReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_SHARE:
       newState[action.share.companyId] = action.share;
+      return newState;
+    case REMOVE_SHARE:
+      // debugger
+      delete newState[action.share.companyId];
       return newState;
     case RECEIVE_USER:
       Object.values(action.shares).forEach(share => {

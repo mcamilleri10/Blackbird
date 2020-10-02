@@ -204,6 +204,7 @@
 
 .share-error {
   position: relative;
+  text-align: center;
   top: 55px;
-  left: 56px;
+  left: 7px;
 }

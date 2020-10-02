@@ -20,9 +20,19 @@ export default class CompanySidebar extends React.Component {
   componentDidUpdate() {
     const { user, company } = this.props;
     const ownedCompanies = Object.keys(user.shares);
-    if (this.state.shareOwned === true) {
+    debugger
+    if (this.state.shareOwned && ownedCompanies.includes(company.symbol)) {
       return null;
-    } else if (ownedCompanies.includes(company.symbol)) {
+    } else if (!ownedCompanies.includes(company.symbol) && this.state.shareOwned === false) {
+      return null;
+    } else if (!ownedCompanies.includes(company.symbol)) {
+      this.setState({ 
+        shareOwned: false ,
+        numSharesOwned: null,
+        activeBuyBtn: true,
+        activeSellBtn: false
+      });
+    } else {
       this.setState({ 
         shareOwned: true, 
         numSharesOwned: user.shares[company.symbol].numSharesOwned,
@@ -44,9 +54,9 @@ export default class CompanySidebar extends React.Component {
   }
 
   render() {
-    const { user, company, color, createShare, updateUser } = this.props;
+    const { user, company, color, createShare, updateUser, deleteShare } = this.props;
     const { selectValue, shareOwned, activeBuyBtn, activeSellBtn, 
-      numSharesOwned, share 
+      numSharesOwned 
     } = this.state;
     if (!company) return null;
     return (
@@ -84,8 +94,7 @@ export default class CompanySidebar extends React.Component {
               createShare={createShare}
               updateUser={updateUser}
               activeSellBtn={activeSellBtn}
-              numSharesOwned={numSharesOwned}
-              share={share}
+              deleteShare={deleteShare}
             />
           ) : (
             <InvestInDollarsForm
@@ -94,6 +103,8 @@ export default class CompanySidebar extends React.Component {
               color={color}
               createShare={createShare}
               updateUser={updateUser}
+              activeSellBtn={activeSellBtn}
+              deleteShare={deleteShare}
             />
           )}
           {activeBuyBtn ? (

@@ -42,7 +42,9 @@ class Api::SharesController < ApplicationController
 
   def destroy
     @share = Share.find_by(id: params[:id])
+    # debugger
     @share.destroy
+    render :destroy
   end
 
   private
