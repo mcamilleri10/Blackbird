@@ -14,10 +14,9 @@ class Api::SharesController < ApplicationController
   def create
     symbol = params[:share][:companyId]
     @company = Company.find_by(symbol: symbol)
-    # debugger
+
     if @company
       params[:share][:companyId] = @company.id
-      # debugger
     else
       @company = Company.create(symbol: symbol)
       params[:share][:companyId] = @company.id
@@ -31,7 +30,12 @@ class Api::SharesController < ApplicationController
   end
 
   def update
+    symbol = params[:share][:companyId]
+    @company = Company.find_by(symbol: symbol)
+
     @share = Share.find_by(id: params[:id])
+    params[:share][:companyId] = @company.id
+    # debugger
     if @share.update(share_params)
       render :show
     else

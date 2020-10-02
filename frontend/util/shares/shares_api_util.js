@@ -18,3 +18,11 @@ export const deleteShare = shareId => {
     method: 'delete',
   });
 };
+
+export const updateShare = share => {
+  return $.ajax({
+    url: `/api/shares/${share.id}`,
+    method: 'patch',
+    data: { share }
+  });
+};

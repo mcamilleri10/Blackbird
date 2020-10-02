@@ -20,6 +20,12 @@ export default class CompanySidebar extends React.Component {
   componentDidUpdate() {
     const { user, company } = this.props;
     const ownedCompanies = Object.keys(user.shares);
+    if (user.shares[company.symbol]) {
+      const sharesOwned = user.shares[company.symbol].numSharesOwned;
+      if (this.state.numSharesOwned !== sharesOwned) {
+        this.setState({ numSharesOwned: sharesOwned});
+      }
+    }
     // debugger
     if (this.state.shareOwned && ownedCompanies.includes(company.symbol)) {
       return null;
@@ -27,7 +33,7 @@ export default class CompanySidebar extends React.Component {
       return null;
     } else if (!ownedCompanies.includes(company.symbol)) {
       this.setState({ 
-        shareOwned: false ,
+        shareOwned: false,
         numSharesOwned: null,
         activeBuyBtn: true,
         activeSellBtn: false
@@ -54,7 +60,9 @@ export default class CompanySidebar extends React.Component {
   }
 
   render() {
-    const { user, company, color, createShare, updateUser, deleteShare } = this.props;
+    const { user, company, color, createShare, updateUser, deleteShare, 
+      updateShare
+    } = this.props;
     const { selectValue, shareOwned, activeBuyBtn, activeSellBtn, 
       numSharesOwned 
     } = this.state;
@@ -95,6 +103,8 @@ export default class CompanySidebar extends React.Component {
               updateUser={updateUser}
               activeSellBtn={activeSellBtn}
               deleteShare={deleteShare}
+              updateShare={updateShare}
+              shareOwned={shareOwned}
             />
           ) : (
             <InvestInDollarsForm

@@ -39,3 +39,11 @@ export const deleteShare = shareId => {
       .then((share) => dispatch(removeShare(share)));
   };
 };
+
+export const updateShare = share => {
+  // debugger
+  return dispatch => {
+    return ShareApiUtil.updateShare(share)
+      .then(share => dispatch(receiveShare(share)));
+  };
+};

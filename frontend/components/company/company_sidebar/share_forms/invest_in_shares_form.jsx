@@ -34,15 +34,24 @@ export default class InvestInSharesForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { user, createShare, updateUser } = this.props;
-    const { totalCost } = this.state;
+    const { user, company, createShare, updateUser, updateShare, shareOwned } = this.props;
+    const { totalCost, numSharesOwned } = this.state;
     if (user.availableFunds < this.state.totalCost) {
       this.setState({ error: 'Insufficient Funds'});
     } else {
       user.availableFunds -= totalCost;
+      if (shareOwned) {
+        const share = user.shares[company.symbol];
+        share.numSharesOwned += numSharesOwned;
+        share.totalCost += totalCost;
+        updateShare(share)
+          .then(() => updateUser(user));
+      } else {
+        createShare(this.state)
+          .then(() => updateUser(user));
+      }
+
       this.setState({ numSharesOwned: '' });
-      createShare(this.state)
-        .then(() => updateUser(user));
     }
   }
 
