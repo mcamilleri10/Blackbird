@@ -20,6 +20,7 @@ export default class CompanySidebar extends React.Component {
   componentDidUpdate() {
     const { user, company } = this.props;
     const ownedCompanies = Object.keys(user.shares);
+    if (!company) return null;
     if (user.shares[company.symbol]) {
       const sharesOwned = user.shares[company.symbol].numSharesOwned;
       if (this.state.numSharesOwned !== sharesOwned) {

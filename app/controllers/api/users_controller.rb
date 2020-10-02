@@ -3,13 +3,6 @@ class Api::UsersController < ApplicationController
   def show
     @user = User.includes(:shares, :watchlists).find_by(id: params[:id])
 
-    # @symbols = []
-    # @user.watchlists.each do |watchlist|
-    #   watchlist.companies.each do |company|
-    #     @symbols << company.symbol
-    #   end
-    # end
-    # debugger
     if @user
       render :show
     else
@@ -32,7 +25,6 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    # debugger
     @user = User.find_by(id: params[:id])
     if @user.update(user_params)
       render :show

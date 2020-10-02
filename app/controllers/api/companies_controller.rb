@@ -3,7 +3,7 @@ class Api::CompaniesController < ApplicationController
   def show
     companySymbol = params[:id].upcase
     @company = Company.find_by(symbol: companySymbol)
-    # debugger
+
     if @company
       render :show
     else

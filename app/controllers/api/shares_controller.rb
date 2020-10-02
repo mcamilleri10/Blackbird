@@ -3,7 +3,6 @@ class Api::SharesController < ApplicationController
 
   def show
     @share = Share.includes(:company).find_by(id: params[:id])
-    # debugger
     if @share
       render :show
     else
@@ -35,7 +34,6 @@ class Api::SharesController < ApplicationController
 
     @share = Share.find_by(id: params[:id])
     params[:share][:companyId] = @company.id
-    # debugger
     if @share.update(share_params)
       render :show
     else
@@ -45,7 +43,6 @@ class Api::SharesController < ApplicationController
 
   def destroy
     @share = Share.find_by(id: params[:id])
-    # debugger
     @share.destroy
     render :destroy
   end

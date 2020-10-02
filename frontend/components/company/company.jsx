@@ -45,7 +45,7 @@ export default class Company extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // debugger
+
     const { requestQuote, requestCompanyInfo } = this.props;
     const companyId = this.props.match.params.companyId;
     if (prevProps.match.params.companyId !== companyId) {
@@ -65,7 +65,7 @@ export default class Company extends React.Component {
       this.props.requestHistoricalPrices(companyId, range)
         .then(() => this.formatHistData());
     }
-    // debugger
+
     this.rangeBtnClass(range);
   }
 
@@ -83,7 +83,7 @@ export default class Company extends React.Component {
 
   formatChartValue() {
     const { company, receiveColor } = this.props;
-    // debugger
+
     const { iexRealtimePrice, change, changePercent } = company;
     this.setState({
       chartValue: iexRealtimePrice.toFixed(2),
@@ -108,7 +108,7 @@ export default class Company extends React.Component {
       nullPrice = price.average;
       data.push({'date/time': price.label, 'price': price.average});
     });
-    // debugger
+
     this.setState({ data: data });
   }
 
@@ -141,17 +141,17 @@ export default class Company extends React.Component {
     } else {
       this.setState({ readMoreText: 'Read More'});      
     }
-    // debugger
+
     this.formatDescription(e.currentTarget.innerHTML);
   }
 
   formatDescription(readText) {
     const { company } = this.props;
     if (readText === 'Read More') {
-      // debugger
+  
       this.setState({ description: company.description + ' '});
     } else {
-      // debugger
+  
       const shortened = company.description.split('.').slice(0, 3).join('.') + '. ';
       this.setState({ description: shortened });
     }
@@ -159,14 +159,14 @@ export default class Company extends React.Component {
 
 
   render() {
-    const { company, color, loading } = this.props;
+    const { user, company, color, loading } = this.props;
     const { chartValue, dayPriceChange, dayPercentChange, data, active1dBtn,
       active5dmBtn, active1mmBtn, active3mBtn, active1yBtn, active5yBtn,
       showMoreActive, showMoreText, readMoreText, description 
     } = this.state;
     const spinner = <FontAwesomeIcon icon={faSpinner} spin />;
     if (!company) return null;
-    // debugger
+
     return (
       <div className='company-left'>
         <div className='company-content'>
@@ -224,6 +224,11 @@ export default class Company extends React.Component {
               </button>
               {loading ? <div className={`${color}`}>{spinner}</div> : null}
             </div>
+            {user.shares[company.symbol] ? (
+              console.log('owned')
+              ) : (              
+              console.log('unowned')
+            )}
             <div className='company-about'>
               <div className='company-about-title'>
                 <h2>About</h2>

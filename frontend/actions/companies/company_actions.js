@@ -108,7 +108,6 @@ export const fetchCompany = companyId => {
 };
 
 export const requestQuote = symbol => {
-  // debugger
   return dispatch => {
     return CompaniesApiUtil.requestQuote(symbol)
       .then(quote => dispatch(receiveQuote(quote)));
