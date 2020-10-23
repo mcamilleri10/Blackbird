@@ -33,6 +33,7 @@ export default class Company extends React.Component {
     this.formatHistData = this.formatHistData.bind(this);
     this.showMore = this.showMore.bind(this);
     this.readMore = this.readMore.bind(this);
+    this.formatStat = this.formatStat.bind(this);
   }
 
   componentDidMount() {
@@ -157,6 +158,35 @@ export default class Company extends React.Component {
     }
   }
 
+  formatStat(num) {
+    if (num) {
+      const numArr = num.toString().split('');
+      const length = numArr.length;
+      let newNum;
+      if (length > 12) {
+        newNum = numArr.slice(0, length - 10);
+        newNum.splice(length - 12, 0, '.');
+        newNum.push('T');
+        return newNum.join('');
+      } else if (length > 9) {
+        newNum = numArr.slice(0, length - 7);
+        newNum.splice(length - 9, 0, '.');
+        newNum.push('B');
+        return newNum.join('');
+      } else if (length > 6) {
+        newNum = numArr.slice(0, length - 4);
+        newNum.splice(length - 6, 0, '.');
+        newNum.push('M');
+        return newNum.join('');
+      } else if (length > 3) {
+        numArr.splice(length - 3, 0, ',');
+        return numArr.join('');
+      } else {
+        return num;
+      }
+    }
+  }
+
 
   render() {
     const { user, company, color, loading } = this.props;
@@ -251,7 +281,7 @@ export default class Company extends React.Component {
                   </div>
                   <div>
                     <p>Employees</p>
-                    <p>{company.employees}</p>
+                    <p>{this.formatStat(company.employees)}</p>
                   </div>
                   <div>
                     <p>Headquarters</p>
@@ -263,7 +293,7 @@ export default class Company extends React.Component {
                   </div>
                   <div>
                     <p>Market Cap</p>
-                    <p>{company.marketCap}</p>
+                    <p>{this.formatStat(company.marketCap)}</p>
                   </div>
                   <div>
                     <p>Price-Earnings Ratio</p>
@@ -275,7 +305,7 @@ export default class Company extends React.Component {
                   </div>
                   <div>
                     <p>Average Volume</p>
-                    <p>{company.avgTotalVolume}</p>
+                    <p>{this.formatStat(company.avgTotalVolume)}</p>
                   </div>
                 </div>
                 {showMoreActive ? (
