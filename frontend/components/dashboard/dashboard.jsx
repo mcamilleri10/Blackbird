@@ -186,7 +186,7 @@ export default class Dashboard extends React.Component {
 
 
   render() {
-    const { user, quotes, shares, updateUser, color, receiveColor, loading } = this.props;
+    const { user, quotes, shares, updateUser, color, receiveColor, loading, availableFunds } = this.props;
     const { totalValue, dayPriceChange, dayPercentChange, data, active1dBtn,
       active5dmBtn, active1mmBtn, active3mBtn, active1yBtn, buyingPowerFormActive
     } = this.state;
@@ -213,6 +213,7 @@ export default class Dashboard extends React.Component {
               <DashboardChart 
                 data={data}
                 dayChange={dayPriceChange}
+                availableFunds={availableFunds}
               />
             </div>
             <div className='range-btns'>

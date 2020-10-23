@@ -254,11 +254,6 @@ export default class Company extends React.Component {
               </button>
               {loading ? <div className={`${color}`}>{spinner}</div> : null}
             </div>
-            {user.shares[company.symbol] ? (
-              console.log('owned')
-              ) : (              
-              console.log('unowned')
-            )}
             <div className='company-about'>
               <div className='company-about-title'>
                 <h2>About</h2>
