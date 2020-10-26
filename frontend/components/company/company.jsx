@@ -4,6 +4,7 @@ import { requestCompanyInfo } from '../../util/companies/companies_api_util';
 import DashboardChart from '../dashboard/dashboard_chart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import OwnedAssetInfo from './owned_asset_info';
 
 export default class Company extends React.Component {
 
@@ -14,7 +15,6 @@ export default class Company extends React.Component {
       dayPriceChange: 0,
       dayPercentChange: 0,
       data: null,
-      buyingPowerFormActive: false,
       active1dBtn: true,
       active5dmBtn: false,
       active1mmBtn: false,
@@ -25,7 +25,8 @@ export default class Company extends React.Component {
       showMoreText: 'Show More',
       readMoreActive: false,
       readMoreText: 'Read More',
-      description: ''
+      description: '',
+      assetOwned: false
     };
     this.formatChartValue = this.formatChartValue.bind(this);
     this.formatIntraData = this.formatIntraData.bind(this);
@@ -37,17 +38,21 @@ export default class Company extends React.Component {
   }
 
   componentDidMount() {
-    const { requestQuote, requestCompanyInfo } = this.props;
+    const { requestQuote, requestCompanyInfo, user } = this.props;
     const companyId = this.props.match.params.companyId;
     requestQuote(companyId).then(() => requestCompanyInfo(companyId)
       .then(() => this.formatChartValue())
       .then(() => this.formatIntraData())
-      .then(() => this.formatDescription()));
+      .then(() => this.formatDescription())
+      .then(() => {
+        if (user.shares[companyId]) {
+          this.setState({ assetOwned: true });
+        }
+      }));
   }
 
   componentDidUpdate(prevProps) {
-
-    const { requestQuote, requestCompanyInfo } = this.props;
+    const { requestQuote, requestCompanyInfo, user } = this.props;
     const companyId = this.props.match.params.companyId;
     if (prevProps.match.params.companyId !== companyId) {
       requestQuote(companyId).then(() => requestCompanyInfo(companyId)
@@ -66,7 +71,6 @@ export default class Company extends React.Component {
       this.props.requestHistoricalPrices(companyId, range)
         .then(() => this.formatHistData());
     }
-
     this.rangeBtnClass(range);
   }
 
@@ -84,7 +88,6 @@ export default class Company extends React.Component {
 
   formatChartValue() {
     const { company, receiveColor } = this.props;
-
     const { iexRealtimePrice, delayedPrice, close, change, changePercent } = company;
     this.setState({
       chartValue: iexRealtimePrice.toFixed(2) || delayedPrice.toFixed(2) || close.toFixed(2),
@@ -192,7 +195,7 @@ export default class Company extends React.Component {
     const { user, company, color, loading } = this.props;
     const { chartValue, dayPriceChange, dayPercentChange, data, active1dBtn,
       active5dmBtn, active1mmBtn, active3mBtn, active1yBtn, active5yBtn,
-      showMoreActive, showMoreText, readMoreText, description 
+      showMoreActive, showMoreText, readMoreText, description, assetOwned 
     } = this.state;
     const spinner = <FontAwesomeIcon icon={faSpinner} spin />;
     if (!company) return null;
@@ -256,6 +259,11 @@ export default class Company extends React.Component {
               </button>
               {loading ? <div className={`${color}`}>{spinner}</div> : null}
             </div>
+            {assetOwned ? (
+              <OwnedAssetInfo user={user} company={company}/>
+            ) : (
+              null
+            )}
             <div className='company-about'>
               <div className='company-about-title'>
                 <h2>About</h2>

@@ -14,8 +14,8 @@ const mSTP = (state, ownProps) => {
   const user = state.entities.users[state.session.id];
 
   return {
-    user: user,
-    company: company,
+    user,
+    company,
     color: state.ui.color,
     loading: state.ui.loading,
     formatDateStr

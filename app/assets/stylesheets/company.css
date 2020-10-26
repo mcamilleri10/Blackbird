@@ -54,6 +54,7 @@
   font-weight: 600;
 }
 
+/* company info */
 .company-description {
   margin-bottom: 35px;
 }
@@ -84,4 +85,29 @@
 .company-stats div {
   width: 160px;
   margin-bottom: 15px;
+}
+
+/* owned asset info */
+.owned-asset-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 35px;
+}
+
+.owned-asset-container > div {
+  width: 325px;
+  height: 225px;
+  border: 1px solid rgba(128, 128, 128, 0.514);
+  border-radius: 5px;
+  padding: 25px;
+  box-sizing: border-box;
+}
+
+.owned-asset-container h5 {
+  margin: 0;
+}
+
+.your-market-value div, .your-average-cost div {
+  display: flex;
+  justify-content: space-between;
 }
