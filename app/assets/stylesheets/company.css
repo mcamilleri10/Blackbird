@@ -105,9 +105,26 @@
 
 .owned-asset-container h5 {
   margin: 0;
+  font-weight: 500;
+  font-size: 15px;
+  padding-left: 1px;
 }
 
 .your-market-value div, .your-average-cost div {
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.514);
+  padding: 10px 1px 10px 1px;
+  font-size: 15px;
+}
+
+.your-market-value div:last-of-type {
+  border-bottom: none;
+}
+
+.owned-asset-cost {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 600;
+  padding-top: 7px;
 }
