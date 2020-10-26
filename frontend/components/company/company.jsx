@@ -219,6 +219,7 @@ export default class Company extends React.Component {
               <DashboardChart
                 data={data}
                 dayChange={dayPriceChange}
+                availableFunds={user.availableFunds}
               />
             </div>
             <div className='range-btns'>
