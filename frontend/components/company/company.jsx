@@ -220,6 +220,7 @@ export default class Company extends React.Component {
                 data={data}
                 dayChange={dayPriceChange}
                 availableFunds={user.availableFunds}
+                asset='true'
               />
             </div>
             <div className='range-btns'>

@@ -211,6 +211,7 @@ export default class Dashboard extends React.Component {
                 data={data}
                 dayChange={dayPriceChange}
                 availableFunds={availableFunds}
+                asset='false'
               />
             </div>
             <div className='range-btns'>

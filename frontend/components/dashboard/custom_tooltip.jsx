@@ -1,7 +1,10 @@
 import React from 'react';
 
-const CustomTooltip = ({ active, payload, availableFunds }) => {
+const CustomTooltip = ({ active, payload, availableFunds, asset }) => {
   if (active) {
+    if (asset === 'true') {
+      availableFunds = 0;
+    }
     return (
       <div className="custom-tooltip">
         <p className="tooltip-label">
