@@ -47,7 +47,6 @@ export default class Dashboard extends React.Component {
       this.props.requestBatchHistoricalPrices(symbols, range)
         .then(() => this.formatHistData());
     }
-    // debugger
     this.rangeBtnClass(range);
   }
 
@@ -69,7 +68,6 @@ export default class Dashboard extends React.Component {
 
   createSymbolStr() {
     const { shares, watchlists } = this.props;
-    // debugger
     const symbolArr = [];
     shares.forEach(share => {
       symbolArr.push(share.companyId);
@@ -191,7 +189,6 @@ export default class Dashboard extends React.Component {
       active5dmBtn, active1mmBtn, active3mBtn, active1yBtn, buyingPowerFormActive
     } = this.state;
     const spinner = <FontAwesomeIcon icon={faSpinner} spin />;
-    // debugger
     return (
       <div className='dashboard-left'>
         <div className='dashboard-content'>
@@ -204,9 +201,9 @@ export default class Dashboard extends React.Component {
                 <p>-${-dayPriceChange.toFixed(2)}</p>
               )}
               {dayPercentChange >= 0 ? (
-                <p>(+{dayPercentChange.toFixed(2)}%)</p>
+                <p>(+{(dayPercentChange * 100).toFixed(2)}%)</p>
               ) : (
-                <p>(-{-dayPercentChange.toFixed(2)}%)</p>
+                <p>(-{-(dayPercentChange * 100).toFixed(2)}%)</p>
               )}
             </div>
             <div className='dashboard-graph'>

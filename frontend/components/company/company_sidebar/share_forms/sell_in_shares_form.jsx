@@ -57,7 +57,6 @@ export default class SellInSharesForm extends React.Component {
     const { user, company, color, handleChange, activeSellBtn } = this.props;
     const { numSharesOwned, error } = this.state;
     if (!company) return null;
-    // debugger
     return (
       <form onSubmit={this.handleSubmit} className='invest-in-shares-form'>
         <div className='shares-input-div'>

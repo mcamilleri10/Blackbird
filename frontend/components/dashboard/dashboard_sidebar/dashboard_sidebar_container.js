@@ -4,7 +4,6 @@ import { fetchUser } from '../../../actions/users/user_actions';
 import { createWatchlist } from '../../../actions/watchlists/watchlist_actions';
 
 const mSTP = (state, ownProps) => {
-  // debugger
   const user = state.entities.users[ownProps.match.params.userId];
   return {
     user: user,

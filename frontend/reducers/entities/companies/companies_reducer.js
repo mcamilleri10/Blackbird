@@ -18,10 +18,8 @@ const companiesReducer = (state = {}, action) => {
     case RECEIVE_QUOTE:
       const quote = action.quote.quote;
       const iPrices = action.quote['intraday-prices'];
-      // const merged = Object.assign({}, {[quote.symbol]: quote});
       newState[quote.symbol] = quote;
       newState[quote.symbol].intradayPrices = iPrices;
-      // debugger
       return newState;
     case RECEIVE_QUOTES:
       const quotes = action.quotes;
@@ -31,17 +29,14 @@ const companiesReducer = (state = {}, action) => {
         newState[quote.symbol] = quote;
         newState[quote.symbol].intradayPrices = iPrices;
       });
-      // debugger
       return newState;
     case RECEIVE_COMPANY:
       const company = { [action.company.symbol]: action.company };
-      // debugger
       return Object.assign({}, newState, company);
     case RECEIVE_COMPANY_INFO:
       const symbol = action.companyInfo.symbol;
       const merged = Object.assign({}, newState[symbol], action.companyInfo);
       newState[symbol] = merged;
-      // debugger
       return newState;
     case RECEIVE_INTRADAY_PRICES:
       newState[action.symbol].intradayPrices = action.prices;
@@ -60,7 +55,6 @@ const companiesReducer = (state = {}, action) => {
         const mergeHist = Object.assign({}, newState[company.symbol], action.prices[company.symbol]);
         newState[company.symbol] = mergeHist;
       });
-      // debugger
       return newState;
     // case RECEIVE_SEARCH_RESULTS:
     //   action.results.forEach(result => {
@@ -69,7 +63,6 @@ const companiesReducer = (state = {}, action) => {
     //       newState[result.symbol] = merged;
     //     }
     //   });
-    //   // debugger
     //   return newState;
     default:
       return state;

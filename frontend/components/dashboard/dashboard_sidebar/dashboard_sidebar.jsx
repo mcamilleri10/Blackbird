@@ -42,7 +42,6 @@ export default class DashboardSidebar extends React.Component {
  
   
   render() {
-    // debugger
     const { shares, watchlists, quotes, loading, color } = this.props;
     const plusSign = <FontAwesomeIcon icon={faPlus} />;
     return (

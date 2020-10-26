@@ -10,7 +10,6 @@ const sharesReducer = (state = {}, action) => {
       newState[action.share.companyId] = action.share;
       return newState;
     case REMOVE_SHARE:
-      // debugger
       delete newState[action.share.companyId];
       return newState;
     case RECEIVE_USER:

@@ -19,7 +19,6 @@ export default class SidebarChart extends React.Component {
     let color;
 
     if (loading) {
-      // debugger
       return <div>{spinner}</div>;
     }
 
@@ -28,7 +27,6 @@ export default class SidebarChart extends React.Component {
     } else {
       color = '#ff0000';
     }
-    // debugger
     return (
       <LineChart className='sidebar-chart' width={75} height={35} data={data}
         margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>

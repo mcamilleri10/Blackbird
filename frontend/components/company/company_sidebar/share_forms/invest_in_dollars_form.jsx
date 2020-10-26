@@ -60,7 +60,6 @@ export default class InvestInDollarsForm extends React.Component {
     } = this.props;
     const { inputVal, error } = this.state;
     if (!company) return null;
-    // debugger
     return (
       <div>
         {activeSellBtn ? (

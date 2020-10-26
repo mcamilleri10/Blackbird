@@ -5,7 +5,6 @@ const searchReducer = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_SEARCH_RESULTS:
       const usOnly = [];
-      // debugger
       action.results.forEach(result => {
         if (result.securityType === 'cs' && (result.exchange === 'NAS' || result.exchange === 'NYS')) {
           usOnly.push(result);

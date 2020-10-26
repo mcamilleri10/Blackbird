@@ -2,7 +2,6 @@ import React from 'react';
 
 const CustomTooltip = ({ active, payload, availableFunds }) => {
   if (active) {
-    // debugger
     return (
       <div className="custom-tooltip">
         <p className="tooltip-label">

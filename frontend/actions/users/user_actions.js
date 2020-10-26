@@ -4,7 +4,6 @@ import { startLoading } from '../../actions/companies/company_actions';
 export const RECEIVE_USER = 'RECEIVE_USER';
 
 const receiveUser = user => {
-  // debugger
   return {
     type: RECEIVE_USER,
     user,

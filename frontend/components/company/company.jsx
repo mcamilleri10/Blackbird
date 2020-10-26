@@ -85,9 +85,9 @@ export default class Company extends React.Component {
   formatChartValue() {
     const { company, receiveColor } = this.props;
 
-    const { iexRealtimePrice, change, changePercent } = company;
+    const { iexRealtimePrice, delayedPrice, close, change, changePercent } = company;
     this.setState({
-      chartValue: iexRealtimePrice.toFixed(2),
+      chartValue: iexRealtimePrice.toFixed(2) || delayedPrice.toFixed(2) || close.toFixed(2),
       dayPriceChange: change,
       dayPercentChange: changePercent
     });
@@ -207,13 +207,13 @@ export default class Company extends React.Component {
               {dayPriceChange >= 0 ? (
                 <p>+${dayPriceChange.toFixed(2)}</p>
               ) : (
-                  <p>-${-dayPriceChange.toFixed(2)}</p>
-                )}
+                <p>-${-dayPriceChange.toFixed(2)}</p>
+              )}
               {dayPercentChange >= 0 ? (
-                <p>(+{dayPercentChange.toFixed(2)}%)</p>
+                <p>(+{(dayPercentChange * 100).toFixed(2)}%)</p>
               ) : (
-                  <p>(-{-dayPercentChange.toFixed(2)}%)</p>
-                )}
+                <p>(-{-(dayPercentChange * 100).toFixed(2)}%)</p>
+              )}
             </div>
             <div className='company-graph'>
               <DashboardChart

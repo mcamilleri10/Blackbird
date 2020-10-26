@@ -34,19 +34,6 @@ export default class SignupForm extends React.Component {
     this.props.signup(this.state);
   }
 
-  // checkPasswordLength(e) {
-  //   const val = e.currentTarget.value;
-  //   if (val.length < 6) {
-  //     debugger
-  //   }
-  // }
-
-  // passwordClass(e) {
-  //   debugger
-  //   return 'password-error';
-  // }
-
-
   render() {
     const logo = <FontAwesomeIcon icon={faFeatherAlt} />;
     return (

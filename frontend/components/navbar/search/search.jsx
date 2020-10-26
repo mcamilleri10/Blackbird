@@ -44,7 +44,6 @@ export default class Search extends React.Component {
   }
 
   closeResults() {
-    // debugger
     this.setState({ resultsActive: false, searchValue: '' });
   }
   
@@ -53,7 +52,6 @@ export default class Search extends React.Component {
     const { searchResults, color } = this.props;
     const search = <FontAwesomeIcon icon={faSearch} />;
     if (this.state.searchValue === '') this.closeResults;
-    // debugger
     return (
       <div className='search-bar'>
         <div className='search-icon'>{search}</div>

@@ -11,7 +11,6 @@ const receiveShare = share => {
 };
 
 const removeShare = share => {
-  // debugger
   return {
     type: REMOVE_SHARE,
     share
@@ -26,7 +25,6 @@ export const fetchShare = shareId => {
 };
 
 export const createShare = share => {
-  // debugger
   return dispatch => {
     return ShareApiUtil.createShare(share)
       .then(share => dispatch(receiveShare(share)));
@@ -41,7 +39,6 @@ export const deleteShare = shareId => {
 };
 
 export const updateShare = share => {
-  // debugger
   return dispatch => {
     return ShareApiUtil.updateShare(share)
       .then(share => dispatch(receiveShare(share)));

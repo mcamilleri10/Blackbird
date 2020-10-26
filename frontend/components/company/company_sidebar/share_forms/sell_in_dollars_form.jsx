@@ -58,7 +58,6 @@ export default class SellInDollarsForm extends React.Component {
     const { user, company, color, updateUser } = this.props;
     const { inputVal, error } = this.state;
     if (!company) return null;
-    // debugger
     return (
       <form onSubmit={this.handleSubmit} className='invest-in-dollars-form'>
         <div className='dollars-input-div'>

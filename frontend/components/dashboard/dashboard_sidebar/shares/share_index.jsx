@@ -19,7 +19,6 @@ export default class ShareIndex extends React.Component {
       return null;
     }
     
-    // debugger
     return (
       <div className='share-index'>
         <div className='share-index-title'>

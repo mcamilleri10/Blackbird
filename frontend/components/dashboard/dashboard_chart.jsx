@@ -19,7 +19,6 @@ export default class DashboardChart extends React.Component {
     } else {
       color = '#ff0000';
     }
-    // debugger
     return (
       <LineChart width={675} height={350} data={data}
         margin={{top: 5, right: 5, bottom: 5, left: 5}} className='line-chart'>

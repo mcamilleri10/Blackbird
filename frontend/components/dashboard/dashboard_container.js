@@ -15,7 +15,6 @@ import {
 
 const mSTP = (state, ownProps) => {
   const user = state.entities.users[ownProps.match.params.userId];
-  // debugger
   return {
     user,
     availableFunds: user.availableFunds,
