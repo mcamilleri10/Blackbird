@@ -10,9 +10,8 @@ import { receiveColor } from '../../actions/ui/ui_actions';
 import { formatDateStr } from '../../util/chart/chart_util';
 
 const mSTP = (state, ownProps) => {
-  const company = state.entities.companies[ownProps.match.params.companyId];
   const user = state.entities.users[state.session.id];
-
+  const company = state.entities.companies[ownProps.match.params.companyId];
   return {
     user,
     company,
