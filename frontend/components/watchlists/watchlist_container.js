@@ -9,7 +9,7 @@ const mSTP = (state, ownProps) => {
   return {
     user,
     watchlist,
-    quotes: state.entities.companies
+    quotes: Object.values(state.entities.companies)
   };
 };
 

@@ -61,6 +61,7 @@
   font-size: 14px;
   border-bottom: 1px solid rgba(128, 128, 128, 0.514);
   padding: 0 2px 0 2px;
+  box-sizing: border-box;
 }
 
 .watchlist-index-header {
@@ -68,15 +69,15 @@
   height: 50px;
 }
 
-.quote-name {
+.quote-name, .header-name {
   width: 250px;
 }
 
-.quote-symbol, .quote-price, .quote-today {
+.quote-symbol, .quote-price, .quote-today, .header-symbol, .header-price, .header-today {
   width: 100px;
 }
 
-.quote-mktcap {
+.quote-mktcap, .header-mktcap {
   width: 80px;
 }
 
@@ -91,4 +92,13 @@
 
 .watchlist-index-item:hover .quote-name {
   padding-left: 18px;
+  margin-right: 18px;
+}
+
+.header-name:hover, 
+  .header-symbol:hover, 
+  .header-price:hover, 
+  .header-today:hover, 
+  .header-mktcap:hover {
+  color: limegreen;
 }
