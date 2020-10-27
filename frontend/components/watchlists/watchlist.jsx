@@ -1,4 +1,5 @@
 import React from 'react';
+import WatchlistItem from './watchlist_item';
 
 export default class Watchlist extends React.Component {
 
@@ -11,14 +12,22 @@ export default class Watchlist extends React.Component {
   render() {
     const { watchlist, quotes } = this.props;
     if (!quotes || !watchlist) return null;
+    const length = watchlist.companyIds.length;
     return (
-      <div>
-        <span>{watchlist.name}</span>
-        <ul>
-          {Object.values(quotes).map(quote => {
-            return <li>{quote.symbol}</li>;
-          })}
-        </ul>
+      <div className='watchlist-left'>
+        <div className='watchlist-content'>
+          <div className='watchlist-main'>
+            <h1>{watchlist.name}</h1>
+            <span className='watchlist-length'>{`${length} items`}</span>
+            <ul className='watchlist-index'>
+              {Object.values(quotes).map(quote => {
+                if (watchlist.companyIds.includes(quote.symbol)) {
+                  return <WatchlistItem key={quote.symbol} quote={quote}/>;
+                }
+              })}
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }

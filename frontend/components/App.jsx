@@ -10,6 +10,7 @@ import NavbarContainer from '../components/navbar/navbar_container';
 import CompanyContainer from './company/company_container';
 import CompanySidebarContainer from './company/company_sidebar/company_sidebar_container';
 import WatchlistContainer from './watchlists/watchlist_container';
+import WatchlistSidebarContainer from './watchlists/watchlist_sidebar/watchlist_sidebar_container';
 
 
 const App = () => {
@@ -33,7 +34,12 @@ const App = () => {
           <ProtectedRoute path='/auth/companies/:companyId' component={CompanySidebarContainer}/>
         </div>
       </div>
-      <ProtectedRoute path='/auth/watchlists/:watchlistId' component={WatchlistContainer}/>
+      <div className='watchlist-body'>
+        <div className='watchlist'>
+          <ProtectedRoute path='/auth/watchlists/:watchlistId' component={WatchlistContainer}/>
+          <ProtectedRoute path='/auth/watchlists/:watchlistId' component={WatchlistSidebarContainer}/>
+        </div>
+      </div>
     </div>
   );
 };

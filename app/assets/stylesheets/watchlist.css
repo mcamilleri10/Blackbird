@@ -1,0 +1,48 @@
+.watchlist-body {
+  background-color: rgb(12, 12, 12);
+}
+
+.watchlist {
+  background-color: rgb(12, 12, 12);
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  width: 1100px;
+  margin: 0 auto;
+}
+
+.watchlist-left {
+  display: block;
+  background-color: rgb(12, 12, 12);
+  color: white;
+  padding-bottom: 15vh;
+  height: 100vh;
+  margin-right: 295px;
+  width: 700px;
+}
+
+.watchlist-content {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.watchlist-main {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  width: 675px;
+  margin-top: 25px;
+  padding-top: 15px;
+  position: relative;
+}
+
+.watchlist-main h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.watchlist-length {
+  color: rgba(211, 211, 211, 0.61);
+  font-size: 14px;
+}

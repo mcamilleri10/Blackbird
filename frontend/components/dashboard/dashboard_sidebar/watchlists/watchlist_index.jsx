@@ -19,7 +19,7 @@ export default class WatchlistIndex extends React.Component {
     }
 
     return (
-      <div className='watchlist-index'>
+      <div className='dashboard-watchlist-index'>
         {watchlists.map(watchlist => {
           return <WatchlistDropdown 
             key={watchlist.id} 

@@ -74,7 +74,7 @@ export default class DashboardSidebar extends React.Component {
         ) : (
           null
         )}        
-        <div className='watchlist-index-component'>
+        <div className='dashboard-watchlist-index-component'>
           <WatchlistIndex
             watchlists={watchlists}
             quotes={quotes}
