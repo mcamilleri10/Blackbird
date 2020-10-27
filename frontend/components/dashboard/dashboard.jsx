@@ -198,7 +198,7 @@ export default class Dashboard extends React.Component {
               {dayPriceChange >= 0 ? (
                 <p>+${dayPriceChange.toFixed(2)}</p>
               ) : (
-                <p>-${-dayPriceChange.toFixed(2)}</p>
+                <p>-${-(dayPriceChange.toFixed(2))}</p>
               )}
               {dayPercentChange >= 0 ? (
                 <p>(+{(dayPercentChange * 100).toFixed(2)}%)</p>

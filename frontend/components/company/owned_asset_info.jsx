@@ -16,12 +16,12 @@ export default class OwnedAssetInfo extends React.Component {
   calculateTodaysReturn() {
     const { user, company } = this.props;
     const numSharesOwned = user.shares[company.symbol].numSharesOwned;
-    const priceChange = (numSharesOwned * company.change).toFixed(2);
-    const percentChange = (company.changePercent * 100).toFixed(2);
+    const priceChange = (numSharesOwned * company.change);
+    const percentChange = (company.changePercent * 100);
     if (priceChange > 0) {
-      return `+$${priceChange} (+${(percentChange)}%)`;
+      return `+$${priceChange.toFixed(2)} (+${(percentChange.toFixed(2))}%)`;
     } else {
-      return `-$${-priceChange} (-${-(percentChange)}%)`;
+      return `-$${-(priceChange.toFixed(2))} (-${-(percentChange.toFixed(2))}%)`;
     }
   }
 
@@ -30,13 +30,13 @@ export default class OwnedAssetInfo extends React.Component {
     const numSharesOwned = user.shares[company.symbol].numSharesOwned;
     const totalCost = user.shares[company.symbol].totalCost;
     const sharePrice = company.iexRealtimePrice || company.delayedPrice || company.latestPrice;
-    const totalReturn = ((numSharesOwned * sharePrice) - totalCost).toFixed(2);
+    const totalReturn = ((numSharesOwned * sharePrice) - totalCost);
     const difference = (numSharesOwned * sharePrice) - totalCost;
-    const percentChange = (difference / totalCost * 100).toFixed(2);
+    const percentChange = (difference / totalCost * 100);
     if (totalReturn > 0) {
-      return `+$${totalReturn} (+${percentChange}%)`;
+      return `+$${totalReturn.toFixed(2)} (+${percentChange.toFixed(2)}%)`;
     } else {
-      return `-$${-totalReturn} (-${-percentChange}%)`;
+      return `-$${-(totalReturn.toFixed(2))} (-${-(percentChange.toFixed(2))}%)`;
     }
   }
 

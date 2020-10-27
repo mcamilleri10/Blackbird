@@ -106,7 +106,7 @@
 .owned-asset-container h5 {
   margin: 0;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 14px;
   padding-left: 1px;
 }
 
@@ -115,7 +115,7 @@
   justify-content: space-between;
   border-bottom: 1px solid rgba(128, 128, 128, 0.514);
   padding: 10px 1px 10px 1px;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .your-market-value div:last-of-type {
@@ -124,7 +124,7 @@
 
 .owned-asset-cost {
   display: inline-block;
-  font-size: 20px;
+  font-size: 23px;
   font-weight: 600;
   padding-top: 7px;
 }

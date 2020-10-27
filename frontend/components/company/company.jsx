@@ -5,6 +5,7 @@ import DashboardChart from '../dashboard/dashboard_chart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import OwnedAssetInfo from './owned_asset_info';
+import { formatStat } from '../../util/companies/companies_util';
 
 export default class Company extends React.Component {
 
@@ -34,7 +35,7 @@ export default class Company extends React.Component {
     this.formatHistData = this.formatHistData.bind(this);
     this.showMore = this.showMore.bind(this);
     this.readMore = this.readMore.bind(this);
-    this.formatStat = this.formatStat.bind(this);
+    // this.formatStat = this.formatStat.bind(this);
   }
 
   componentDidMount() {
@@ -161,34 +162,34 @@ export default class Company extends React.Component {
     }
   }
 
-  formatStat(num) {
-    if (num) {
-      const numArr = num.toString().split('');
-      const length = numArr.length;
-      let newNum;
-      if (length > 12) {
-        newNum = numArr.slice(0, length - 10);
-        newNum.splice(length - 12, 0, '.');
-        newNum.push('T');
-        return newNum.join('');
-      } else if (length > 9) {
-        newNum = numArr.slice(0, length - 7);
-        newNum.splice(length - 9, 0, '.');
-        newNum.push('B');
-        return newNum.join('');
-      } else if (length > 6) {
-        newNum = numArr.slice(0, length - 4);
-        newNum.splice(length - 6, 0, '.');
-        newNum.push('M');
-        return newNum.join('');
-      } else if (length > 3) {
-        numArr.splice(length - 3, 0, ',');
-        return numArr.join('');
-      } else {
-        return num;
-      }
-    }
-  }
+  // formatStat(num) {
+  //   if (num) {
+  //     const numArr = num.toString().split('');
+  //     const length = numArr.length;
+  //     let newNum;
+  //     if (length > 12) {
+  //       newNum = numArr.slice(0, length - 10);
+  //       newNum.splice(length - 12, 0, '.');
+  //       newNum.push('T');
+  //       return newNum.join('');
+  //     } else if (length > 9) {
+  //       newNum = numArr.slice(0, length - 7);
+  //       newNum.splice(length - 9, 0, '.');
+  //       newNum.push('B');
+  //       return newNum.join('');
+  //     } else if (length > 6) {
+  //       newNum = numArr.slice(0, length - 4);
+  //       newNum.splice(length - 6, 0, '.');
+  //       newNum.push('M');
+  //       return newNum.join('');
+  //     } else if (length > 3) {
+  //       numArr.splice(length - 3, 0, ',');
+  //       return numArr.join('');
+  //     } else {
+  //       return num;
+  //     }
+  //   }
+  // }
 
 
   render() {
@@ -286,7 +287,7 @@ export default class Company extends React.Component {
                   </div>
                   <div>
                     <p>Employees</p>
-                    <p>{this.formatStat(company.employees)}</p>
+                    <p>{formatStat(company.employees)}</p>
                   </div>
                   <div>
                     <p>Headquarters</p>
@@ -298,7 +299,7 @@ export default class Company extends React.Component {
                   </div>
                   <div>
                     <p>Market Cap</p>
-                    <p>{this.formatStat(company.marketCap)}</p>
+                    <p>{formatStat(company.marketCap)}</p>
                   </div>
                   <div>
                     <p>Price-Earnings Ratio</p>
@@ -310,34 +311,34 @@ export default class Company extends React.Component {
                   </div>
                   <div>
                     <p>Average Volume</p>
-                    <p>{this.formatStat(company.avgTotalVolume)}</p>
+                    <p>{formatStat(company.avgTotalVolume)}</p>
                   </div>
                 </div>
                 {showMoreActive ? (
                   <div className='company-stats'>
                     <div>
                       <p>High Today</p>
-                      <p>{company.high}</p>
+                      <p>${company.high}</p>
                     </div>
                     <div>
                       <p>Low Today</p>
-                      <p>{company.low}</p>
+                      <p>${company.low}</p>
                     </div>
                     <div>
                       <p>Open Price</p>
-                      <p>{company.open || company.intradayPrices[0].average.toFixed(2)}</p>
+                      <p>${company.open || company.intradayPrices[0].average.toFixed(2)}</p>
                     </div>
                     <div>
                       <p>Volume</p>
-                      <p>{company.volume}</p>
+                      <p>{formatStat(company.volume)}</p>
                     </div>
                     <div>
                       <p>52 Week High</p>
-                      <p>{company.week52High}</p>
+                      <p>${company.week52High}</p>
                     </div>
                     <div>
                       <p>52 Week Low</p>
-                      <p>{company.week52Low}</p>
+                      <p>${company.week52Low}</p>
                     </div>
                   </div>
                 ) : (
