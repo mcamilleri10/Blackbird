@@ -20,6 +20,13 @@ export default class Watchlist extends React.Component {
             <h1>{watchlist.name}</h1>
             <span className='watchlist-length'>{`${length} items`}</span>
             <ul className='watchlist-index'>
+              <li className='watchlist-index-header'>
+                <span className='quote-name'>Name</span>
+                <span className='quote-symbol'>Symbol</span>
+                <span className='quote-price'>Price</span>
+                <span className='quote-today'>Today</span>
+                <span className='quote-mktcap'>Market Cap</span>
+              </li>
               {Object.values(quotes).map(quote => {
                 if (watchlist.companyIds.includes(quote.symbol)) {
                   return <WatchlistItem key={quote.symbol} quote={quote}/>;

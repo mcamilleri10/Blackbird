@@ -55,14 +55,14 @@ export default class DashboardSidebar extends React.Component {
           />
         </div>
         <div className='dashboard-watchlist-form-component'>
-        <h3>Lists</h3>
-        <button 
-          className={`plus-sign ${color}-h`} 
-          onClick={this.listFormClick} 
-          // onBlur={this.listFormBlur}
-        >
-            {plusSign}
-          </button>
+          <h3>Lists</h3>
+          <button 
+            className={`plus-sign ${color}-h`} 
+            onClick={this.listFormClick} 
+            // onBlur={this.listFormBlur}
+          >
+              {plusSign}
+            </button>
         </div>
         {this.state.listFormActive ? (
           <CreateWatchlistForm 

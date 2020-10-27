@@ -32,7 +32,7 @@
   flex-direction: column;
   height: 500px;
   width: 675px;
-  margin-top: 25px;
+  margin-top: 50px;
   padding-top: 15px;
   position: relative;
 }
@@ -45,4 +45,50 @@
 .watchlist-length {
   color: rgba(211, 211, 211, 0.61);
   font-size: 14px;
+  margin-top: 8px;
+}
+
+.watchlist-index {
+  margin-top: 50px;
+}
+
+
+.watchlist-index-item, .watchlist-index-header {
+  width: 675px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.514);
+  padding: 0 2px 0 2px;
+}
+
+.watchlist-index-header {
+  color: rgba(211, 211, 211, 0.61);
+  height: 50px;
+}
+
+.quote-name {
+  width: 250px;
+}
+
+.quote-symbol, .quote-price, .quote-today {
+  width: 100px;
+}
+
+.quote-mktcap {
+  width: 80px;
+}
+
+.watchlist-index-item:hover {
+  background-color: rgba(211, 211, 211, 0.151);
+  width: 711px;
+  position: relative;
+  left: -18px;
+  border-bottom: none;
+  border-radius: 5px;
+}
+
+.watchlist-index-item:hover .quote-name {
+  padding-left: 18px;
 }
