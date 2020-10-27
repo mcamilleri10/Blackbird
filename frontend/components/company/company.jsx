@@ -325,7 +325,7 @@ export default class Company extends React.Component {
                     </div>
                     <div>
                       <p>Open Price</p>
-                      <p>{company.open}</p>
+                      <p>{company.open || company.intradayPrices[0].average.toFixed(2)}</p>
                     </div>
                     <div>
                       <p>Volume</p>

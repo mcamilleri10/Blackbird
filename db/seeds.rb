@@ -40,8 +40,9 @@ demo = User.create(username: "demo_username", email: "demo@blackbird.com",
   first_name: "Demo", last_name: "User", password: "hunter12")
 
  # shares
-share1 = Share.create(user_id: demo.id, company_id: aapl.id, num_shares_owned: 2, total_cost: 300)
-share2 = Share.create(user_id: demo.id, company_id: msft.id, num_shares_owned: 3, total_cost: 600)
+share1 = Share.create(user_id: demo.id, company_id: aapl.id, num_shares_owned: 2, total_cost: 224.38)
+share2 = Share.create(user_id: demo.id, company_id: msft.id, num_shares_owned: 3, total_cost: 603.76)
+share3 = Share.create(user_id: demo.id, company_id: pton.id, num_shares_owned: 10, total_cost: 285.30)
 # share3 = Share.create(user_id: demo.id, company_id: ba.id, num_shares_owned: 10, total_cost: 800)
 # share4 = Share.create(user_id: demo.id, company_id: amd.id, num_shares_owned: 4, total_cost: 200)
 

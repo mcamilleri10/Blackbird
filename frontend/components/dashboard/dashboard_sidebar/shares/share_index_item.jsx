@@ -28,11 +28,11 @@ export default class ShareIndexItem extends React.Component {
     this.setState({ 
       dayPriceChange: quote.change,
       dayPercentChange: quote.changePercent * 100,
-      delayedPrice: quote.iexRealtimePrice || quote.delayedPrice || quote.close
-     });
+      delayedPrice: quote.iexRealtimePrice || quote.delayedPrice || quote.latestPrice
+    });
     const data = [];
-    quote.intradayPrices.forEach(time => {
-      if (parseInt(time.minute) % 10 === 0) {
+    quote.intradayPrices.forEach( (time, i) => {
+      if (i % 10 === 0) {
         const datum = { 'time': time.minute, 'price': time.average }; 
         data.push(datum);
       }

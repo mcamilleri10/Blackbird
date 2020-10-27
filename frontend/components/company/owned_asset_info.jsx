@@ -29,7 +29,7 @@ export default class OwnedAssetInfo extends React.Component {
     const { user, company } = this.props;
     const numSharesOwned = user.shares[company.symbol].numSharesOwned;
     const totalCost = user.shares[company.symbol].totalCost;
-    const sharePrice = company.iexRealtimePrice || company.delayedPrice || company.close;
+    const sharePrice = company.iexRealtimePrice || company.delayedPrice || company.latestPrice;
     const totalReturn = ((numSharesOwned * sharePrice) - totalCost).toFixed(2);
     const difference = (numSharesOwned * sharePrice) - totalCost;
     const percentChange = (difference / totalCost * 100).toFixed(2);
@@ -44,7 +44,7 @@ export default class OwnedAssetInfo extends React.Component {
     const { user, company } = this.props;
     const totalCost = user.shares[company.symbol].totalCost;
     const numSharesOwned = user.shares[company.symbol].numSharesOwned;
-    const sharePrice = company.iexRealtimePrice || company.delayedPrice || company.close;
+    const sharePrice = company.iexRealtimePrice || company.delayedPrice || company.latestPrice;
     return (
       <div className='owned-asset-container'>
         <div className='your-market-value'>
