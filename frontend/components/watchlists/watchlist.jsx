@@ -1,5 +1,8 @@
 import React from 'react';
 import WatchlistItem from './watchlist_item';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 export default class Watchlist extends React.Component {
 
@@ -29,8 +32,11 @@ export default class Watchlist extends React.Component {
   }
 
   handleClick(val) {
-    const { name, symbol, price, today, mktcap, desc } = this.state;
+    let { desc } = this.state;
     return e => {
+      if (!this.state[val]) {
+        desc = false;
+      }
       if (desc) {
         this.state.quotes.sort(this.sortList(val, 'desc'));
       } else {
@@ -69,12 +75,14 @@ export default class Watchlist extends React.Component {
   render() {
     const { watchlist } = this.props;
     const { 
-      quotes, companyName, symbol, latestPrice, changePercent, marketCap 
+      quotes, companyName, symbol, latestPrice, changePercent, marketCap, desc
     } = this.state;
     if (!quotes || !watchlist) return null;
     const length = watchlist.companyIds.length;
     const active = 'limegreen-h limegreen-bb3';
     const inActive = 'limegreen-h';
+    const downArrow = <FontAwesomeIcon icon={faAngleDown} />;
+    const upArrow = <FontAwesomeIcon icon={faAngleUp} />;
     return (
       <div className='watchlist-left'>
         <div className='watchlist-content'>
@@ -85,18 +93,28 @@ export default class Watchlist extends React.Component {
               <li className='watchlist-index-header'>
                 <button className={`${companyName ? active : inActive} header-name`} onClick={this.handleClick('companyName')}>
                   Name
+                  {companyName && !desc ? <span className='name-arrow'>{downArrow}</span> : null}
+                  {companyName && desc ? <span className='name-arrow'>{upArrow}</span> : null}
                 </button>
                 <button className={`${symbol ? active : inActive} header-symbol`} onClick={this.handleClick('symbol')}>
                   Symbol
+                  {symbol && !desc ? <span className='symbol-arrow'>{downArrow}</span> : null}
+                  {symbol && desc ? <span className='symbol-arrow'>{upArrow}</span> : null}
                 </button>
                 <button className={`${latestPrice ? active : inActive} header-price`} onClick={this.handleClick('latestPrice')}>
                   Price
+                  {latestPrice && !desc ? <span className='price-arrow'>{downArrow}</span> : null}
+                  {latestPrice && desc ? <span className='price-arrow'>{upArrow}</span> : null}
                 </button>
                 <button className={`${changePercent ? active : inActive} header-today`} onClick={this.handleClick('changePercent')}>
                   Today
+                  {changePercent && !desc ? <span className='today-arrow'>{downArrow}</span> : null}
+                  {changePercent && desc ? <span className='today-arrow'>{upArrow}</span> : null}
                 </button>
                 <button className={`${marketCap ? active : inActive} header-mktcap`} onClick={this.handleClick('marketCap')}>
                   Market Cap
+                  {marketCap && !desc ? <span className='mktcap-arrow'>{downArrow}</span> : null}
+                  {marketCap && desc ? <span className='mktcap-arrow'>{upArrow}</span> : null}
                 </button>
               </li>
               {quotes.map(quote => {

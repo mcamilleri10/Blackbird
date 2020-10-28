@@ -106,7 +106,7 @@
 }
 
 .quote-mktcap, .header-mktcap {
-  width: 80px;
+  width: 100px;
 }
 
 .watchlist-index-item:hover {
@@ -123,3 +123,22 @@
   margin-right: 18px;
 }
 
+.name-arrow {
+  margin-left: 184px;
+}
+
+.symbol-arrow {
+  margin-left: 25px;
+}
+
+.price-arrow {
+  margin-left: 40px;
+}
+
+.today-arrow {
+  margin-left: 34px;
+}
+
+.mktcap-arrow {
+  margin-left: 24px;
+}
