@@ -6,7 +6,7 @@ export default class Watchlist extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      quotes: this.props.quotes
+      
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -14,7 +14,12 @@ export default class Watchlist extends React.Component {
   componentDidMount() {
     const { fetchWatchlist, requestQuotes } = this.props;
     fetchWatchlist(this.props.match.params.watchlistId)
-      .then(res => requestQuotes(res.watchlist.companyIds.toString()));
+      .then(res => requestQuotes(res.watchlist.companyIds.toString())
+      .then(() => this.quotesToState()));
+  }
+
+  quotesToState() {
+    this.setState({ quotes: this.props.quotes });
   }
 
   handleClick(val) {
@@ -37,6 +42,8 @@ export default class Watchlist extends React.Component {
       return order === 'asc' ? comp : (comp * -1);
     };
   }
+
+// FIGURE OUT HOW TO GET QUOTES IN LOCAL STATE
 
   render() {
     const { watchlist } = this.props;
