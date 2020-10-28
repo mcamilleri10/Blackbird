@@ -4,6 +4,12 @@ import { formatStat } from '../../util/companies/companies_util';
 
 export default class WatchlistItem extends React.Component {
 
+  handleClick(symbol, e) {
+    const watchlistId = this.props.watchlist.id;
+    this.props.removeCompanyFromWatchlist(watchlistId, symbol);
+    e.preventDefault();
+  }
+
   render() {
     const { quote } = this.props;
     return (
@@ -14,7 +20,7 @@ export default class WatchlistItem extends React.Component {
           <span className='quote-price'>${(quote.iexRealtimePrice || quote.delayedPrice || quote.latestPrice).toFixed(2)}</span>
           <span className='quote-today'>{`${(quote.changePercent * 100).toFixed(2)}%`}</span>
           <span className='quote-mktcap'>{formatStat(quote.marketCap)}</span>
-          <span>x</span>
+          <span><button className='remove-from-watchlist' onClick={(e) => this.handleClick(quote.symbol, e)}>X</button></span>
         </li>
       </Link>
     );

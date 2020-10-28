@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import CreateWatchlistForm from '../../dashboard/dashboard_sidebar/watchlists/create_watchlist_form';
+import WatchlistIndex from '../../dashboard/dashboard_sidebar/watchlists/watchlist_index';
 
 export default class WatchlistSidebar extends React.Component {
 
@@ -23,6 +24,7 @@ export default class WatchlistSidebar extends React.Component {
   }
 
   render() {
+    const { watchlists, quotes, loading, color } = this.props;
     const plusSign = <FontAwesomeIcon icon={faPlus} />;
     return (
       <div className='watchlist-sidebar'>
@@ -45,7 +47,15 @@ export default class WatchlistSidebar extends React.Component {
           />
         ) : (
           null
-        )}   
+        )}
+        <div className='watchlist-index-component'>
+          <WatchlistIndex
+            watchlists={watchlists}
+            quotes={quotes}
+            loading={loading}
+            color={color}
+          />
+        </div>
       </div>
     );
   }

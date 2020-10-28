@@ -2,12 +2,10 @@ class Api::WatchlistsController < ApplicationController
 
   def show
     @watchlist = Watchlist.includes(:companies).find_by(id: params[:id])
-    
     @symbols = []
     @watchlist.companies.each do |company|
       @symbols << company.symbol
     end
-
     if @watchlist
       render :show
     else
@@ -25,12 +23,23 @@ class Api::WatchlistsController < ApplicationController
   end
 
   def update
-    @watchlist = Watchlist.find_by(id: params[:id])
-    if @watchlist.update(watchlist_params)
-      render :show
+    @company = Company.find_by(symbol: params[:companyId])
+    @watchlist_company = WatchlistCompany.find_by(watchlist_id: params[:id], company_id: @company.id)
+    if @watchlist_company
+      @watchlist_company.destroy
+      @watchlist = Watchlist.includes(:companies).find_by(id: params[:id])
+      @symbols = []
+      @watchlist.companies.each do |company|
+        @symbols << company.symbol
+      end
     else
-      render json: @watchlist.errors.full_messages, status: 422 
+      WatchlistCompany.create(watchlist_id: params[:id], company_id: @company.id)
     end
+    # if @watchlist.update(watchlist_params)
+    #   render :show
+    # else
+    #   render json: @watchlist.errors.full_messages, status: 422 
+    # end
   end
 
   def destroy
@@ -45,7 +54,6 @@ class Api::WatchlistsController < ApplicationController
       .require(:watchlist)
       .transform_keys(&:underscore)
       .permit(:name, :user_id)
-    end
-    
   end
-  # .params.transform_keys(&:underscore)
+    
+end

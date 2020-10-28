@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import Watchlist from './watchlist';
-import { fetchWatchlist } from '../../actions/watchlists/watchlist_actions';
+import { fetchWatchlist, removeCompanyFromWatchlist } from '../../actions/watchlists/watchlist_actions';
 import { requestQuotes } from '../../actions/companies/company_actions';
+import { receiveColor } from '../../actions/ui/ui_actions';
 
 const mSTP = (state, ownProps) => {
   const user = state.entities.users[state.session.id];
@@ -15,8 +16,10 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => {
   return {
+    receiveColor: color => dispatch(receiveColor(color)),
     fetchWatchlist: watchlistId => dispatch(fetchWatchlist(watchlistId)),
-    requestQuotes: symbols => dispatch(requestQuotes(symbols))
+    requestQuotes: symbols => dispatch(requestQuotes(symbols)),
+    removeCompanyFromWatchlist: (watchlistId, companyId) => dispatch(removeCompanyFromWatchlist(watchlistId, companyId))
   };
 };
 

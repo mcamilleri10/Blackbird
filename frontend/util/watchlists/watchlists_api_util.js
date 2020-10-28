@@ -12,3 +12,19 @@ export const createWatchlist = watchlist => {
     data: { watchlist }
   });
 };
+
+export const addCompanyToWatchlist = (watchlistId, companyId) => {
+  return $.ajax({
+    url: `/api/watchlists/${watchlistId}`,
+    method: 'patch',
+    data: { companyId }
+  });
+};
+
+export const removeCompanyFromWatchlist = (watchlistId, companyId) => {
+  return $.ajax({
+    url: `/api/watchlists/${watchlistId}`,
+    method: 'patch',
+    data: { companyId }
+  })
+}

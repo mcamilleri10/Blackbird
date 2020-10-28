@@ -21,7 +21,8 @@ export default class Watchlist extends React.Component {
   }
 
   componentDidMount() {
-    const { fetchWatchlist, requestQuotes } = this.props;
+    const { fetchWatchlist, requestQuotes, receiveColor } = this.props;
+    receiveColor('limegreen');
     fetchWatchlist(this.props.match.params.watchlistId)
       .then(res => requestQuotes(res.watchlist.companyIds.toString())
       .then(() => this.quotesToState()));
@@ -73,7 +74,7 @@ export default class Watchlist extends React.Component {
 
 
   render() {
-    const { watchlist } = this.props;
+    const { watchlist, removeCompanyFromWatchlist } = this.props;
     const { 
       quotes, companyName, symbol, latestPrice, changePercent, marketCap, desc
     } = this.state;
@@ -119,7 +120,12 @@ export default class Watchlist extends React.Component {
               </li>
               {quotes.map(quote => {
                 if (watchlist.companyIds.includes(quote.symbol)) {
-                  return <WatchlistItem key={quote.symbol} quote={quote}/>;
+                  return <WatchlistItem 
+                            key={quote.symbol}
+                            watchlist={watchlist}
+                            quote={quote} 
+                            removeCompanyFromWatchlist={removeCompanyFromWatchlist}
+                          />;
                 }
               })}
             </ul>

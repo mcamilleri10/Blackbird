@@ -19,6 +19,8 @@
 #                           PATCH  /api/watchlists/:id(.:format)                                                            api/watchlists#update {:format=>:json}
 #                           PUT    /api/watchlists/:id(.:format)                                                            api/watchlists#update {:format=>:json}
 #                           DELETE /api/watchlists/:id(.:format)                                                            api/watchlists#destroy {:format=>:json}
+#   api_watchlist_companies POST   /api/watchlist_companies(.:format)                                                       api/watchlist_companies#create {:format=>:json}
+#     api_watchlist_company DELETE /api/watchlist_companies/:id(.:format)                                                   api/watchlist_companies#destroy {:format=>:json}
 #           new_api_session GET    /api/session/new(.:format)                                                               api/sessions#new {:format=>:json}
 #               api_session DELETE /api/session(.:format)                                                                   api/sessions#destroy {:format=>:json}
 #                           POST   /api/session(.:format)                                                                   api/sessions#create {:format=>:json}
@@ -46,6 +48,8 @@ Rails.application.routes.draw do
     resources :shares, only: [:show, :create, :update, :destroy]
     
     resources :watchlists, only: [:show, :update, :destroy]
+
+    resources :watchlist_companies, only: [:create, :destroy]
 
     resource :session, only: [:new, :create, :destroy]
   end

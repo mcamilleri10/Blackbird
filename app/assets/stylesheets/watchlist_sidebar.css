@@ -11,6 +11,7 @@
   box-sizing: border-box;
   display: block;
   flex-direction: column;
+  overflow: auto;
 }
 
 .watchlist-form-component {
@@ -21,4 +22,8 @@
   border-top: 1px solid rgba(128, 128, 128, 0.514);
   border-bottom: 1px solid rgba(128, 128, 128, 0.514);
   min-height: 56px;
+}
+
+.watchlist-form-component h3 {
+  font-weight: 600;
 }
