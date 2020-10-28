@@ -1,5 +1,7 @@
 .watchlist-body {
   background-color: rgb(12, 12, 12);
+  width: 100vw;
+  height: 100vh;
 }
 
 .watchlist {

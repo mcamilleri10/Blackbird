@@ -73,7 +73,6 @@ export default class Watchlist extends React.Component {
     } = this.state;
     if (!quotes || !watchlist) return null;
     const length = watchlist.companyIds.length;
-    const color = 'limegreen';
     const active = 'limegreen-h limegreen-bb3';
     const inActive = 'limegreen-h';
     return (
