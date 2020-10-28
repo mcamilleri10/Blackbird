@@ -189,6 +189,8 @@ export default class Dashboard extends React.Component {
       active5dmBtn, active1mmBtn, active3mBtn, active1yBtn, buyingPowerFormActive
     } = this.state;
     const spinner = <FontAwesomeIcon icon={faSpinner} spin />;
+    const active = `range-btn ${color}-h` + ` ${color}` + '-bb';
+    const inActive = `range-btn ${color}-h`;
     return (
       <div className='dashboard-left'>
         <div className='dashboard-content'>
@@ -216,27 +218,27 @@ export default class Dashboard extends React.Component {
             </div>
             <div className='range-btns'>
                 <button 
-                  className={active1dBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)} 
+                  className={active1dBtn ? active : inActive} 
                   onClick={e => this.handleRangeClick('1d', e)}
                 > 1D
                 </button>
                 <button 
-                  className={active5dmBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
+                  className={active5dmBtn ? active : inActive}
                   onClick={e => this.handleRangeClick('5dm', e)}
                 > 1W
                 </button>
                 <button 
-                  className={active1mmBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
+                  className={active1mmBtn ? active : inActive}
                   onClick={e => this.handleRangeClick('1mm', e)}
                 > 1M
                 </button>
                 <button 
-                  className={active3mBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
+                  className={active3mBtn ? active : inActive}
                   onClick={e => this.handleRangeClick('3m', e)}
                 > 3M
                 </button>
                 <button 
-                  className={active1yBtn ? (`range-btn ${color}-h` + ` ${color}` + '-bb') : (`range-btn ${color}-h`)}
+                  className={active1yBtn ? active : inActive}
                   onClick={e => this.handleRangeClick('1y', e)}
                 > 1Y
                 </button>
