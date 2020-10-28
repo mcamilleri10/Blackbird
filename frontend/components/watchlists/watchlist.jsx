@@ -6,16 +6,12 @@ export default class Watchlist extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nameAsc: false,
-      nameDesc: false,
-      symbolAsc: false,
-      symbolDesc: false,
-      priceAsc: false,
-      priceDesc: false,
-      todayAsc: false,
-      todayDesc: false,
-      mktcapAsc: false,
-      mktcapDesc: false
+      companyName: false,
+      symbol: false,
+      latestPrice: false,
+      changePercent: false,
+      marketCap: false,
+      desc: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.quotesToState = this.quotesToState.bind(this);
@@ -33,14 +29,26 @@ export default class Watchlist extends React.Component {
   }
 
   handleClick(val) {
+    const { name, symbol, price, today, mktcap, desc } = this.state;
     return e => {
-      this.state.quotes.sort(this.sortList(val));
-      this.setState({ state: this.state });
+      if (desc) {
+        this.state.quotes.sort(this.sortList(val, 'desc'));
+      } else {
+        this.state.quotes.sort(this.sortList(val));
+      }
+      this.setState({ 
+        companyName: false,
+        symbol: false,
+        latestPrice: false,
+        changePercent: false,
+        marketCap: false,
+        desc: !desc
+      });
+      this.setState({ [val]: true });
     };
   }
 
   sortList(key, order = 'asc') {
-    // debugger
     return (a, b) => {
       if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
         return 0;
@@ -60,10 +68,14 @@ export default class Watchlist extends React.Component {
 
   render() {
     const { watchlist } = this.props;
-    const { quotes } = this.state;
+    const { 
+      quotes, companyName, symbol, latestPrice, changePercent, marketCap 
+    } = this.state;
     if (!quotes || !watchlist) return null;
     const length = watchlist.companyIds.length;
-    debugger
+    const color = 'limegreen';
+    const active = 'limegreen-h limegreen-bb3';
+    const inActive = 'limegreen-h';
     return (
       <div className='watchlist-left'>
         <div className='watchlist-content'>
@@ -72,19 +84,19 @@ export default class Watchlist extends React.Component {
             <span className='watchlist-length'>{`${length} items`}</span>
             <ul className='watchlist-index'>
               <li className='watchlist-index-header'>
-                <button className='header-name' onClick={this.handleClick('companyName')}>
+                <button className={`${companyName ? active : inActive} header-name`} onClick={this.handleClick('companyName')}>
                   Name
                 </button>
-                <button className='header-symbol' onClick={this.handleClick('symbol')}>
+                <button className={`${symbol ? active : inActive} header-symbol`} onClick={this.handleClick('symbol')}>
                   Symbol
                 </button>
-                <button className='header-price' onClick={this.handleClick('iexRealtimePrice')}>
+                <button className={`${latestPrice ? active : inActive} header-price`} onClick={this.handleClick('latestPrice')}>
                   Price
                 </button>
-                <button className='header-today' onClick={this.handleClick('changePercent')}>
+                <button className={`${changePercent ? active : inActive} header-today`} onClick={this.handleClick('changePercent')}>
                   Today
                 </button>
-                <button className='header-mktcap' onClick={this.handleClick('marketCap')}>
+                <button className={`${marketCap ? active : inActive} header-mktcap`} onClick={this.handleClick('marketCap')}>
                   Market Cap
                 </button>
               </li>
