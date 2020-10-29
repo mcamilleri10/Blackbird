@@ -13,6 +13,14 @@ export const createWatchlist = watchlist => {
   });
 };
 
+export const updateWatchlistName = (watchlistId, name) => {
+  return $.ajax({
+    url: `/api/watchlists/${watchlistId}`,
+    method: 'patch',
+    data: { name }
+  });
+};
+
 export const addCompanyToWatchlist = (watchlistId, companyId) => {
   return $.ajax({
     url: `/api/watchlists/${watchlistId}`,
@@ -26,5 +34,5 @@ export const removeCompanyFromWatchlist = (watchlistId, companyId) => {
     url: `/api/watchlists/${watchlistId}`,
     method: 'patch',
     data: { companyId }
-  })
-}
+  });
+};

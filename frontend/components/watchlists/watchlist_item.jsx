@@ -9,6 +9,7 @@ export default class WatchlistItem extends React.Component {
   
   handleClick(symbol, e) {
     const watchlistId = this.props.watchlist.id;
+    // const watchlist = this.props.watchlist;
     this.props.removeCompanyFromWatchlist(watchlistId, symbol);
     e.preventDefault();
   }

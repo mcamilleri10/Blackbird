@@ -22,6 +22,7 @@ export default class Watchlist extends React.Component {
     this.handleNameClick = this.handleNameClick.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.quotesToState = this.quotesToState.bind(this);
   }
 
@@ -86,8 +87,15 @@ export default class Watchlist extends React.Component {
     this.setState({ name: e.currentTarget.value });
   }
 
-  handleBlur() {
+  handleBlur(e) {
     this.setState({ nameFormActive: false });
+    this.handleSubmit(e);
+  }
+
+  handleSubmit(e) {
+    const { match, updateWatchlistName } = this.props;
+    e.preventDefault();
+    updateWatchlistName(match.params.watchlistId, e.currentTarget.value);
   }
 
 
@@ -108,7 +116,7 @@ export default class Watchlist extends React.Component {
         <div className='watchlist-content'>
           <div className='watchlist-main'>
             {nameFormActive ? (
-              <form className='watchlist-name-form'>
+              <form className='watchlist-name-form' onSubmit={this.handleSubmit}>
                 <input 
                   type="text"
                   className='watchlist-name-input'
