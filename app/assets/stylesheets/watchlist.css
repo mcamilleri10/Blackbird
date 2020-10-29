@@ -66,6 +66,15 @@
   box-sizing: border-box;
 }
 
+.watchlist-index-item:hover {
+  background-color: rgba(211, 211, 211, 0.151);
+  width: 711px;
+  position: relative;
+  left: -18px;
+  border-bottom: none;
+  border-radius: 5px;
+}
+
 .header-name, 
   .header-symbol, 
   .header-price, 
@@ -109,15 +118,6 @@
   width: 100px;
 }
 
-.watchlist-index-item:hover {
-  background-color: rgba(211, 211, 211, 0.151);
-  width: 711px;
-  position: relative;
-  left: -18px;
-  border-bottom: none;
-  border-radius: 5px;
-}
-
 .watchlist-index-item:hover .quote-name {
   padding-left: 18px;
   margin-right: 18px;
@@ -150,4 +150,14 @@
 
 .remove-from-watchlist:hover {
   color: limegreen;
+}
+
+.up-caret {
+  color: limegreen;
+  margin-right: 7px;
+}
+
+.down-caret {
+  color: red;
+  margin-right: 5px;
 }

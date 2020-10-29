@@ -3,6 +3,8 @@ import WatchlistItem from './watchlist_item';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faCaretUp } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 export default class Watchlist extends React.Component {
 
@@ -84,6 +86,8 @@ export default class Watchlist extends React.Component {
     const inActive = 'limegreen-h';
     const downArrow = <FontAwesomeIcon icon={faAngleDown} />;
     const upArrow = <FontAwesomeIcon icon={faAngleUp} />;
+    const upCaret = <FontAwesomeIcon icon={faCaretUp} />;
+    const downCaret = <FontAwesomeIcon icon={faCaretDown} />;
     return (
       <div className='watchlist-left'>
         <div className='watchlist-content'>
