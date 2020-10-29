@@ -37,10 +37,10 @@ export const addCompanyToWatchlist = (watchlistId, companyId) => {
   };
 };
 
-export const removeCompanyFromWatchlist = (watchlistId, companyId) => {
+export const removeCompanyFromWatchlist = (watchlist) => {
   // debugger
   return dispatch => {
-    return WatchlistApiUtil.removeCompanyFromWatchlist(watchlistId, companyId)
+    return WatchlistApiUtil.removeCompanyFromWatchlist(watchlist)
       .then(watchlist => dispatch(receiveWatchlist(watchlist)));
   };
 };

@@ -163,12 +163,14 @@ export default class Watchlist extends React.Component {
               </li>
               {quotes.map(quote => {
                 if (watchlist.companyIds.includes(quote.symbol)) {
-                  return <WatchlistItem 
-                            key={quote.symbol}
-                            watchlist={watchlist}
-                            quote={quote} 
-                            removeCompanyFromWatchlist={removeCompanyFromWatchlist}
-                          />;
+                  return (
+                    <WatchlistItem 
+                      key={quote.symbol}
+                      watchlist={watchlist}
+                      quote={quote} 
+                      removeCompanyFromWatchlist={removeCompanyFromWatchlist}
+                    />
+                  );
                 }
               })}
             </ul>

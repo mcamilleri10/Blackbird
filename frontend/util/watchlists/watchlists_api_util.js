@@ -29,10 +29,10 @@ export const addCompanyToWatchlist = (watchlistId, companyId) => {
   });
 };
 
-export const removeCompanyFromWatchlist = (watchlistId, companyId) => {
+export const removeCompanyFromWatchlist = (watchlist) => {
   return $.ajax({
-    url: `/api/watchlists/${watchlistId}`,
+    url: `/api/watchlists/${watchlist.id}`,
     method: 'patch',
-    data: { companyId }
+    data: { watchlist }
   });
 };
