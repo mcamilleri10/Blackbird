@@ -5,15 +5,18 @@ import { createShare,
   deleteShare, 
   updateShare 
 } from '../../../actions/shares/share_actions';
+import { addCompanyToWatchlist } from '../../../actions/watchlists/watchlist_actions';
 
 const mSTP = (state, ownProps) => {
   const symbol = ownProps.match.params.companyId;
   const user = state.entities.users[state.session.id];
   const company = state.entities.companies[symbol];
+  const watchlists = state.entities.watchlists;
   return {
     company,
     user,
-    color: state.ui.color
+    color: state.ui.color,
+    watchlists
   };
 };
 
@@ -22,7 +25,8 @@ const mDTP = dispatch => {
     createShare: share => dispatch(createShare(share)),
     updateUser: user => dispatch(updateUser(user)),
     deleteShare: shareId => dispatch(deleteShare(shareId)),
-    updateShare: share => dispatch(updateShare(share))
+    updateShare: share => dispatch(updateShare(share)),
+    addCompanyToWatchlist: watchlist => dispatch(addCompanyToWatchlist(watchlist))
   };
 };
 

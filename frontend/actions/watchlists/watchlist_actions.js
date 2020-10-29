@@ -30,9 +30,9 @@ export const updateWatchlistName = watchlist => {
   };
 };
 
-export const addCompanyToWatchlist = (watchlistId, companyId) => {
+export const addCompanyToWatchlist = watchlist => {
   return dispatch => {
-    return WatchlistApiUtil.addCompanyToWatchlist(watchlistId, companyId)
+    return WatchlistApiUtil.addCompanyToWatchlist(watchlist)
       .then(watchlist => dispatch(receiveWatchlist(watchlist)));
   };
 };

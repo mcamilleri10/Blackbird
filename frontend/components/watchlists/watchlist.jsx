@@ -96,7 +96,6 @@ export default class Watchlist extends React.Component {
     e.preventDefault();
     const { watchlist, updateWatchlistName } = this.props;
     watchlist.name = e.currentTarget.value;
-    // debugger
     updateWatchlistName(watchlist);
   }
 

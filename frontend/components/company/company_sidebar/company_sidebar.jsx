@@ -1,6 +1,9 @@
 import React from 'react';
 import InvestInSharesForm from './share_forms/invest_in_shares_form';
 import InvestInDollarsForm from './share_forms/invest_in_dollars_form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 export default class CompanySidebar extends React.Component {
 
@@ -10,15 +13,22 @@ export default class CompanySidebar extends React.Component {
       selectValue: 'shares',
       shareOwned: false,
       activeBuyBtn: true,
-      activeSellBtn: false
+      activeSellBtn: false,
+      companyInList: false
     };
     this.handleBuyBtnClick = this.handleBuyBtnClick.bind(this);
     this.handleSellBtnClick = this.handleSellBtnClick.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
+    this.handleListsClick = this.handleListsClick.bind(this);
+  }
+
+  componentDidMount() {
+    const { user, match } = this.props;
+    this.isCompanyInList(user.watchlists, match);
   }
 
   componentDidUpdate() {
-    const { user, company } = this.props;
+    const { user, company, match } = this.props;
     const ownedCompanies = Object.keys(user.shares);
     if (!company) return null;
     if (user.shares[company.symbol]) {
@@ -45,6 +55,17 @@ export default class CompanySidebar extends React.Component {
         share: user.shares[company.symbol]
       });
     }
+    this.isCompanyInList(user.watchlists, match);
+  }
+  
+  isCompanyInList(lists, match) {
+    Object.values(lists).forEach(watchlist => {
+      debugger
+      if (watchlist.companyIds.includes(match.params.companyId)) {
+        debugger
+        this.setState({ companyInList: true });
+      }
+    });
   }
 
   handleBuyBtnClick() {
@@ -59,80 +80,100 @@ export default class CompanySidebar extends React.Component {
     this.setState({ selectValue: e.target.value });
   }
 
+  handleListsClick() {
+
+  }
+
+
   render() {
     const { user, company, color, createShare, updateUser, deleteShare, 
       updateShare
     } = this.props;
     const { selectValue, shareOwned, activeBuyBtn, activeSellBtn, 
-      numSharesOwned 
+      numSharesOwned, companyInList
     } = this.state;
     if (!company) return null;
+    const plus = <FontAwesomeIcon icon={faPlus} />;
+    const check = <FontAwesomeIcon icon={faCheck} />;
     return (
-      <div className='company-sidebar'>
-        <div className='company-sidebar-title'>
-          {shareOwned ? (
-            <div className='share-form-title-btns'>
-              <button className='share-form-title-btn'
-                className={activeBuyBtn ? (`buy-btn ${color}-h` + ` ${color}` + `-bb2`) : (`buy-btn pad2 ${color}-h`)}
-                onClick={this.handleBuyBtnClick}
-                >Buy {company.symbol}
-              </button>
-              <button 
-                className={activeSellBtn ? (`sell-btn ${color}-h` + ` ${color}` + `-bb2`) : (`sell-btn pad2 ${color}-h`)}
-                onClick={this.handleSellBtnClick}
-              >Sell {company.symbol}</button>
-            </div>
-          ) : (
-            <h3>Buy {company.symbol}</h3>
-          )}
+      <div className='company-right'>
+        <div className='company-sidebar'>
+          <div className='company-sidebar-title'>
+            {shareOwned ? (
+              <div className='share-form-title-btns'>
+                <button className='share-form-title-btn'
+                  className={activeBuyBtn ? (`buy-btn ${color}-h` + ` ${color}` + `-bb2`) : (`buy-btn pad2 ${color}-h`)}
+                  onClick={this.handleBuyBtnClick}
+                  >Buy {company.symbol}
+                </button>
+                <button 
+                  className={activeSellBtn ? (`sell-btn ${color}-h` + ` ${color}` + `-bb2`) : (`sell-btn pad2 ${color}-h`)}
+                  onClick={this.handleSellBtnClick}
+                >Sell {company.symbol}</button>
+              </div>
+            ) : (
+              <h3>Buy {company.symbol}</h3>
+            )}
+          </div>
+          <div className='share-form-container'>
+            <form onSubmit={this.handleSubmit} className='shares-select-form'>
+              <label>Invest In</label>
+              <select value={selectValue} onChange={this.handleSelectChange}>
+                <option value='shares'>Shares</option>
+                <option value='dollars'>Dollars</option>
+              </select>
+            </form>
+            {selectValue === 'shares' ? (
+              <InvestInSharesForm 
+                user={user} 
+                company={company} 
+                color={color}
+                createShare={createShare}
+                updateUser={updateUser}
+                activeSellBtn={activeSellBtn}
+                deleteShare={deleteShare}
+                updateShare={updateShare}
+                shareOwned={shareOwned}
+              />
+            ) : (
+              <InvestInDollarsForm
+                user={user}
+                company={company}
+                color={color}
+                createShare={createShare}
+                updateUser={updateUser}
+                activeSellBtn={activeSellBtn}
+                deleteShare={deleteShare}
+                updateShare={updateShare}
+                shareOwned={shareOwned}
+              />
+            )}
+            {activeBuyBtn ? (
+              <span className={`share-form-footer ${color}`}>
+                ${user.availableFunds.toFixed(2)} Buying Power Available
+              </span>
+            ) : (
+              <div className='share-form-footer'>
+                {numSharesOwned > 1 ? (
+                  `${numSharesOwned} Shares Available`
+                  ) : (
+                  `${numSharesOwned} Share Available`
+                )}
+              </div>
+            )}
+          </div>
         </div>
-        <div className='share-form-container'>
-          <form onSubmit={this.handleSubmit} className='shares-select-form'>
-            <label>Invest In</label>
-            <select value={selectValue} onChange={this.handleSelectChange}>
-              <option value='shares'>Shares</option>
-              <option value='dollars'>Dollars</option>
-            </select>
-          </form>
-          {selectValue === 'shares' ? (
-            <InvestInSharesForm 
-              user={user} 
-              company={company} 
-              color={color}
-              createShare={createShare}
-              updateUser={updateUser}
-              activeSellBtn={activeSellBtn}
-              deleteShare={deleteShare}
-              updateShare={updateShare}
-              shareOwned={shareOwned}
-            />
+        <button 
+          className={`add-to-list-btn ${color} ${color}-b ${color}-hlite3`}
+          onClick={this.handleListsClick}
+        >
+          {companyInList ? (
+            <span className='add-to-lists-icon'>{check}</span>
           ) : (
-            <InvestInDollarsForm
-              user={user}
-              company={company}
-              color={color}
-              createShare={createShare}
-              updateUser={updateUser}
-              activeSellBtn={activeSellBtn}
-              deleteShare={deleteShare}
-              updateShare={updateShare}
-              shareOwned={shareOwned}
-            />
+            <span className='add-to-lists-icon'>{plus}</span>
           )}
-          {activeBuyBtn ? (
-            <span className={`share-form-footer ${color}`}>
-              ${user.availableFunds.toFixed(2)} Buying Power Available
-            </span>
-          ) : (
-            <div className='share-form-footer'>
-              {numSharesOwned > 1 ? (
-                `${numSharesOwned} Shares Available`
-                ) : (
-                `${numSharesOwned} Share Available`
-              )}
-            </div>
-          )}
-        </div>
+          Add to Lists
+        </button>
       </div>
     );
   }

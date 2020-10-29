@@ -30,12 +30,20 @@
   color: rgb(101, 230, 101);
 }
 
+.limegreen-hlite3:hover {
+  background-color: rgba(82, 209, 82, .2);
+}
+
 .red-hlite2:hover {
   color: rgb(255, 64, 64);
 }
 
 .red-hlite:hover {
   background-color: rgb(255, 85, 85);
+}
+
+.red-hlite3:hover {
+  background-color: rgba(255, 85, 85, .2);
 }
 
 .limegreen-b {

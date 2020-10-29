@@ -22,11 +22,11 @@ export const updateWatchlistName = watchlist => {
   });
 };
 
-export const addCompanyToWatchlist = (watchlistId, companyId) => {
+export const addCompanyToWatchlist = watchlist => {
   return $.ajax({
     url: `/api/watchlists/${watchlistId}`,
     method: 'patch',
-    data: { companyId }
+    data: { watchlist }
   });
 };
 
