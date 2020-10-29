@@ -3,8 +3,6 @@ import WatchlistItem from './watchlist_item';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import { faCaretUp } from '@fortawesome/free-solid-svg-icons';
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 export default class Watchlist extends React.Component {
 
@@ -16,9 +14,14 @@ export default class Watchlist extends React.Component {
       latestPrice: false,
       changePercent: false,
       marketCap: false,
-      desc: false
+      desc: false,
+      nameFormActive: false,
+      name: ''
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.handleHeaderClick = this.handleHeaderClick.bind(this);
+    this.handleNameClick = this.handleNameClick.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
     this.quotesToState = this.quotesToState.bind(this);
   }
 
@@ -31,10 +34,11 @@ export default class Watchlist extends React.Component {
   }
 
   quotesToState() {
-    this.setState({ quotes: this.props.quotes });
+    const { watchlist, quotes } = this.props;
+    this.setState({ quotes, name: watchlist.name });
   }
 
-  handleClick(val) {
+  handleHeaderClick(val) {
     let { desc } = this.state;
     return e => {
       if (!this.state[val]) {
@@ -74,11 +78,24 @@ export default class Watchlist extends React.Component {
     };
   }
 
+  handleNameClick() {
+    this.setState({ nameFormActive: true });
+  }
+
+  handleNameChange(e) {
+    this.setState({ name: e.currentTarget.value });
+  }
+
+  handleBlur() {
+    this.setState({ nameFormActive: false });
+  }
+
 
   render() {
     const { watchlist, removeCompanyFromWatchlist } = this.props;
     const { 
-      quotes, companyName, symbol, latestPrice, changePercent, marketCap, desc
+      quotes, companyName, symbol, latestPrice, changePercent, marketCap, desc,
+      nameFormActive, name
     } = this.state;
     if (!quotes || !watchlist) return null;
     const length = watchlist.companyIds.length;
@@ -86,37 +103,51 @@ export default class Watchlist extends React.Component {
     const inActive = 'limegreen-h';
     const downArrow = <FontAwesomeIcon icon={faAngleDown} />;
     const upArrow = <FontAwesomeIcon icon={faAngleUp} />;
-    const upCaret = <FontAwesomeIcon icon={faCaretUp} />;
-    const downCaret = <FontAwesomeIcon icon={faCaretDown} />;
     return (
       <div className='watchlist-left'>
         <div className='watchlist-content'>
           <div className='watchlist-main'>
-            <h1>{watchlist.name}</h1>
+            {nameFormActive ? (
+              <form className='watchlist-name-form'>
+                <input 
+                  type="text"
+                  className='watchlist-name-input'
+                  value={name} 
+                  placeholder='Edit List Name'
+                  onChange={this.handleNameChange}
+                  onBlur={this.handleBlur}
+                  autoFocus
+                />
+              </form>
+            ) : (
+              <button className='watchlist-name' onClick={this.handleNameClick}>
+                <h1>{watchlist.name}</h1>
+              </button>
+            )}
             <span className='watchlist-length'>{`${length} items`}</span>
             <ul className='watchlist-index'>
               <li className='watchlist-index-header'>
-                <button className={`${companyName ? active : inActive} header-name`} onClick={this.handleClick('companyName')}>
+                <button className={`${companyName ? active : inActive} header-name`} onClick={this.handleHeaderClick('companyName')}>
                   Name
                   {companyName && !desc ? <span className='name-arrow'>{downArrow}</span> : null}
                   {companyName && desc ? <span className='name-arrow'>{upArrow}</span> : null}
                 </button>
-                <button className={`${symbol ? active : inActive} header-symbol`} onClick={this.handleClick('symbol')}>
+                <button className={`${symbol ? active : inActive} header-symbol`} onClick={this.handleHeaderClick('symbol')}>
                   Symbol
                   {symbol && !desc ? <span className='symbol-arrow'>{downArrow}</span> : null}
                   {symbol && desc ? <span className='symbol-arrow'>{upArrow}</span> : null}
                 </button>
-                <button className={`${latestPrice ? active : inActive} header-price`} onClick={this.handleClick('latestPrice')}>
+                <button className={`${latestPrice ? active : inActive} header-price`} onClick={this.handleHeaderClick('latestPrice')}>
                   Price
                   {latestPrice && !desc ? <span className='price-arrow'>{downArrow}</span> : null}
                   {latestPrice && desc ? <span className='price-arrow'>{upArrow}</span> : null}
                 </button>
-                <button className={`${changePercent ? active : inActive} header-today`} onClick={this.handleClick('changePercent')}>
+                <button className={`${changePercent ? active : inActive} header-today`} onClick={this.handleHeaderClick('changePercent')}>
                   Today
                   {changePercent && !desc ? <span className='today-arrow'>{downArrow}</span> : null}
                   {changePercent && desc ? <span className='today-arrow'>{upArrow}</span> : null}
                 </button>
-                <button className={`${marketCap ? active : inActive} header-mktcap`} onClick={this.handleClick('marketCap')}>
+                <button className={`${marketCap ? active : inActive} header-mktcap`} onClick={this.handleHeaderClick('marketCap')}>
                   Market Cap
                   {marketCap && !desc ? <span className='mktcap-arrow'>{downArrow}</span> : null}
                   {marketCap && desc ? <span className='mktcap-arrow'>{upArrow}</span> : null}

@@ -1,7 +1,7 @@
 .watchlist-body {
   background-color: rgb(12, 12, 12);
   width: 100vw;
-  height: 100vh;
+  height: 115vh;
 }
 
 .watchlist {
@@ -39,21 +39,30 @@
   position: relative;
 }
 
+.watchlist-name {
+  line-height: 50px;
+}
+
+.watchlist-name:hover h1 {
+  background-color: rgba(211, 211, 211, 0.151);
+  border-radius: 5px;
+}
+
 .watchlist-main h1 {
   font-size: 24px;
   font-weight: 600;
+  width: 600px;
+  height: 50px;
 }
 
 .watchlist-length {
   color: rgba(211, 211, 211, 0.61);
   font-size: 14px;
-  margin-top: 8px;
 }
 
 .watchlist-index {
   margin-top: 50px;
 }
-
 
 .watchlist-index-item, .watchlist-index-header {
   width: 675px;
@@ -161,3 +170,14 @@
   color: red;
   margin-right: 5px;
 }
+
+.watchlist-name-form {
+  height: 50px;
+}
+
+.watchlist-name-input {
+  height: 100%;
+  font-size: 24px;
+  font-weight: 600;
+}
+
