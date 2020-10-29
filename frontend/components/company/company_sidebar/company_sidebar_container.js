@@ -11,12 +11,10 @@ const mSTP = (state, ownProps) => {
   const symbol = ownProps.match.params.companyId;
   const user = state.entities.users[state.session.id];
   const company = state.entities.companies[symbol];
-  const watchlists = state.entities.watchlists;
   return {
     company,
     user,
-    color: state.ui.color,
-    watchlists
+    color: state.ui.color
   };
 };
 
