@@ -1,6 +1,7 @@
 import React from 'react';
 import InvestInSharesForm from './share_forms/invest_in_shares_form';
 import InvestInDollarsForm from './share_forms/invest_in_dollars_form';
+import ListsModal from './lists_modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -14,7 +15,8 @@ export default class CompanySidebar extends React.Component {
       shareOwned: false,
       activeBuyBtn: true,
       activeSellBtn: false,
-      companyInList: false
+      companyInList: false,
+      listsModalActive: false
     };
     this.handleBuyBtnClick = this.handleBuyBtnClick.bind(this);
     this.handleSellBtnClick = this.handleSellBtnClick.bind(this);
@@ -81,7 +83,8 @@ export default class CompanySidebar extends React.Component {
   }
 
   handleListsClick() {
-
+    debugger
+    this.setState({ listsModalActive: true });
   }
 
 
@@ -90,7 +93,7 @@ export default class CompanySidebar extends React.Component {
       updateShare
     } = this.props;
     const { selectValue, shareOwned, activeBuyBtn, activeSellBtn, 
-      numSharesOwned, companyInList
+      numSharesOwned, companyInList, listsModalActive
     } = this.state;
     if (!company) return null;
     const plus = <FontAwesomeIcon icon={faPlus} />;
@@ -174,6 +177,11 @@ export default class CompanySidebar extends React.Component {
           )}
           Add to Lists
         </button>
+        {listsModalActive ? (
+          <ListsModal />
+        ) : (
+          null
+        )}
       </div>
     );
   }
