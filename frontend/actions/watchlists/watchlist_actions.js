@@ -23,9 +23,9 @@ export const createWatchlist = watchlist => {
   };
 };
 
-export const updateWatchlistName = (watchlistId, name) => {
+export const updateWatchlistName = watchlist => {
   return dispatch => {
-    return WatchlistApiUtil.updateWatchlistName(watchlistId, name)
+    return WatchlistApiUtil.updateWatchlistName(watchlist)
       .then(watchlist => dispatch(receiveWatchlist(watchlist)));
   };
 };
@@ -37,8 +37,7 @@ export const addCompanyToWatchlist = (watchlistId, companyId) => {
   };
 };
 
-export const removeCompanyFromWatchlist = (watchlist) => {
-  // debugger
+export const removeCompanyFromWatchlist = watchlist => {
   return dispatch => {
     return WatchlistApiUtil.removeCompanyFromWatchlist(watchlist)
       .then(watchlist => dispatch(receiveWatchlist(watchlist)));

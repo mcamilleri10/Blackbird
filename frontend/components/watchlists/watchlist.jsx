@@ -93,9 +93,11 @@ export default class Watchlist extends React.Component {
   }
 
   handleSubmit(e) {
-    const { match, updateWatchlistName } = this.props;
     e.preventDefault();
-    updateWatchlistName(match.params.watchlistId, e.currentTarget.value);
+    const { watchlist, updateWatchlistName } = this.props;
+    watchlist.name = e.currentTarget.value;
+    // debugger
+    updateWatchlistName(watchlist);
   }
 
 

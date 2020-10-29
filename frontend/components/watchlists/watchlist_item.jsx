@@ -8,7 +8,6 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 export default class WatchlistItem extends React.Component {
   
   handleClick(symbol, e) {
-    // const watchlistId = this.props.watchlist.id;
     const watchlist = this.props.watchlist;
     const ids = watchlist.companyIds;
     const i = ids.indexOf(symbol);

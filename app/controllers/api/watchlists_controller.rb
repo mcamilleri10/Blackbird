@@ -23,6 +23,7 @@ class Api::WatchlistsController < ApplicationController
   def update
     @watchlist = Watchlist.includes(:companies).find_by(id: params[:id])
     # debugger
+    # debugger
     # if params[:companyId]
     #   @company = Company.find_by(symbol: params[:companyId])
     #   @watchlist_company = WatchlistCompany.find_by(watchlist_id: params[:id], company_id: @company.id)

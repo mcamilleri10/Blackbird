@@ -125,7 +125,7 @@ export default class Dashboard extends React.Component {
         const num_owned = user.shares[quote.symbol].numSharesOwned;
         let nullPrice;
         quote.intradayPrices.forEach(price => {
-          if (i % 5 === 0) {
+          // if (i % 5 === 0) {
             i++;
             if (price.average === null) {
               price.average = nullPrice;
@@ -141,10 +141,10 @@ export default class Dashboard extends React.Component {
                 'price': sum
               };
             }
-          } else {
-            i++;
-            null;
-          }
+          // } else {
+          //   i++;
+          //   null;
+          // }
         });
       }
     });

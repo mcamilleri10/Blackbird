@@ -31,10 +31,16 @@ export default class ShareIndexItem extends React.Component {
       delayedPrice: quote.iexRealtimePrice || quote.delayedPrice || quote.latestPrice
     });
     const data = [];
+    const length = quote.intradayPrices.length;
     quote.intradayPrices.forEach( (time, i) => {
-      if (i % 10 === 0) {
+      if (length < 180 ) {
         const datum = { 'time': time.minute, 'price': time.average }; 
         data.push(datum);
+      } else {
+        if (i % 10 === 0) {
+          const datum = { 'time': time.minute, 'price': time.average }; 
+          data.push(datum);
+        }
       }
     });
     this.setState({ data: data });

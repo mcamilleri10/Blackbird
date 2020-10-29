@@ -23,8 +23,8 @@ const mDTP = dispatch => {
     receiveColor: color => dispatch(receiveColor(color)),
     fetchWatchlist: watchlistId => dispatch(fetchWatchlist(watchlistId)),
     requestQuotes: symbols => dispatch(requestQuotes(symbols)),
-    removeCompanyFromWatchlist: (watchlist) => dispatch(removeCompanyFromWatchlist(watchlist)),
-    updateWatchlistName: (watchlistId, name) => dispatch(updateWatchlistName(watchlistId, name))
+    removeCompanyFromWatchlist: watchlist => dispatch(removeCompanyFromWatchlist(watchlist)),
+    updateWatchlistName: watchlist => dispatch(updateWatchlistName(watchlist))
   };
 };
 

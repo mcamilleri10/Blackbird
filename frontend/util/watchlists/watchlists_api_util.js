@@ -13,11 +13,12 @@ export const createWatchlist = watchlist => {
   });
 };
 
-export const updateWatchlistName = (watchlistId, name) => {
+export const updateWatchlistName = watchlist => {
+  // debugger
   return $.ajax({
-    url: `/api/watchlists/${watchlistId}`,
+    url: `/api/watchlists/${watchlist.id}`,
     method: 'patch',
-    data: { name }
+    data: { watchlist }
   });
 };
 
