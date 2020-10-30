@@ -55,6 +55,8 @@ class Api::WatchlistsController < ApplicationController
         @watchlist_company.destroy
       elsif @watchlist.companies.length < params[:watchlist][:companyIds].length
         # add company to watchlist
+        company = Company.find_by(symbol: params[:watchlist][:companyIds].last)
+        WatchlistCompany.create(watchlist_id: @watchlist.id, company_id: company.id)
       end
       @symbols = []
       params[:watchlist][:companyIds].each { |company| @symbols << company }

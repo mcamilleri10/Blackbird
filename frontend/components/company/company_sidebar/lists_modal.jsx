@@ -8,8 +8,6 @@ export default class ListsModal extends React.Component {
   }
 
   handleChange(e) {
-    console.log(e.currentTarget.value);
-    console.log(e.currentTarget.checked);
     const { 
       watchlists, 
       company, 
@@ -19,13 +17,9 @@ export default class ListsModal extends React.Component {
     const watchlist = watchlists[e.currentTarget.value];
     const ids = watchlist.companyIds;
     const symbol = company.symbol;
-    console.log(watchlist);
-    console.log(company.symbol);
     if (e.currentTarget.checked) {
       // add company to watchlist
-      console.log(watchlist.companyIds);
       ids.push(symbol);
-      console.log(watchlist.companyIds);
       addCompanyToWatchlist(watchlist);
     } else {
       // remove company from watchlist
