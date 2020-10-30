@@ -25,7 +25,8 @@ export default class CompanySidebar extends React.Component {
   }
 
   componentDidMount() {
-    const { user, match } = this.props;
+    const { user, match, fetchUser } = this.props;
+    fetchUser(user.id);
     this.isCompanyInList(user.watchlists, match);
   }
 
@@ -62,9 +63,7 @@ export default class CompanySidebar extends React.Component {
   
   isCompanyInList(lists, match) {
     Object.values(lists).forEach(watchlist => {
-      debugger
       if (watchlist.companyIds.includes(match.params.companyId)) {
-        debugger
         this.setState({ companyInList: true });
       }
     });
@@ -83,14 +82,13 @@ export default class CompanySidebar extends React.Component {
   }
 
   handleListsClick() {
-    debugger
     this.setState({ listsModalActive: true });
   }
 
 
   render() {
     const { user, company, color, createShare, updateUser, deleteShare, 
-      updateShare
+      updateShare, addCompanyToWatchlist, removeCompanyFromWatchlist, watchlists
     } = this.props;
     const { selectValue, shareOwned, activeBuyBtn, activeSellBtn, 
       numSharesOwned, companyInList, listsModalActive
@@ -178,7 +176,12 @@ export default class CompanySidebar extends React.Component {
           Add to Lists
         </button>
         {listsModalActive ? (
-          <ListsModal />
+          <ListsModal 
+            addCompanyToWatchlist={addCompanyToWatchlist} 
+            removeCompanyFromWatchlist={removeCompanyFromWatchlist}
+            watchlists={watchlists}
+            company={company}
+          />
         ) : (
           null
         )}

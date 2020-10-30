@@ -24,7 +24,7 @@ export const updateWatchlistName = watchlist => {
 
 export const addCompanyToWatchlist = watchlist => {
   return $.ajax({
-    url: `/api/watchlists/${watchlistId}`,
+    url: `/api/watchlists/${watchlist.id}`,
     method: 'patch',
     data: { watchlist }
   });
