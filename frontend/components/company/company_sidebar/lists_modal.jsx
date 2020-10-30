@@ -1,10 +1,13 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 export default class ListsModal extends React.Component {
 
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    this.watchlistLabel = this.watchlistLabel.bind(this);
   }
 
   handleChange(e) {
@@ -29,27 +32,49 @@ export default class ListsModal extends React.Component {
     }
   }
 
+  watchlistLabel(watchlist) {
+    const symbol = this.props.company.symbol;
+    const length = watchlist.companyIds.length;
+    if (watchlist.companyIds.includes(symbol)) {
+      return `${symbol} is already in this list`;
+    } else if (length === 1) {
+      return '1 item';
+    } else {
+      return `${length} items`;
+    }
+  }
+
   render() {
-    const { watchlists, company } = this.props;
-    console.log(watchlists);
+    const { watchlists, company, closeModal, closeModalBtn, color } = this.props;
+    const x = <FontAwesomeIcon icon={faTimes} />;
     return (
-      <div className='lists-modal'>im a modal
-        <form>
-          {Object.values(watchlists).map(watchlist => {
-            return (
-              <div key={watchlist.id}>
-                <input 
-                  type="checkbox"
-                  id="watchlist"
-                  value={watchlist.id}
-                  onChange={this.handleChange}
-                  checked={watchlist.companyIds.includes(company.symbol)}
-                />
-                <label htmlFor="watchlist">{watchlist.name}</label>
-              </div>
-            );
-          })}
-        </form>
+      <div className='lists-modal-bg' onClick={closeModal}>
+        <div className='lists-modal'>
+          <div className='lists-modal-header'>
+            <span className='lists-modal-title'>Add {company.symbol} to Lists</span>
+            <button className='lists-modal-close' onClick={closeModalBtn}>{x}</button>
+          </div>
+          <form>
+            {Object.values(watchlists).map(watchlist => {
+              return (
+                <div key={watchlist.id} className='lists-modal-item'>
+                  <input
+                    className={`lists-modal-checkbox ${color}-cb`}
+                    type="checkbox"
+                    id={`watchlist-${watchlist.id}`}
+                    value={watchlist.id}
+                    onChange={this.handleChange}
+                    checked={watchlist.companyIds.includes(company.symbol)}
+                  />
+                  <label htmlFor={`watchlist-${watchlist.id}`}>{watchlist.name}</label>
+                  <div className='lists-modal-item-labels'>
+                    <span>{this.watchlistLabel(watchlist)}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </form>
+        </div>
       </div>
     );
   }

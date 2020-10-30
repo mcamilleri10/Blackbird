@@ -22,6 +22,8 @@ export default class CompanySidebar extends React.Component {
     this.handleSellBtnClick = this.handleSellBtnClick.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleListsClick = this.handleListsClick.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.closeModalBtn = this.closeModalBtn.bind(this);
   }
 
   componentDidMount() {
@@ -83,6 +85,16 @@ export default class CompanySidebar extends React.Component {
 
   handleListsClick() {
     this.setState({ listsModalActive: true });
+  }
+
+  closeModal(e) {
+    if (e.target.className === 'lists-modal-bg') {
+      this.setState({ listsModalActive: false });
+    }
+  }
+
+  closeModalBtn() {
+    this.setState({ listsModalActive: false });
   }
 
 
@@ -181,6 +193,9 @@ export default class CompanySidebar extends React.Component {
             removeCompanyFromWatchlist={removeCompanyFromWatchlist}
             watchlists={watchlists}
             company={company}
+            closeModal={this.closeModal}
+            closeModalBtn={this.closeModalBtn}
+            color={color}
           />
         ) : (
           null

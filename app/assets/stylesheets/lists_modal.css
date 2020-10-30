@@ -1,11 +1,106 @@
+.lists-modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 9;
+}
+
 .lists-modal {
   z-index: 10;
   position: fixed;
-  height: 200px;
-  width: 200px;
+  height: 480px;
+  width: 410px;
   left: 50%;
-  top: 50%;
+  top: 30%;
   margin-top: -100px;
-  margin-left: -100px;
-  background-color: darkblue;
+  margin-left: -205px;
+  background-color: rgb(4, 13, 20);
+  padding: 30px;
+  overflow: auto;
+}
+
+.lists-modal-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.lists-modal-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.lists-modal-close {
+  font-size: 25px;
+  color: rgb(128, 128, 128);
+}
+
+.lists-modal-item {
+  height: 60px;
+  line-height: 60px;
+  /* display: flex;
+  align-items: center; */
+}
+
+.lists-modal-item input {
+  margin-right: 15px;
+}
+
+.lists-modal-item-labels {
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lists-modal-item-labels span {
+  display: inline-block;
+  height: 38px;
+  margin-top: -20px;
+  margin-left: 34px;
+}
+
+.lists-modal-item-labels span {
+  font-size: 14px;
+  color: rgb(128, 128, 128);
+}
+
+.lists-modal-checkbox + label {
+  display: block;
+}
+
+.lists-modal-checkbox {
+  display: none;
+}
+
+.lists-modal-checkbox + label:before {
+  content: '\2713';
+  padding: 0 4px;
+  color: rgb(4, 13, 20);
+  margin-right: 10px;
+  border-radius: 1px;
+  transition: .1s;
+}
+
+.limegreen-cb + label:before {
+  border: 2px solid limegreen;
+}
+
+.red-cb + label:before {
+  border: 2px solid red;
+}
+
+.limegreen-cb:checked + label:before {
+  background-color: limegreen;
+}
+
+.red-cb:checked + label:before {
+  background-color: red;
+}
+
+.lists-modal-item label {
+  margin-bottom: -41px;
 }
