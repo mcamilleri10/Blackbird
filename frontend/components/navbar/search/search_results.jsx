@@ -19,8 +19,7 @@ export default class SearchResults extends React.Component {
             <h5 className='search-title'>Stocks</h5>
               <ul className='search-results-ul'>
               {searchResults.slice(0, 5).map(result => {
-                return (
-                                
+                return (             
                     <SearchResultItem 
                       key={result.symbol}
                       symbol={result.symbol}
@@ -29,7 +28,6 @@ export default class SearchResults extends React.Component {
                       color={color}
                       closeResults={closeResults}
                     />
-                  
                 );
               })}
             </ul>

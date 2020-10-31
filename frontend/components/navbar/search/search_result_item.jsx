@@ -24,7 +24,6 @@ export default class SearchResultItem extends React.Component {
       name2 = name;
     }
 
-
     return (
       <li className='search-result-item' key={symbol}>
         <Link onClick={closeResults} to={`/auth/companies/${symbol}`} className='search-result-link'>

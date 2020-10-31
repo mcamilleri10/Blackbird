@@ -22,28 +22,6 @@ class Api::WatchlistsController < ApplicationController
 
   def update
     @watchlist = Watchlist.includes(:companies).find_by(id: params[:id])
-    # debugger
-    # debugger
-    # if params[:companyId]
-    #   @company = Company.find_by(symbol: params[:companyId])
-    #   @watchlist_company = WatchlistCompany.find_by(watchlist_id: params[:id], company_id: @company.id)
-    #   if @watchlist_company
-    #     @watchlist_company.destroy
-    #     @symbols = []
-    #     @watchlist.companies.each do |company|
-    #       @symbols << company.symbol
-    #     end
-    #   else
-    #     WatchlistCompany.create(watchlist_id: params[:id], company_id: @company.id)
-    #   end
-    # elsif params[:name]
-    #   if @watchlist.name != params[:name]
-    #     if @watchlist.update(watchlist_params)
-    #       debugger
-    #       render :show
-    #     end
-    #   end
-    # end
     if @watchlist.update(watchlist_params)
       if @watchlist.companies.length > params[:watchlist][:companyIds].length
         # remove company from watchlist

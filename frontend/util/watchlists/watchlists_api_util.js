@@ -14,7 +14,6 @@ export const createWatchlist = watchlist => {
 };
 
 export const updateWatchlistName = watchlist => {
-  // debugger
   return $.ajax({
     url: `/api/watchlists/${watchlist.id}`,
     method: 'patch',

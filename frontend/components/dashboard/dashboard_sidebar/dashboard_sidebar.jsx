@@ -25,7 +25,6 @@ export default class DashboardSidebar extends React.Component {
 
   componentDidMount() {
     // this.props.startLoading();
-    // debugger
     // this.props.fetchUser(this.props.match.params.userId);
       // .then(() => this.fetchRealtimeQuotes());
   }

@@ -272,6 +272,7 @@
 }
 
 .splash-main-2 {
+  background-color: white;
   height: 350px;
   display: flex;
   flex-direction: column;
@@ -324,6 +325,7 @@
 }
 
 .splash-main-3 {
+  background-color: white;
   height: 400px;
   display: flex;
   /* flex-direction: column; */
