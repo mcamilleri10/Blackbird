@@ -42,23 +42,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // REMOVE AFTER TESTING 
-  window.login = login;
-  window.logout = logout;
-  window.signup = signup;
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
+  // window.login = login;
+  // window.logout = logout;
+  // window.signup = signup;
+  // window.getState = store.getState;
+  // window.dispatch = store.dispatch;
 
-  window.requestQuote = requestQuote;
+  // window.requestQuote = requestQuote;
   // window.fetchCompany = fetchCompany;
   // window.symbolSearch = symbolSearch;
-  window.requestCompanyInfo = requestCompanyInfo;
-  window.requestIntradayPrices = requestIntradayPrices;
-  window.fetchWatchlist = fetchWatchlist;
-  window.fetchUser = fetchUser;
-  window.fetchShare = fetchShare;
-  window.symbolSearch = symbolSearch;
-  window.requestHistoricalPrices = requestHistoricalPrices;
-  window.saveCompany = saveCompany;
+  // window.requestCompanyInfo = requestCompanyInfo;
+  // window.requestIntradayPrices = requestIntradayPrices;
+  // window.fetchWatchlist = fetchWatchlist;
+  // window.fetchUser = fetchUser;
+  // window.fetchShare = fetchShare;
+  // window.symbolSearch = symbolSearch;
+  // window.requestHistoricalPrices = requestHistoricalPrices;
+  // window.saveCompany = saveCompany;
 
   ReactDOM.render(<Root store={store}/>, root);
 });
