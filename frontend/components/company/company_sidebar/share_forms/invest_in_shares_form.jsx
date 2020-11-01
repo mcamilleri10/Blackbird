@@ -24,7 +24,7 @@ export default class InvestInSharesForm extends React.Component {
     } else {
       this.setState({ 
         numSharesOwned: parseFloat(inputVal),
-        totalCost: parseFloat((inputVal * company.iexRealtimePrice).toFixed(2))
+        totalCost: parseFloat((inputVal * company.latestPrice).toFixed(2))
       });
     }
   }
@@ -85,11 +85,11 @@ export default class InvestInSharesForm extends React.Component {
             </div>
             <div className='market-price-div'>
               <span className={`market-price ${color}`}>Market Price</span>
-              <span>${company.iexRealtimePrice.toFixed(2)}</span>
+              <span>${company.latestPrice.toFixed(2)}</span>
             </div>
             <div className='estimated-cost'>
                 <span>Estimated Cost</span>
-              <span>${(numSharesOwned * company.iexRealtimePrice).toFixed(2)}</span>
+              <span>${(numSharesOwned * company.latestPrice).toFixed(2)}</span>
             </div>
             <button className={`${color}-bg ${color}-hlite`}>Buy Shares</button>
             {error ? <div className='share-error red'>{error}</div> : null}

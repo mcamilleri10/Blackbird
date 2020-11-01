@@ -20,14 +20,14 @@ export default class InvestInDollarsForm extends React.Component {
   handleChange(e) {
     const { company } = this.props;
     const input = e.currentTarget.value;
-    const numShares = Math.floor(input / company.iexRealtimePrice);
+    const numShares = Math.floor(input / company.latestPrice);
     if (input === '') {
       this.setState({ inputVal: '', error: null });
     } else {
       this.setState({
         inputVal: parseFloat(input),
         numSharesOwned: numShares,
-        totalCost: parseFloat((numShares * company.iexRealtimePrice).toFixed(2))
+        totalCost: parseFloat((numShares * company.latestPrice).toFixed(2))
       });
     }
   }
@@ -85,10 +85,10 @@ export default class InvestInDollarsForm extends React.Component {
           </div>
           <div className='estimated-quantity'>
             <span>Est. Quantity</span>
-            <span>{inputVal < company.iexRealtimePrice ? (
+            <span>{inputVal < company.latestPrice ? (
               0
             ) : (
-              Math.floor(inputVal / company.iexRealtimePrice)
+              Math.floor(inputVal / company.latestPrice)
             )}
             </span>
           </div>

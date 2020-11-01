@@ -12,7 +12,7 @@ export default class ShareIndexItem extends React.Component {
       data: [],
       dayPriceChange: 0,
       dayPercentChange: 0,
-      delayedPrice: 0
+      latestPrice: 0
     };
     this.formatIntraData = this.formatIntraData.bind(this);
   }
@@ -28,7 +28,7 @@ export default class ShareIndexItem extends React.Component {
     this.setState({ 
       dayPriceChange: quote.change,
       dayPercentChange: quote.changePercent * 100,
-      delayedPrice: quote.iexRealtimePrice || quote.delayedPrice || quote.latestPrice
+      latestPrice: quote.latestPrice
     });
     const data = [];
     const length = quote.intradayPrices.length;
@@ -49,7 +49,7 @@ export default class ShareIndexItem extends React.Component {
 
   render() {
     const { share, quote, loading, color } = this.props;
-    const { data, dayPriceChange, dayPercentChange, delayedPrice } = this.state;
+    const { data, dayPriceChange, dayPercentChange, latestPrice } = this.state;
     const spinner = <FontAwesomeIcon icon={faSpinner} className='spinner' spin />;
     // if (loading) 
     //   return <div className='spinner'>{spinner}</div>;
@@ -73,7 +73,7 @@ export default class ShareIndexItem extends React.Component {
           <SidebarChart data={data} dayChange={dayPriceChange} loading={loading} className='sb-chart'/>
         </div>
         <div className='share-btn-right'>
-          <p>${delayedPrice.toFixed(2)}</p>
+          <p>${latestPrice.toFixed(2)}</p>
           <p className={dayPriceChange >= 0 ? 'limegreen' : 'red'}>
             {dayPercentChange.toFixed(2)}%
           </p>

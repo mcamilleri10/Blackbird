@@ -43,7 +43,7 @@ export default class WatchlistItem extends React.Component {
         <li className='watchlist-index-item'>
           <span className='quote-name'>{quote.companyName}</span>
           <span className='quote-symbol'>{quote.symbol}</span>
-          <span className='quote-price'>${(quote.iexRealtimePrice || quote.delayedPrice || quote.latestPrice).toFixed(2)}</span>
+          <span className='quote-price'>${quote.latestPrice.toFixed(2)}</span>
           <span className='quote-today'>
             {this.formatChangePercent(quote.changePercent)}
           </span>

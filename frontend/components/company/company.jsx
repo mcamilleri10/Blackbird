@@ -89,9 +89,9 @@ export default class Company extends React.Component {
 
   formatChartValue() {
     const { company, receiveColor } = this.props;
-    const { iexRealtimePrice, delayedPrice, close, change, changePercent } = company;
+    const { latestPrice, change, changePercent } = company;
     this.setState({
-      chartValue: iexRealtimePrice.toFixed(2) || delayedPrice.toFixed(2) || close.toFixed(2),
+      chartValue: latestPrice.toFixed(2),
       dayPriceChange: change,
       dayPercentChange: changePercent
     });
