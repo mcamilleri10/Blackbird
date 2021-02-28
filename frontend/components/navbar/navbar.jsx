@@ -33,7 +33,7 @@ export default class Navbar extends React.Component {
           <a href="https://angel.co/u/mark-camilleri-1" className={`${color}-h`}>
             {angel}<span>AngelList</span>
           </a>
-          <a href="https://github.com/troubadour10" className={`${color}-h`}>
+          <a href="https://github.com/mcamilleri10" className={`${color}-h`}>
             {github}<span>Github</span>
           </a>
           <a href="https://www.linkedin.com/in/mark-camilleri-0414b4152/" className={`${color}-h`}>
